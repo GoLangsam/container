@@ -22,6 +22,7 @@ Note: Some kinds are 'safe for concurrent processing' by construction. Notably *
 - `fscache` - provides cached file data for any `*fs.FsFile`
 - `svp` - a *String Value Pair* (aka Named Constant)
 - `tag` - a *Tag* (= a *String Value Pair* (aka Named Constant))
+- `tag/ami` - drop-in enhancement for a `tag`: adding introspective methods from `do/ami`
 
 
 ## only *oneway/* implementation
