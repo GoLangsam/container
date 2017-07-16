@@ -20,6 +20,7 @@ Note: Some kinds are 'safe for concurrent processing' by construction. Notably *
 - `das` - a *Dictionary for Any String*
 - `fs` - type safe alternative to direct use of *`path/filepath`*
 - `fscache` - provides cached file data for any `*fs.FsFile`
+- `svp` - a *String Value Pair* (aka Named Constant)
 
 
 ## only *oneway/* implementation
