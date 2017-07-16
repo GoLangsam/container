@@ -20,7 +20,9 @@ Note: Some kinds are 'safe for concurrent processing' by construction. Notably *
 
 
 ## only *oneway/* implementation
-
+- `lsb` - a *Lazy String Buffer* -
+  a gem hidden in `path/path.go` -
+  chapeaux to [Rob Pike](https://en.wikipedia.org/wiki/Rob_Pike)
 
 ## both *ccsafe/* & *oneway/* implementations
 - `stack` - a simple stack for *anything*; **not** typesafe; just: it's pattern is used typesafe elsewhere. You may like to do same.
