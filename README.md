@@ -17,6 +17,7 @@ Note: Some kinds are 'safe for concurrent processing' by construction. Notably *
 
 ----
 ## only *ccsafe/* implementation
+- `das` - a *Dictionary for Any String*
 - `fs` - type safe alternative to direct use of *`path/filepath`*
 - `fscache` - provides cached file data for any `*fs.FsFile`
 
@@ -31,3 +32,7 @@ Note: Some kinds are 'safe for concurrent processing' by construction. Notably *
 - `drum` - a simple beat-counter (with a histogram)
 - `lsm` - a *Lazy String Map*
 - `stack` - a simple stack for *anything*; **not** typesafe; just: it's pattern is used typesafe elsewhere. You may like to do same.
+
+---
+do/ami
+do/nvp
