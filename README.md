@@ -23,6 +23,7 @@ Note: Some kinds are 'safe for concurrent processing' by construction. Notably *
 - `svp` - a *String Value Pair* (aka Named Constant)
 - `tag` - a *Tag* (= a *String Value Pair* (aka Named Constant))
 - `tag/ami` - drop-in enhancement for a `tag`: adding introspective methods from `do/ami`
+- `tagmap` - a *Tag Map* (= a dictionary of *String Value Pair* s (as `map`)
 
 
 ## only *oneway/* implementation
