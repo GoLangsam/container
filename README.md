@@ -17,11 +17,12 @@ Note: Some kinds are 'safe for concurrent processing' by construction. Notably *
 
 ----
 ## only *ccsafe/* implementation 
+- `fs` - type safe alternative to direct use of *`path/filepath`*
 
 
 ## only *oneway/* implementation
 - `lsb` - a *Lazy String Buffer* -
-  a gem hidden in `path/path.go` -
+  a gem hidden in *`path/path.go`* -
   chapeaux to [Rob Pike](https://en.wikipedia.org/wiki/Rob_Pike)
 
 ## both *ccsafe/* & *oneway/* implementations

@@ -1,0 +1,17 @@
+package fs
+
+// MatchFolds
+// matches pathName against the Disk (via MatchDisk/Glob) and then returns only those
+// folders/directories
+// the base name of which matches any of the given patternlists.
+// Any eventual filesystem errors are ignored and skipped over.
+func MatchFolds(pathName string, patterns ...*Pattern) (dirS FsFoldS) {
+	dS, fS, _ := MatchDisk(pathName)
+	_ = fS // Files are ignored here
+	for _, d := range dS {
+		if ok, _ := d.BaseMatches(patterns...); ok {
+			dirS = append(dirS, d)
+		}
+	}
+	return dirS
+}
