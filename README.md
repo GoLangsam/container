@@ -25,8 +25,9 @@ Note: Some kinds are 'safe for concurrent processing' by construction. Notably *
 - `lsb` - a *Lazy String Buffer* -
   a gem hidden in *`path/path.go`* -
   chapeaux to [Rob Pike](https://en.wikipedia.org/wiki/Rob_Pike)
-- `sync` - a drop-in replacement for standard `sync` with empty/no-op equivalents
+- `sync` - a drop-in replacement for standard `sync` with empty/no-op equivalents (used e.g. in `oneway/lsm`)
 
 ## both *ccsafe/* & *oneway/* implementations
-- `stack` - a simple stack for *anything*; **not** typesafe; just: it's pattern is used typesafe elsewhere. You may like to do same.
 - `drum` - a simple beat-counter (with a histogram)
+- `lsm` - a *Lazy String Map*
+- `stack` - a simple stack for *anything*; **not** typesafe; just: it's pattern is used typesafe elsewhere. You may like to do same.
