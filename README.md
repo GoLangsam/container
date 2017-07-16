@@ -16,8 +16,9 @@ Note: Some kinds may deserve to be implemented both ways, as the `ccsafe` versio
 Note: Some kinds are 'safe for concurrent processing' by construction. Notably *immutable* things.
 
 ----
-## only *ccsafe/* implementation 
+## only *ccsafe/* implementation
 - `fs` - type safe alternative to direct use of *`path/filepath`*
+- `fscache` - provides cached file data for any `*fs.FsFile`
 
 
 ## only *oneway/* implementation
