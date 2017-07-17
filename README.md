@@ -1,4 +1,4 @@
-*Don't show me Your code - show me Your data!*
+# *Don't show me Your code - show me Your data!*
 
 ---
 Any `container` is either
@@ -21,13 +21,14 @@ Thus: we came up with `oneway` - as there is only **one way** to use it safely: 
   [lint](http://go-lint.appspot.com/github.com/GoLangsam/container/ccsafe/das)
   |
 - [`fs`](https://github.com/GoLangsam/container/blob/master/ccsafe/fs) -
-  type safe alternative to direct use of *`path/filepath`*
+  a type safe alternative to direct use of [`path/filepath`](https://godoc.org/path/filepath)
   |
   [![GoDoc](https://godoc.org/github.com/GoLangsam/container/ccsafe/fs?status.svg)](https://godoc.org/github.com/GoLangsam/container/ccsafe/fs) 
   |
   [lint](http://go-lint.appspot.com/github.com/GoLangsam/container/ccsafe/fs)
 - [`fscache`](https://github.com/GoLangsam/container/blob/master/ccsafe/fscache) -
-  provides cached file data for any `*fs.FsFile`
+  a cache for file data for any
+  [`*fs.FsFile`](https://godoc.org/github.com/GoLangsam/container/ccsafe/fs#FsFile)
   |
   [![GoDoc](https://godoc.org/github.com/GoLangsam/container/ccsafe/fscache?status.svg)](https://godoc.org/github.com/GoLangsam/container/ccsafe/fscache) 
   |
@@ -45,13 +46,14 @@ Thus: we came up with `oneway` - as there is only **one way** to use it safely: 
   |
   [lint](http://go-lint.appspot.com/github.com/GoLangsam/container/ccsafe/tag)
 - [`tag/ami`](https://github.com/GoLangsam/container/blob/master/ccsafe/tag/ami) -
-  drop-in enhancement for a `tag`: adding introspective methods from `do/ami`
+  a drop-in enhancement for a [`tag`]((https://godoc.org/github.com/GoLangsam/container/ccsafe/tag) ):
+  adding introspective methods from [`do/ami`](https://godoc.org/github.com/GoLangsam/do/ami)
   |
   [![GoDoc](https://godoc.org/github.com/GoLangsam/container/ccsafe/tag/ami?status.svg)](https://godoc.org/github.com/GoLangsam/container/ccsafe/tag/ami) 
   |
   [lint](http://go-lint.appspot.com/github.com/GoLangsam/container/ccsafe/tag/ami)
 - [`tagmap`](https://github.com/GoLangsam/container/blob/master/ccsafe/tagmap) -
-  a *Tag Map* (= a dictionary of *String Value Pair* s (as `map`)
+  a *Tag Map* (= a dictionary of *String Value Pair* s (as [`map`](https://golang.org/ref/spec#Map_types))
   |
   [![GoDoc](https://godoc.org/github.com/GoLangsam/container/ccsafe/tagmap?status.svg)](https://godoc.org/github.com/GoLangsam/container/ccsafe/tagmap) 
   |
@@ -63,14 +65,14 @@ Thus: we came up with `oneway` - as there is only **one way** to use it safely: 
 ## only *oneway/* implementation
 - [`lsb`](https://github.com/GoLangsam/container/blob/master/oneway/lsb) - 
   a *Lazy String Buffer* -
-  a gem hidden in *`path/path.go`* -
+  a gem hidden in [`path/path.go`](https://golang.org/src/path/path.go) -
   chapeaux to [Rob Pike](https://en.wikipedia.org/wiki/Rob_Pike)
   |
   [![GoDoc](https://godoc.org/github.com/GoLangsam/container/oneway/lsb?status.svg)](https://godoc.org/github.com/GoLangsam/container/oneway/lsb)
   |
   [lint](http://go-lint.appspot.com/github.com/GoLangsam/container/oneway/lsb)
 - [`sync`](https://github.com/GoLangsam/container/blob/master/oneway/sync) - 
-  a drop-in replacement for standard `sync` with empty/no-op equivalents (used e.g. in `oneway/lsm`)
+  a drop-in replacement for [standard `sync`](https://godoc.org/path/filepath) with empty/no-op equivalents (used e.g. in `oneway/lsm`)
   |
   [![GoDoc](https://godoc.org/github.com/GoLangsam/container/oneway/sync?status.svg)](https://godoc.org/github.com/GoLangsam/container/oneway/sync) 
   |
@@ -115,6 +117,7 @@ Thus: we came up with `oneway` - as there is only **one way** to use it safely: 
   [lint](http://go-lint.appspot.com/github.com/GoLangsam/container/oneway/stack)
 
 ---
+## Remarks
 
 Note: Some kinds may deserve to be implemented both ways, as the `ccsafe` version is usually less performant.
 
