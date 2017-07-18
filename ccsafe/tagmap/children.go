@@ -19,7 +19,7 @@ func (d *Dot) lookupDot(key string) (*Dot, bool) {
 		return nil, false
 	} else if c, ok = x.(*Dot); !ok {
 		panic("lookupDot: Did not get type Dot from lsm")
-		return nil, false //
+		// return nil, false //
 		/*
 			} else if c.p != d { // sanity check
 				panic("lookupDot: Ups: I am *not* parent of child?!?") // TODO: better formatting

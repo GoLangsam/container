@@ -6,7 +6,6 @@ package das // Dictionary by any for strings
 
 import (
 	"bytes"
-	"testing"
 	"text/template"
 )
 
@@ -19,7 +18,7 @@ var keyBool = true
 var newData = []string{"Foo", "Bar", "Buh", "Foo", "Bar"}
 var addData = []string{"Foo", "Bar", "Buh", "Foo", "Bar"}
 
-func Example_Assign(T *testing.T) {
+func Example_Assign() {
 	var das *Das // test also lazyInit
 
 	das = das.Assign(keyBuff, newData...)
@@ -29,7 +28,7 @@ func Example_Assign(T *testing.T) {
 	das = das.Assign(keyBool, newData...)
 }
 
-func Example_Append(T *testing.T) {
+func Example_Append() {
 	var das *Das // test also lazyInit
 
 	das = das.Assign(keyBuff, newData...)
@@ -51,7 +50,7 @@ func Example_Append(T *testing.T) {
 	das = das.Assign(keyBool, newData...)
 }
 
-func Example_Delete(T *testing.T) {
+func Example_Delete() {
 	var das *Das // test also lazyInit
 
 	das = das.Assign(keyBuff, newData...)
@@ -75,7 +74,7 @@ func Example_Delete(T *testing.T) {
 	println("Len == 0 ?", das.Len())
 }
 
-func Example_Lookup(T *testing.T) {
+func Example_Lookup() {
 	var das *Das // test also lazyInit
 
 	das = das.Assign(keyBuff, newData...)
@@ -100,7 +99,7 @@ func Example_Lookup(T *testing.T) {
 	println("Len == 5 ?", len(res))
 }
 
-func Example_KeyS(T *testing.T) {
+func Example_KeyS() {
 	das := New()
 	das = das.Assign(keyBuff, newData...)
 	das = das.Assign(keyTmpl, newData...)
@@ -121,7 +120,7 @@ func Example_KeyS(T *testing.T) {
 
 }
 
-func Example_Init(T *testing.T) {
+func Example_Init() {
 	var das *Das // test also lazyInit
 
 	das = das.Assign(keyBuff, newData...)

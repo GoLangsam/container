@@ -7,14 +7,14 @@ package dot_test
 import (
 	"testing"
 
-	"github.com/golangsam/container/ccsafe/tagmap"
+	dot "github.com/golangsam/container/ccsafe/tagmap"
 )
 
 func TestSimple(t *testing.T) {
 
 }
 
-func ExampleDot() {
+func Example_Dot() {
 	var sms *dot.Dot = dot.New("<root>")
 	//	sms.PrintTree("1 >>")
 	sms.Assignss("foo", "bar")
