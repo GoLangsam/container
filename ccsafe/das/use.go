@@ -104,7 +104,7 @@ func (d *Das) KeyS() []interface{} {
 	d.l.RLock()         // protect me, and ...
 	defer d.l.RUnlock() // release me, let me go ...
 	var res []interface{} = make([]interface{}, 0, len(d.val))
-	for k, _ := range d.val {
+	for k := range d.val {
 		res = append(res, k)
 	}
 	return res // fulfill the promise
@@ -116,7 +116,7 @@ func (d *Das) Das() map[interface{}][]string {
 	d.l.RLock()         // protect me, and ...
 	defer d.l.RUnlock() // release me, let me go ...
 	var res = make(map[interface{}][]string, len(d.val))
-	for k, _ := range d.val {
+	for k := range d.val {
 		res[k] = d.lazyS(k)
 	}
 	return res // fulfill the promise
