@@ -18,7 +18,7 @@ func (d *Dot) Assignss(vals ...string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
 	for _, v := range vals {
-		d = d.add(v) // fullfill the promise
+		d = d.add(v) // fulfill the promise
 	}
 	return d
 }
@@ -28,7 +28,7 @@ func (d *Dot) AssignSs(val ...[]string) *Dot {
 	defer d.l.Unlock() // release me, let me go ...
 	for _, vals := range val {
 		for _, v := range vals { // same as Assign()
-			d = d.add(v) // fullfill the promise
+			d = d.add(v) // fulfill the promise
 		}
 	}
 	return d
@@ -38,7 +38,7 @@ func (d *Dot) AssignMs(val ...map[string]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
 	for _, v := range val {
-		d = d.addM(v) // fullfill the promise
+		d = d.addM(v) // fulfill the promise
 	}
 	return d
 }

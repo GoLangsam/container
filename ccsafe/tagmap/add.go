@@ -21,7 +21,7 @@ func (d *Dot) AddStrings(key string, val ...string) *Dot {
 	c := d.getChild(key) // get key
 	c.l.Lock()           // protect it, and ...
 	defer c.l.Unlock()   // release it, let it go ...
-	c.add(val...)        // fullfill the promise
+	c.add(val...)        // fulfill the promise
 	return d
 }
 
@@ -33,7 +33,7 @@ func (d *Dot) AddStringS(key string, val ...[]string) *Dot {
 	c.l.Lock()           // protect it, and ...
 	defer c.l.Unlock()   // release it, let it go ...
 	for _, vals := range val {
-		c.add(vals...) // fullfill the promise
+		c.add(vals...) // fulfill the promise
 	}
 	return d
 }
@@ -45,6 +45,6 @@ func (d *Dot) AddMap(key string, val ...map[string]string) *Dot {
 	c := d.getChild(key) // get key
 	c.l.Lock()           // protect it, and ...
 	defer c.l.Unlock()   // release it, let it go ...
-	c.addM(val...)       // fullfill the promise
+	c.addM(val...)       // fulfill the promise
 	return d
 }

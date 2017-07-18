@@ -107,7 +107,7 @@ func (d *Das) KeyS() []interface{} {
 	for k, _ := range d.val {
 		res = append(res, k)
 	}
-	return res // fullfill the promise
+	return res // fulfill the promise
 }
 
 // Das returns my complete content
@@ -119,5 +119,5 @@ func (d *Das) Das() map[interface{}][]string {
 	for k, _ := range d.val {
 		res[k] = d.lazyS(k)
 	}
-	return res // fullfill the promise
+	return res // fulfill the promise
 }

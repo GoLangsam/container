@@ -8,7 +8,7 @@ import (
 	"github.com/golangsam/container/oneway/sync" // no op
 )
 
-// I love to contain strings, named strings, named things, things which can name themselfs.
+// I love to contain strings, named strings, named things, things which can name themselves.
 //	And I love to give them back to You, when You need 'em.
 //	And also their names -as slice or map- as You need 'em.
 //	And also sorted, or reversed, all for Your convenience.
@@ -64,7 +64,7 @@ func (d *LazyStringerMap) init() *LazyStringerMap {
 	d.val = make(map[string]interface{})
 	d.s = make([]string, 0, 16)
 	d.m = nil
-	d.forget() // destroy my being valueable, if need
+	d.forget() // destroy my being valuable, if need
 	return d
 }
 
@@ -74,6 +74,6 @@ func (d *LazyStringerMap) protectMe() {
 }
 
 func (d *LazyStringerMap) releaseMe() {
-	d.forget()   // destroy my being valueable, if need
+	d.forget()   // destroy my being valuable, if need
 	d.l.Unlock() // release me, let me go ...
 }

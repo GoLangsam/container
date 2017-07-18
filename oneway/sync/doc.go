@@ -10,7 +10,7 @@
 //
 // Solution: Copy Your concurrency safe package (e.g. to some "oldway"/xyz path) and change the import ("sync") to here.
 //
-// Benefit: Easy and swiftly to achive.
+// Benefit: Easy and swiftly to achieve.
 //
 // Added benefit: Future maintenance will also be easy: just diff the "ccsafe" and the "oldway" packages - You should only see Your changed import!
 //

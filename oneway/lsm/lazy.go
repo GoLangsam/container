@@ -26,12 +26,12 @@ type PerformanceFriendly interface {
 
 var _ PerformanceFriendly = New() // Interface satisfied? :-)
 
-// helper to forget - "destroy my being valueable" :-)
+// helper to forget - "destroy my being valuable" :-)
 func (d *LazyStringerMap) forget() {
 	if len(d.val) != len(d.s) {
 		d.s = d.s[:0] // forget the slice
 	} // else: no new key
-	d.m = nil // destroy my being valueable
+	d.m = nil // destroy my being valuable
 }
 
 // helper for init-on-demand

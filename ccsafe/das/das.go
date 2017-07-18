@@ -65,7 +65,7 @@ func New() *Das {
 // Want my content reborn empty?
 func (d *Das) init() *Das {
 	d.val = make(map[interface{}][]string)
-	d.forget() // destroy my being valueable, if need
+	d.forget() // destroy my being valuable, if need
 	return d
 }
 
@@ -75,6 +75,6 @@ func (d *Das) protectMe() {
 }
 
 func (d *Das) releaseMe() {
-	d.forget()   // destroy my being valueable, if need
+	d.forget()   // destroy my being valuable, if need
 	d.l.Unlock() // release me, let me go ...
 }
