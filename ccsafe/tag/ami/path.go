@@ -14,8 +14,8 @@ import (
 //  just the same name over and over ... and over again ...
 //  thus: better use me.Into(key string) to build Your path ;-)
 // How to use? Easy:
-//  Use Into to hide the treasue under another name
-//  Use Leaf to retrieve the treasue
+//  Use Into to hide the treasure under another name
+//  Use Leaf to retrieve the treasure
 //  Use NameS or Path - they'll tell You where the treasure is hidden
 //  ... just in case You forgot ;-)
 // Note: this interface is exposed for godoc - only ;-)

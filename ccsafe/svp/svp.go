@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // package svp implements StringValuePair - named constants
-//  Note: Being immutable implies concurrency saftey.
+//  Note: Being immutable implies concurrency safetey.
 package svp // StringValuePair
 
 // Note: this interface is exposed for godoc - only ;-)
@@ -28,7 +28,7 @@ type StringValuePair struct {
 	v interface{} // my value
 }
 
-// New returns a new StringValuePair, named key, containg string val
+// New returns a new StringValuePair, named key, containing string val
 func New(key string, val interface{}) *StringValuePair {
 	return &StringValuePair{key, val}
 }

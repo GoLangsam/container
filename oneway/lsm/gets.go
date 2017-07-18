@@ -28,7 +28,7 @@ func (d *LazyStringerMap) M() map[string]string {
 	d.lazyInit()        // non-nil me ...
 	d.l.RLock()         // protect me, and ...
 	defer d.l.RUnlock() // release me, let me go ...
-	return d.lazyM()    // fullfill the promise
+	return d.lazyM()    // fulfill the promise
 }
 
 // S returns the my keys as sorted slice
@@ -37,7 +37,7 @@ func (d *LazyStringerMap) S() []string {
 	d.lazyInit()        // non-nil me ...
 	d.l.RLock()         // protect me, and ...
 	defer d.l.RUnlock() // release me, let me go ...
-	return d.lazyS()    // fullfill the promise
+	return d.lazyS()    // fulfill the promise
 }
 
 // Range returns the my values as sorted slice
@@ -50,7 +50,7 @@ func (d *LazyStringerMap) Range() []interface{} {
 	for _, k := range d.lazyS() {
 		r = append(r, d.val[k])
 	}
-	return r // fullfill the promise
+	return r // fulfill the promise
 }
 
 // LSM returns my complete content

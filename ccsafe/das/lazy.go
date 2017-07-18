@@ -23,7 +23,7 @@ type PerformanceFriendly interface {
 
 var _ PerformanceFriendly = New() // Interface satisfied? :-)
 
-// helper to forget - "destroy my being valueable" :-)
+// helper to forget - "destroy my being valuable" :-)
 func (d *Das) forget() {
 	// currently: no-op
 }
