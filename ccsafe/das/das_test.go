@@ -18,7 +18,7 @@ var keyBool = true
 var newData = []string{"Foo", "Bar", "Buh", "Foo", "Bar"}
 var addData = []string{"Foo", "Bar", "Buh", "Foo", "Bar"}
 
-func Example_Assign() {
+func ExampleAssign() {
 	var das *Das // test also lazyInit
 
 	das = das.Assign(keyBuff, newData...)
@@ -28,7 +28,7 @@ func Example_Assign() {
 	das = das.Assign(keyBool, newData...)
 }
 
-func Example_Append() {
+func ExampleAppend() {
 	var das *Das // test also lazyInit
 
 	das = das.Assign(keyBuff, newData...)
@@ -50,7 +50,7 @@ func Example_Append() {
 	das = das.Assign(keyBool, newData...)
 }
 
-func Example_Delete() {
+func ExampleDelete() {
 	var das *Das // test also lazyInit
 
 	das = das.Assign(keyBuff, newData...)
@@ -74,7 +74,7 @@ func Example_Delete() {
 	println("Len == 0 ?", das.Len())
 }
 
-func Example_Lookup() {
+func ExampleLookup() {
 	var das *Das // test also lazyInit
 
 	das = das.Assign(keyBuff, newData...)
@@ -99,7 +99,7 @@ func Example_Lookup() {
 	println("Len == 5 ?", len(res))
 }
 
-func Example_KeyS() {
+func ExampleKeyS() {
 	das := New()
 	das = das.Assign(keyBuff, newData...)
 	das = das.Assign(keyTmpl, newData...)
@@ -120,7 +120,7 @@ func Example_KeyS() {
 
 }
 
-func Example_Init() {
+func ExampleInit() {
 	var das *Das // test also lazyInit
 
 	das = das.Assign(keyBuff, newData...)
