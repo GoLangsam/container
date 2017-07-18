@@ -1,4 +1,4 @@
-﻿// package fscache represents a file data cache based on an FsInfo
+// package fscache represents a file data cache based on an FsInfo
 package fscache
 
 import (
