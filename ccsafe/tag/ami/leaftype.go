@@ -9,6 +9,8 @@ import (
 	"github.com/golangsam/do/nvp"
 )
 
+// DeepInfoFriendly interface - exported for go doc
+//
 // I love to be informative - and even give metadata about my innermost content
 //  use DeepValueTypeName to get the name of the type of my innermost content
 //  use DeepValueTypePkgName to get the package name of the type of my innermost content
@@ -29,27 +31,32 @@ type DeepInfoFriendly interface {
 
 var _ DeepInfoFriendly = New("Interface satisfied? :-)")
 
-//
+// DeepValueTypeName returns the Name of the Type my innermost content
 func (d *TagAny) DeepValueTypeName() string {
 	return ami.TypeName(nvp.Leaf(d))
 }
 
+// DeepValueTypePkgPath returns the PkgPath of the Type my innermost content
 func (d *TagAny) DeepValueTypePkgPath() string {
 	return ami.TypePkgPath(nvp.Leaf(d))
 }
 
+// DeepValueTypeString returns the String of the Type my innermost content
 func (d *TagAny) DeepValueTypeString() string {
 	return ami.TypeString(nvp.Leaf(d))
 }
 
+// DeepValueTypeKind returns the Kind of the Type my innermost content
 func (d *TagAny) DeepValueTypeKind() string {
 	return ami.TypeKind(nvp.Leaf(d))
 }
 
+// DeepValueTypeIsComparable returns the IsComparable of the Type my innermost content
 func (d *TagAny) DeepValueTypeIsComparable() bool {
 	return ami.TypeIsComparable(nvp.Leaf(d))
 }
 
+// DeepValueTypeIsVariadic returns the IsVariadic of the Type my innermost content
 func (d *TagAny) DeepValueTypeIsVariadic() bool {
 	return ami.TypeIsVariadic(nvp.Leaf(d))
 }
