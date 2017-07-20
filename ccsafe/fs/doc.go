@@ -1,5 +1,5 @@
 /*
-package fs represents a file system and provides typed access to it.
+Package fs represents a file system and provides typed access to it.
 
 Beyond a couple of convenience functions, it provides a tree of types and related functionalities.
 

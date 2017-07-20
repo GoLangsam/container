@@ -49,9 +49,10 @@ func (p *fsInfo) AsFile() *FsFile {
 // TryFile returns a fresh FsFile,
 // or nil and false iff fi.IsFold().
 func (p *fsInfo) TryFile() (*FsFile, bool) {
-	if p.IsFold() {
+	switch {
+	case p.IsFold():
 		return nil, false
-	} else {
+	default:
 		return &FsFile{*p}, true
 	}
 }

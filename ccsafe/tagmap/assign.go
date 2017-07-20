@@ -25,7 +25,7 @@ func (d *Dot) Assignss(vals ...string) *Dot {
 	return d
 }
 
-// Assignss - add string-slices
+// AssignSs - add string-slices
 func (d *Dot) AssignSs(val ...[]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...

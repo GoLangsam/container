@@ -1,6 +1,7 @@
 // Package lsb provides a lazy string buffer: efficient, and NOT concurrency safe!
 package lsb // LazyStringBuffer
 
+// Friendly - interface exposed for go doc only
 type Friendly interface {
 	Index(i int) byte // read a previously appended byte
 	Append(c byte)    // extend by adding c at the end
@@ -41,9 +42,10 @@ func New(s string) *LazyStringBuffer {
 
 // Index returns the byte at i
 func (b *LazyStringBuffer) Index(i int) byte {
-	if b.buf == nil {
+	switch {
+	case b.buf == nil:
 		return b.ori[i]
-	} else {
+	default:
 		return b.buf[i]
 	}
 }
@@ -69,9 +71,10 @@ func (b *LazyStringBuffer) Unpend() {
 
 // String returns the content as string
 func (b *LazyStringBuffer) String() string {
-	if b.buf == nil {
+	switch {
+	case b.buf == nil:
 		return b.ori[:b.w]
-	} else {
+	default:
 		return string(b.buf[:b.w])
 	}
 }

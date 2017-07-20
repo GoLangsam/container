@@ -14,6 +14,7 @@ var _ DeleteFriendly = New("Interface satisfied? :-)")
 
 // Value modifiers - concurrency safe
 
+// Deletess - delete strings
 func (d *Dot) Deletess(vals ...string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
@@ -23,6 +24,7 @@ func (d *Dot) Deletess(vals ...string) *Dot {
 	return d
 }
 
+// DeleteSs - delete string-slices
 func (d *Dot) DeleteSs(vals ...[]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
@@ -34,6 +36,7 @@ func (d *Dot) DeleteSs(vals ...[]string) *Dot {
 	return d
 }
 
+// DeleteMs - delete string-maps
 func (d *Dot) DeleteMs(vals ...map[string]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...

@@ -14,7 +14,7 @@ func TestSimple(t *testing.T) {
 
 }
 
-func ExampleTagMap_Assignss() {
+func Example() {
 	var sms *dot.Dot = dot.New("<root>")
 	//	sms.PrintTree("1 >>")
 	sms.Assignss("foo", "bar")

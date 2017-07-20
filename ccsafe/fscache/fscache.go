@@ -1,4 +1,8 @@
-// package fscache represents a file data cache based on an FsInfo
+// Copyright 2016 Andreas Pannewitz. All rights reserved.
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
+// Package fscache represents a file data cache based on an FsInfo
 package fscache
 
 import (
@@ -66,6 +70,7 @@ func (fi *FsCache) register(key *fs.FsFile) error {
 	if !ok || !finfo.InfoEquals(key) {
 		fi.dict[key.String()] = key.AsData()
 	}
+
 	return nil
 }
 
@@ -90,7 +95,6 @@ func (fi *FsCache) LookupData(key *fs.FsFile) string {
 	fdata, ok := fi.lookup(key)
 	if !ok {
 		return ""
-	} else {
-		return fdata.Data()
 	}
+	return fdata.Data()
 }

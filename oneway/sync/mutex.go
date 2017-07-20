@@ -41,6 +41,7 @@ const (
 	mutexWaiterShift = iota
 )
 */
+
 // Lock locks m.
 // If the lock is already in use, the calling goroutine
 // blocks until the mutex is available.
@@ -97,6 +98,7 @@ func (m *Mutex) Lock() {
 	}
 }
 */
+
 // Unlock unlocks m.
 // It is a run-time error if m is not locked on entry to Unlock.
 //

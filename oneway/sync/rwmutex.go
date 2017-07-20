@@ -35,6 +35,7 @@ type RWMutex struct {
 /*
 const rwmutexMaxReaders = 1 << 30
 */
+
 // RLock locks rw for reading.
 func (rw *RWMutex) RLock() { /*
 		if race.Enabled {

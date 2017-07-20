@@ -1,14 +1,16 @@
 package fs
 
 const (
+	// Tab is the horizontal tabulation character/rune
 	Tab = "\t"
 )
 
+// Errors is a slice or error
 type Errors struct {
 	errs []error
 }
 
-// Errors returns a Tab-terminated string listing the accumulated errors
+// Error returns a Tab-terminated string listing the accumulated errors
 // (the string is suitable for text\tabwriter;
 // if there are no errors, a single Tab is returned - an empty Tab-terminated string)
 func (er Errors) Error() string {
@@ -28,9 +30,10 @@ func (er Errors) err(err error) {
 
 // got returns the error(s) got, or nil, if there are none
 func (er Errors) got() error {
-	if len(er.errs) > 0 {
+	switch {
+	case len(er.errs) > 0:
 		return er
-	} else {
+	default:
 		return nil
 	}
 }

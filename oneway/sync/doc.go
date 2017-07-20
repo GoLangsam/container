@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// package sync implements a no-op drop-in replacement for standard "sync"
+// Package sync implements a no-op drop-in replacement for standard "sync"
 //
 // Let's say: You have a gr8 package. And it's concurrency safe due to import ("sync") and good use of "sync.Mutex" and friends.
 //

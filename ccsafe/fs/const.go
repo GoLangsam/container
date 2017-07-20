@@ -10,5 +10,5 @@ const (
 	MatchOne = `?`
 
 	// Dot is the extension separator - a period.
-	Dot      = `.`
+	Dot = `.`
 )

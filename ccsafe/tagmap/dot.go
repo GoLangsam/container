@@ -129,6 +129,7 @@ var _ Friendly = New("Interface satisfied?")
 doc.go
 */
 
+// StringFriendly - interface exposed for go doc only
 type StringFriendly interface {
 	SetableFriendly // set.go: Set/replace Content: Set SetS SetM
 	AssignFriendly  // assign.go: Add/overwrite Content: Assignss AssignSs AssignMs
