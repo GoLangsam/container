@@ -55,7 +55,7 @@ func (f *FsFile) TryData() (*FsData, bool) {
 	fd := &FsData{*f, []byte{}}
 	data, err := fd.ReadFile()
 	switch {
-	case if err == nil:
+	case err == nil:
 		fd.byteS = data
 		return fd, true
 	default:
