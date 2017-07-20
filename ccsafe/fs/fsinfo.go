@@ -49,18 +49,22 @@ func newInfo(path string) *fsInfo {
 // AsInfo returns a fresh FsInfo, and the error received from os.Stat() (if any),
 // or panics, if TryInfo returns an error (from os.Stat()).
 func (p *fsPath) AsInfo() *fsInfo {
-	if anew, err := p.TryInfo(); err != nil {
+	anew, err := p.TryInfo()
+	switch {
+	case err == nil:
 		panic("newInfo: Stat returned Error: " + err.Error())
-	} else {
+	default:
 		return anew
 	}
 }
 
 // TryInfo returns a fresh fsInfo, and the error received from os.Stat() (if any)
 func (p *fsPath) TryInfo() (*fsInfo, error) {
-	if finfo, err := p.Stat(); err == nil {
+	finfo, err := p.Stat()
+	switch {
+	case err == nil:
 		return &fsInfo{*p, finfo, true}, nil
-	} else {
+	default:
 		return &fsInfo{*p, *new(os.FileInfo), false}, err
 	}
 }
@@ -73,11 +77,12 @@ func newExists(name string, fi os.FileInfo) *fsInfo {
 
 // IsFold returns IsDir, if it is known to exist, and false otherwise.
 func (p *fsInfo) IsFold() bool {
-	if p.Exists() {
+	switch {
+	case p.Exists():
 		return p.IsDir()
+	default:
+		return false
 	}
-
-	return false
 }
 
 // Exists returns true, if OsPath is known to represent a real disk element

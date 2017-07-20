@@ -54,10 +54,11 @@ func (f *FsFile) AsData() *FsData {
 func (f *FsFile) TryData() (*FsData, bool) {
 	fd := &FsData{*f, []byte{}}
 	data, err := fd.ReadFile()
-	if err == nil {
+	switch {
+	case if err == nil:
 		fd.byteS = data
 		return fd, true
-	} else {
+	default:
 		return fd, false
 	}
 }

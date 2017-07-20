@@ -56,9 +56,9 @@ func (d *LazyStringerMap) Lookup(key string) string {
 	defer d.l.RUnlock() // release me, let me go ...
 	if c, ok := d.val[key]; ok {
 		return ats.GetString(c)
-	} else {
-		return ""
 	}
+
+	return ""
 }
 
 // Fetch - You want my content named "key"
@@ -68,9 +68,9 @@ func (d *LazyStringerMap) Fetch(key string) (interface{}, bool) {
 	defer d.l.RUnlock() // release me, let me go ...
 	if c, ok := d.val[key]; ok {
 		return c, true
-	} else {
-		return nil, false
 	}
+
+	return nil, false
 }
 
 // Delete - You want me to forget about name "key" (and it's related content)?

@@ -66,9 +66,9 @@ func (d *Das) Lookup(key interface{}) []string {
 	defer d.l.RUnlock() // release me, let me go ...
 	if _, ok := d.val[key]; ok {
 		return d.lazyS(key)
-	} else {
-		return []string{}
 	}
+
+	return []string{}
 }
 
 // Fetch - You want my content of "key"
@@ -78,9 +78,9 @@ func (d *Das) Fetch(key interface{}) ([]string, bool) {
 	defer d.l.RUnlock() // release me, let me go ...
 	if _, ok := d.val[key]; ok {
 		return d.lazyS(key), true
-	} else {
-		return []string{}, false
 	}
+
+	return []string{}, false
 }
 
 // Delete - You want me to forget abou "key" (and it's related content)?

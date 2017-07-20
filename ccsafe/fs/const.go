@@ -6,7 +6,7 @@ const (
 	// MatchAny matches any sequence of non-Separator characters
 	MatchAny = `*`
 
-	// MatchOnematches any single non-Separator character
+	// MatchOne matches any single non-Separator character
 	MatchOne = `?`
 
 	// Dot is the extension separator - a period.
