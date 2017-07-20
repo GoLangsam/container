@@ -1,11 +1,13 @@
 # *Don't show me Your code - show me Your data!*
 
----
+[![Go Report Card](https://goreportcard.com/badge/github.com/GoLangsam/container)](https://goreportcard.com/badge/github.com/GoLangsam/container)
+[![Build Status](https://travis-ci.org/GoLangsam/container.svg?branch=master)](https://travis-ci.org/GoLangsam/container)
+
 Any `container` is either
 - safe for concurrent processing (short: `ccsafe`)
 - or not.
 
-Not being safe for concurrent processing has been *normal* for a looong time.
+Note: Not being safe for concurrent processing has been *normal* for a looong time.
 Just: `normal` is not a good, meaningful name.
 Neither is `oldway` - another discarded idea.
 
@@ -121,4 +123,4 @@ Thus: we came up with `oneway` - as there is only **one way** to use it safely: 
 
 Note: Some kinds may deserve to be implemented both ways, as the `ccsafe` version is usually less performant.
 
-Note: Some kinds are 'safe for concurrent processing' by construction. Notably *immutable* things.
+Note: Some kinds are *safe for concurrent processing* by construction. Notably *immutable* things.
