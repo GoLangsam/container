@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+// Package drum provides a simple counter (with names based on musical methaphores)
 package drum
 
 import (
@@ -11,6 +12,8 @@ import (
 )
 
 type counter map[int]int64
+
+// Drum is named counter
 type Drum struct {
 	Nam string
 	Cnt int

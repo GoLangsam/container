@@ -1,7 +1,7 @@
 package fs
 
-// MatchFolds
-// matches pathName against the Disk (via MatchDisk/Glob) and then returns only those
+// MatchFolds matches pathName
+// against the Disk (via MatchDisk/Glob) and then returns only those
 // folders/directories
 // the base name of which matches any of the given patternlists.
 // Any eventual filesystem errors are ignored and skipped over.

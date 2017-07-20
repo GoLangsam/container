@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 /*
-stack provides a normal (=non-concurrency-safe) stack
+Package stack provides a normal (=non-concurrency-safe) stack
 for anything (interface{})
 
 */

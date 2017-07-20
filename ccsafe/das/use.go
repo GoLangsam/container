@@ -33,7 +33,7 @@ type UserFriendly interface {
 
 var _ UserFriendly = New() // Interface satisfied? :-)
 
-// Want my content reborn empty?
+// Init - Want my content reborn empty?
 func (d *Das) Init() *Das {
 	d.protectMe()       // protect me, and ...
 	defer d.releaseMe() // release me, let me go ...
@@ -41,7 +41,7 @@ func (d *Das) Init() *Das {
 	return d
 }
 
-// You want me to Append "val"-strings? to my "key" content
+// Append - You want me to append "val"-strings? to my "key" content
 func (d *Das) Append(key interface{}, vals ...string) *Das {
 	d.protectMe()       // protect me, and ...
 	defer d.releaseMe() // release me, let me go ...
@@ -51,7 +51,7 @@ func (d *Das) Append(key interface{}, vals ...string) *Das {
 	return d
 }
 
-// You want to reset my "key" content "val"-strings?
+// Assign - You want to reset my "key" content "val"-strings?
 func (d *Das) Assign(key interface{}, vals ...string) *Das {
 	d.protectMe()       // protect me, and ...
 	defer d.releaseMe() // release me, let me go ...
@@ -59,7 +59,7 @@ func (d *Das) Assign(key interface{}, vals ...string) *Das {
 	return d
 }
 
-// You want my content of "key" - as (eventually empty) string-slice
+// Lookup - You want my content of "key" - as (eventually empty) string-slice
 func (d *Das) Lookup(key interface{}) []string {
 	d.lazyInit()        // non-nil me ...
 	d.l.RLock()         // protect me, and ...
@@ -71,7 +71,7 @@ func (d *Das) Lookup(key interface{}) []string {
 	}
 }
 
-// You want my content of "key"
+// Fetch - You want my content of "key"
 func (d *Das) Fetch(key interface{}) ([]string, bool) {
 	d.lazyInit()        // non-nil me ...
 	d.l.RLock()         // protect me, and ...
@@ -83,7 +83,7 @@ func (d *Das) Fetch(key interface{}) ([]string, bool) {
 	}
 }
 
-// You want me to forget abou "key" (and it's related content)?
+// Delete - You want me to forget abou "key" (and it's related content)?
 func (d *Das) Delete(key interface{}) *Das {
 	d.protectMe()       // protect me, and ...
 	defer d.releaseMe() // release me, let me go ...
@@ -91,7 +91,7 @@ func (d *Das) Delete(key interface{}) *Das {
 	return d
 }
 
-// How many keys do I contain right now?
+// Len - How many keys do I contain right now?
 func (d *Das) Len() int {
 	d.lazyInit()        // non-nil me ...
 	d.l.RLock()         // protect me, and ...

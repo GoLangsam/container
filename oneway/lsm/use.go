@@ -33,7 +33,7 @@ type UserFriendly interface {
 
 var _ UserFriendly = New() // Interface satisfied? :-)
 
-// Want my content reborn empty?
+// Init - Want my content reborn empty?
 func (d *LazyStringerMap) Init() *LazyStringerMap {
 	d.protectMe()       // protect me, and ...
 	defer d.releaseMe() // release me, let me go ...
@@ -41,7 +41,7 @@ func (d *LazyStringerMap) Init() *LazyStringerMap {
 	return d
 }
 
-// You want to let my content named "key" to be the "val"-string?
+// Assign - You want to let my content named "key" to be the "val"-string?
 func (d *LazyStringerMap) Assign(key string, val interface{}) *LazyStringerMap {
 	d.protectMe()       // protect me, and ...
 	defer d.releaseMe() // release me, let me go ...
@@ -49,7 +49,7 @@ func (d *LazyStringerMap) Assign(key string, val interface{}) *LazyStringerMap {
 	return d
 }
 
-// You want my content named "key" - as (eventually empty) string
+// Lookup - You want my content named "key" - as (eventually empty) string
 func (d *LazyStringerMap) Lookup(key string) string {
 	d.lazyInit()        // non-nil me ...
 	d.l.RLock()         // protect me, and ...
@@ -61,7 +61,7 @@ func (d *LazyStringerMap) Lookup(key string) string {
 	}
 }
 
-// You want my content named "key"
+// Fetch - You want my content named "key"
 func (d *LazyStringerMap) Fetch(key string) (interface{}, bool) {
 	d.lazyInit()        // non-nil me ...
 	d.l.RLock()         // protect me, and ...
@@ -73,7 +73,7 @@ func (d *LazyStringerMap) Fetch(key string) (interface{}, bool) {
 	}
 }
 
-// You want me to forget about name "key" (and it's related content)?
+// Delete - You want me to forget about name "key" (and it's related content)?
 func (d *LazyStringerMap) Delete(key string) *LazyStringerMap {
 	d.protectMe()       // protect me, and ...
 	defer d.releaseMe() // release me, let me go ...
@@ -81,7 +81,7 @@ func (d *LazyStringerMap) Delete(key string) *LazyStringerMap {
 	return d
 }
 
-// How many things do I contain right now?
+// Len - How many things do I contain right now?
 func (d *LazyStringerMap) Len() int {
 	d.lazyInit()        // non-nil me ...
 	d.l.RLock()         // protect me, and ...

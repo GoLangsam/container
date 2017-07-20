@@ -26,7 +26,7 @@ func Match(name string, patterns ...*Pattern) (matched bool, err error) {
 	}
 	if len(patterns) > 0 {
 		return match, nil
-	} else {
-		return true, nil
 	}
+
+	return true, nil
 }

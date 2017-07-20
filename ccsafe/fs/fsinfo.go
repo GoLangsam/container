@@ -75,9 +75,9 @@ func newExists(name string, fi os.FileInfo) *fsInfo {
 func (p *fsInfo) IsFold() bool {
 	if p.Exists() {
 		return p.IsDir()
-	} else {
-		return false
 	}
+
+	return false
 }
 
 // Exists returns true, if OsPath is known to represent a real disk element

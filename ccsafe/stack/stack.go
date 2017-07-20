@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 /*
-stack provides a concurrency-safe stack for interface{}
+Package stack provides a concurrency-safe stack for interface{}
 guarded by a sync.Mutex
 
 */

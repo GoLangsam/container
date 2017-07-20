@@ -32,8 +32,8 @@ func MatchDisk(name string) (dirS FsFoldS, filS FsFileS, err error) {
 	return dirS, filS, errS.got()
 }
 
-// SubDirS
-// matches pathName against the Disk (via MatchDisk/Glob) and then returns
+// SubDirS matches pathName
+// against the Disk (via MatchDisk/Glob) and then returns
 // all directories below any directory matching pathname
 // as a breadth first sorted slice.
 // Any eventual filesystem errors are ignored and skipped over.

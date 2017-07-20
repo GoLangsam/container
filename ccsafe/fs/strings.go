@@ -15,7 +15,7 @@ func Ext(name string) *FsBase {
 	return newBase(filepath.Ext(name))
 }
 
-// BaseLessExt: name.Base() less name.Ext() as *FsBase
+// BaseLessExt returns name.Base() less name.Ext() as *FsBase
 func BaseLessExt(name string) *FsBase {
 	return newBase(strings.TrimSuffix(filepath.Base(name), filepath.Ext(name)))
 }

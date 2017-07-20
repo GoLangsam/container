@@ -15,6 +15,7 @@ type PathFriendly interface {
 	Accessible() error
 }
 
+// FilePathFriendly - interface exported for go doc only
 type FilePathFriendly interface {
 	String() string
 
@@ -26,6 +27,7 @@ type FilePathFriendly interface {
 	JoinWith(elem ...string) string
 }
 
+// MatchFriendly - interface exported for go doc only
 type MatchFriendly interface {
 	DiskFriendly
 	Match(pattern *Pattern) (matched bool, err error)
@@ -33,16 +35,19 @@ type MatchFriendly interface {
 	BaseMatches(patterns ...*Pattern) (matched bool, err error)
 }
 
+// DiskFriendly - interface exported for go doc only
 type DiskFriendly interface {
 	Glob() (matches []string, err error)
 	MatchDisk() (dirS FsFoldS, filS FsFileS, err error)
 }
 
+// OsFileInfoFriendly - interface exported for go doc only
 type OsFileInfoFriendly interface {
 	// obtain os.FileInfo
 	Stat() (os.FileInfo, error)
 }
 
+// PathTypeFriendly - interface exported for go doc only
 type PathTypeFriendly interface {
 	AsPath() *fsPath
 	TryPath() (*fsPath, bool)

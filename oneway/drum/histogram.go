@@ -10,6 +10,7 @@ import (
 	//	"sync"
 )
 
+// Histogram represents a named integer histrogram (with total)
 type Histogram struct {
 	Nam string
 	Cnt int
