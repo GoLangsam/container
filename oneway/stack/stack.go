@@ -11,7 +11,6 @@ package stack
 
 // Stack implements a normal (=non-concurrency-safe) stack
 // for anything (interface{})
-
 type Stack struct {
 	stack []interface{}
 }

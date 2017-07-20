@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+// Package tag implements a StringValuePair - a named value
 package tag
 
 import (
@@ -11,7 +12,7 @@ import (
 // Friendly - interface exposed for go doc only
 //
 // I love to be friendly - thus: I give You a simple API!
-//  Create me with New(name) or Tag(name, stuff),
+//  Create me with New(name) or Tag(name, stuff)
 //
 type Friendly interface {
 	UserFriendly // use.go

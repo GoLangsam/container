@@ -17,31 +17,31 @@ import (
 //  use GetV to get my stuff
 //  use me, as You please :-)
 //
-// Note: I behave like a named variable - just with other names
+// Hint: I behave like a named variable - just with other names
 //  Thus: You may like to use me, where 'normal' methodnames are used otherwise ;-)
 //
 type UserFriendly interface {
-	String() string      // fmt.Stringer
 	Tag(val interface{}) // Set/replace AnyValue/Payload
-	K() string           // Return the tag string (shortcut for String())
-	V() string           // Return AnyValue/Payload as string
-	GetV() interface{}   // Return AnyValue/Payload
+	String() string      // implement `fmt.Stringer`
+	K() string           // returns my Key as string (shortcut for String())
+	V() string           // returns my Value as string (via ats.GetString)
+	GetV() interface{}   // returns my Value as is
 }
 
 var _ UserFriendly = New("Interface satisfied? :-)")
-
-// implement fmt.Stringer
-func (d *TagAny) String() string {
-	d.l.Lock()         // proctect me, and ...
-	defer d.l.Unlock() // release me, let me go ...
-	return d.k
-}
 
 // Tag attaches me to my AnyValue/Payload
 func (d *TagAny) Tag(val interface{}) {
 	d.l.Lock()         // proctect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
 	d.v = val
+}
+
+// String implements `fmt.Stringer`
+func (d *TagAny) String() string {
+	d.l.Lock()         // proctect me, and ...
+	defer d.l.Unlock() // release me, let me go ...
+	return d.k
 }
 
 // K returns the tag string (= Key)

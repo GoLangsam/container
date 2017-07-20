@@ -4,6 +4,7 @@
 
 package dot
 
+// DeleteFriendly - interface exposed for go doc only
 type DeleteFriendly interface {
 	Deletess(vals ...string) *Dot            // Delete/remove vals from Content - given as strings
 	DeleteSs(vals ...[]string) *Dot          // Delete/remove val from Content - given as slices of strings

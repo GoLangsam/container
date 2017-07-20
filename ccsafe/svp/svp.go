@@ -6,15 +6,13 @@
 //  Note: Being immutable implies concurrency safetey.
 package svp // StringValuePair
 
-// Friendly - interface exposed for godoc only
+// Friendly - interface exposed for go doc only
 //
 // I love to be friendly - thus: I give You a simple API!
-//  Create me with Svp(name, stuff), or Set(name, stuff string),
-//  or New(stuff) with an fmt.Stringer, so stuff names himself.
+//  Create me with New(name, stuff)
 //
 type Friendly interface {
 	UserFriendly     // use.go
-	ConcurrencySafe  // sync.go
 	InfoFriendly     // valuetype.go
 	DeepInfoFriendly // leaftype.go
 }

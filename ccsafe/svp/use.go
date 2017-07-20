@@ -13,19 +13,20 @@ import (
 // I love to be easy - easy to use:
 //  use K (or String) to get my name
 //  use V to get my (named) stuff
+//
 //  use me, as You please :-)
 // Hint: I behave like a named constant - just with other names
 //
 type UserFriendly interface {
-	String() string    // returns my Key as string
-	K() string         // returns my Key as string (same as String())
-	V() string         // returns my Value as string via ats.GetString
+	String() string    // implement `fmt.Stringer`
+	K() string         // returns my Key as string (shortcut for String())
+	V() string         // returns my Value as string (via ats.GetString)
 	GetV() interface{} // returns my Value as is
 }
 
 var _ UserFriendly = New("Interface satisfied? :-)", empty)
 
-// implement fmt.Stringer
+// String implements `fmt.Stringer`
 func (p *StringValuePair) String() string {
 	return p.k
 }
