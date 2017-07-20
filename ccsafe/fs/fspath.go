@@ -63,9 +63,10 @@ func (p *fsPath) AsPath() *fsPath {
 //  Note: Match-Metacharacters "[" and "]" are intentionally permitted;
 //  they may be used not only in patterns, but also as valid name of some file or folder/directory.
 func (p *fsPath) TryPath() (*fsPath, bool) {
-	if strings.ContainsAny(p.name, string(filepath.ListSeparator)+MatchAny+MatchOne) {
+	switch {
+	case strings.ContainsAny(p.name, string(filepath.ListSeparator)+MatchAny+MatchOne):
 		return p, false
-	} else {
+	default:
 		return p, true
 	}
 }
