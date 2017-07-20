@@ -8,6 +8,8 @@ import (
 	"github.com/golangsam/do/nvp" // NameValuePair - provides recursing functions
 )
 
+// PathFriendly - interface exposed for go doc only
+//
 // Note: You may like to use my own kind as stuff ;-)
 //  Thus: build a path to where I hide - recursively!
 //  just: Using Named() in a loop may not get You much :-(
@@ -18,7 +20,7 @@ import (
 //  Use Leaf to retrieve the treasure
 //  Use NameS or Path - they'll tell You where the treasure is hidden
 //  ... just in case You forgot ;-)
-// Note: this interface is exposed for godoc - only ;-)
+//
 type PathFriendly interface {
 	Into(key string) *TagAny // put me into a new TagAny named key
 	Leaf() interface{}       // return the treasure hidden deep inside *TagAny's

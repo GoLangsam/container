@@ -8,6 +8,8 @@ import (
 	"github.com/golangsam/do/ats" // anything to string
 )
 
+// UserFriendly - interface exposed for go doc only
+//
 // I love to be easy - thus: I give You a simple API!
 //  Create me with New, if You like - Note: No need, I'm friendly :-)
 //  and Init me to use me afresh,
@@ -16,7 +18,7 @@ import (
 //  Lookup a value as string by it's name (as key),
 //  Delete a key, if You don't need it any more
 //  as You please :-)
-// Note: this interface is exposed for godoc - only ;-)
+//
 type UserFriendly interface {
 	// Following may be chained:
 	Init() *LazyStringerMap                              // (re)start afresh: no names, no content

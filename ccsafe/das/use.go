@@ -4,6 +4,8 @@
 
 package das // Dictionary by any for strings
 
+// UserFriendly - interface exposed for go doc only
+//
 // I love to be easy - thus: I give You a simple API!
 //  Create me with New, if You like - Note: No need, I'm friendly :-)
 //  and Init me to use me afresh,
@@ -12,7 +14,7 @@ package das // Dictionary by any for strings
 //  Lookup a value (or nil) by it's key,
 //  Delete a key, if You don't need it any more
 //  as You please :-)
-// Note: this interface is exposed for godoc - only ;-)
+//
 type UserFriendly interface {
 	// Following may be chained:
 	Init() *Das                                  // (re)start afresh: no names, no content

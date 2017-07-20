@@ -53,9 +53,9 @@ func (p *fsInfo) AsFold() *FsFold {
 func (p *fsInfo) TryFold() (*FsFold, bool) {
 	if !p.IsFold() {
 		return nil, false
-	} else {
-		return &FsFold{*p, nil}, true
 	}
+
+	return &FsFold{*p, nil}, true
 }
 
 // FileS returns all files in f matching any of the patterns in the patternlists
@@ -119,25 +119,25 @@ func Recurse(name string) *FsFold {
 func (f *FsFold) Recurse() bool {
 	if f.recurse == nil {
 		return false
-	} else {
-		return *f.recurse
 	}
+
+	return *f.recurse
 }
 
 // HasRecurse returns true if this folder has a recurse indicator
 func (f *FsFold) HasRecurse() bool {
 	if f.recurse == nil {
 		return false
-	} else {
-		return true
 	}
+
+	return true
 }
 
 // TabString returns the Name and the Recurse flag as a Tab terminated string
 func (f *FsFold) TabString() string {
 	if f.Recurse() {
 		return f.String() + "\t" + "Recurse=true" + "\t"
-	} else {
-		return f.String() + "\t"
 	}
+
+	return f.String() + "\t" + "\t"
 }

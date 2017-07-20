@@ -8,14 +8,18 @@ import (
 	"github.com/golangsam/do/ats"
 )
 
+// UserFriendly - interface exposed for go doc only
+//
 // I love to be easy - easy to use:
 //  use me to Tag stuff,
 //  use K (or String) to get my name
 //  use V to get the name of my stuff
 //  use GetV to get my stuff
 //  use me, as You please :-)
+//
 // Note: I behave like a named variable - just with other names
 //  Thus: You may like to use me, where 'normal' methodnames are used otherwise ;-)
+//
 type UserFriendly interface {
 	String() string      // fmt.Stringer
 	Tag(val interface{}) // Set/replace AnyValue/Payload

@@ -4,6 +4,8 @@
 
 package dot
 
+// UserFriendly - interface exposed for go doc only
+//
 type UserFriendly interface {
 	AddStrings(key string, val ...string) *Dot         // adds key to d, and adds variadic strings below key
 	AddStringS(key string, val ...[]string) *Dot       // adds key to d, and adds slices below key

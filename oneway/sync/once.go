@@ -9,6 +9,7 @@ import (
 	"sync/atomic"
 )
 */
+
 // Once is an object that will perform exactly one action.
 type Once struct {
 	//	m    Mutex

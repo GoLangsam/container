@@ -4,6 +4,8 @@
 
 package lsm
 
+// AccessFriendly - interface exposed for godoc only
+//
 // I love to be responsive - not only for templates :-)
 //	Get my content as
 //      - sorted slice of strings: S
@@ -11,7 +13,6 @@ package lsm
 //      - string map of strings: M
 //      - string map of my kind: LSM
 //
-// Note: this interface is exposed for godoc - only ;-)
 type AccessFriendly interface {
 	M() map[string]string        // return Content as map[key]value-string
 	S() []string                 // return my keys as sorted slice

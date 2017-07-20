@@ -1,4 +1,4 @@
-// package lsb provides a lazy string buffer: efficient, and NOT concurrency safe!
+// Package lsb provides a lazy string buffer: efficient, and NOT concurrency safe!
 package lsb // LazyStringBuffer
 
 type Friendly interface {
@@ -24,7 +24,7 @@ type Friendly interface {
 // TODO: Do we need some panics re m? E.g. underflow upon Unpend.
 // Or shall we leave things to subsequent panics upon illegal access to ori resp. buf?
 
-// A LazyStringBuffer is a lazily constructed path buffer.
+// LazyStringBuffer is a lazily constructed path buffer.
 // It supports append, reading previously appended bytes,
 // and retrieving the final string. It does not allocate a buffer
 // to hold the output until that output diverges from s.
@@ -34,10 +34,12 @@ type LazyStringBuffer struct {
 	w   int    // bytes written
 }
 
+// New returns a pointer to a fresh LazyStringBuffer
 func New(s string) *LazyStringBuffer {
 	return &LazyStringBuffer{ori: s}
 }
 
+// Index returns the byte at i
 func (b *LazyStringBuffer) Index(i int) byte {
 	if b.buf == nil {
 		return b.ori[i]
@@ -46,6 +48,7 @@ func (b *LazyStringBuffer) Index(i int) byte {
 	}
 }
 
+// Append appends c to the buffer b
 func (b *LazyStringBuffer) Append(c byte) {
 	if b.buf == nil {
 		if b.w < len(b.ori) && b.ori[b.w] == c {
@@ -59,10 +62,12 @@ func (b *LazyStringBuffer) Append(c byte) {
 	b.w++
 }
 
+// Unpend undoes the last Append
 func (b *LazyStringBuffer) Unpend() {
 	b.w--
 }
 
+// String returns the content as string
 func (b *LazyStringBuffer) String() string {
 	if b.buf == nil {
 		return b.ori[:b.w]
@@ -71,6 +76,7 @@ func (b *LazyStringBuffer) String() string {
 	}
 }
 
+// Pos returns the position
 func (b *LazyStringBuffer) Pos() int {
 	return b.w
 }

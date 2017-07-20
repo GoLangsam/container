@@ -8,10 +8,11 @@ import (
 	"sync"
 )
 
+// Friendly - interface exposed for go doc only
+//
 // I love to be friendly - thus: I give You a simple API!
 //  Create me with New(name) or Tag(name, stuff),
 //
-// Note: this interface is exposed for godoc - only ;-)
 type Friendly interface {
 	UserFriendly // use.go
 }

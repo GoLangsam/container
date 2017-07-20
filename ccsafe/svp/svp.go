@@ -6,7 +6,7 @@
 //  Note: Being immutable implies concurrency safetey.
 package svp // StringValuePair
 
-// Note: this interface is exposed for godoc - only ;-)
+// Friendly - interface exposed for godoc only
 //
 // I love to be friendly - thus: I give You a simple API!
 //  Create me with Svp(name, stuff), or Set(name, stuff string),
@@ -23,6 +23,7 @@ var _ Friendly = New("Interface satisfied? :-)", empty)
 
 var empty interface{}
 
+// StringValuePair is what package svp implements
 type StringValuePair struct {
 	k string      // my key text
 	v interface{} // my value

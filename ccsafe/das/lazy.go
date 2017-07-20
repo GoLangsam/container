@@ -8,13 +8,15 @@ import (
 	"sort"
 )
 
+// PerformanceFriendly - interface exposed for godoc only
+//
 // I love to be fast :-)
 //  Thus: I memoize answers about my content, and about when to forget my memos
 //
 // I love to be lazy - do not like to do things over and over again.
 //	Thus: only when You ask the question, then, on Your demand, so to say
 //	do I prepare the answer for such certain question about my content. ;-)
-// Note: this interface is exposed for godoc - only ;-)
+//
 type PerformanceFriendly interface {
 	forget()
 	lazyInit()

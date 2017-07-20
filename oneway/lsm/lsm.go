@@ -8,11 +8,13 @@ import (
 	"github.com/golangsam/container/oneway/sync" // no op
 )
 
+// Friendly - interface exposed for godoc only
+//
 // I love to contain strings, named strings, named things, things which can name themselves.
 //	And I love to give them back to You, when You need 'em.
 //	And also their names -as slice or map- as You need 'em.
 //	And also sorted, or reversed, all for Your convenience.
-// Note: this interface is exposed for godoc - only ;-)
+//
 type Friendly interface {
 	AccessFriendly      // get.go
 	UserFriendly        // use.go
@@ -21,6 +23,8 @@ type Friendly interface {
 
 var _ Friendly = New() // Interface satisfied? :-)
 
+// LazyStringerMap is the type provided by this package lsm.
+//
 // I love to be easy - thus: I give You a simple API!
 //	Create me with New, and Assign or Lookup, and Delete or Init as You please :-)
 //

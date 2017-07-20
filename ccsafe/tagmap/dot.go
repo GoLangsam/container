@@ -12,6 +12,7 @@ import (
 	"github.com/golangsam/container/ccsafe/tag/ami"
 )
 
+// Dot is the type provided by package dot
 type Dot struct {
 	*tag.TagAny                        // key - a Key Value Pair
 	*lsm.LazyStringerMap               // value(s) - an 'Anything' StringMap
@@ -28,6 +29,7 @@ func New(key string) *Dot {
 	return dot
 }
 
+// GoFriendly - interface exposed for go doc only
 type GoFriendly interface {
 	// helper for templates:
 	A(vals ...string) string // Add values, and return an empty string
