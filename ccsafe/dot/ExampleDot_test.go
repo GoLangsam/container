@@ -15,7 +15,7 @@ func TestSimple(t *testing.T) {
 }
 
 func TestDot(t *testing.T) {
-	var sms *dot.Dot = dot.New("<root>")
+	var sms = dot.New("<root>")
 	sms.PrintTree("1 >>")
 	sms.Assignss("foo", "bar")
 	sms.PrintTree("2 >>")
