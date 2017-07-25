@@ -99,7 +99,7 @@ func (f *FsFold) ReadDirS() (entrieS FsInfoS, err error) {
 
 // AsNotDown returns a fresh FsFold representing a file system directory/file not to be recursed into.
 func (p *fsInfo) AsNotDown() *FsFold {
-	var recurse bool = false
+	var recurse = false
 	return &FsFold{*p, &recurse}
 }
 
@@ -110,7 +110,7 @@ func NotDown(name string) *FsFold {
 
 // AsRecurse returns a fresh FsFold representing a file system directory/file to be recursed into.
 func (p *fsInfo) AsRecurse() *FsFold {
-	var recurse bool = true
+	var recurse = true
 	return &FsFold{*p, &recurse}
 }
 
