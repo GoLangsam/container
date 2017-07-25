@@ -22,6 +22,13 @@ Thus: we came up with `oneway` - as there is only **one way** to use it safely: 
   |
   [lint](http://go-lint.appspot.com/github.com/GoLangsam/container/ccsafe/das)
   |
+- [`dotpath`](https://github.com/GoLangsam/container/blob/master/ccsafe/dotpath) -
+  a parser for user-provided strings to be understood as a (list of) path
+  with special awareness of triple dots (to recourse) and of trailing double dots (to inspect).
+  |
+  [![GoDoc](https://godoc.org/github.com/GoLangsam/container/ccsafe/dotpath?status.svg)](https://godoc.org/github.com/GoLangsam/container/ccsafe/dotpath) 
+  |
+  [lint](http://go-lint.appspot.com/github.com/GoLangsam/container/ccsafe/dotpath)
 - [`fs`](https://github.com/GoLangsam/container/blob/master/ccsafe/fs) -
   a type safe alternative to direct use of [`path/filepath`](https://godoc.org/path/filepath)
   |
