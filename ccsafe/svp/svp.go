@@ -3,6 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package svp implements StringValuePair - named constants
+//
 //  Note: Being immutable implies concurrency safetey.
 package svp // StringValuePair
 
