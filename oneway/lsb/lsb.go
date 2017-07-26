@@ -2,12 +2,11 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// Package lsb provides a lazy string buffer: efficient, and NOT concurrency safe!
+// Package lsb provides a Lazy String Buffer: efficient, and NOT concurrency safe!
 //
-// found in path/path.go - chapeaux to Rob Pike
+// found in `path/path.go` - chapeaux to Rob Pike
 //
 // Note: I would not mind to see this below "strings" :-)
-
 package lsb // LazyStringBuffer
 
 // Friendly - interface exposed for go doc only

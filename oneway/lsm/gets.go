@@ -4,7 +4,7 @@
 
 package lsm
 
-// AccessFriendly - interface exposed for godoc only
+// AccessFriendly - interface exposed for go doc only
 //
 // I love to be responsive - not only for templates :-)
 //	Get my content as
