@@ -3,6 +3,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Go Report Card](https://goreportcard.com/badge/github.com/GoLangsam/container)](https://goreportcard.com/report/github.com/GoLangsam/container)
 [![Build Status](https://travis-ci.org/GoLangsam/container.svg?branch=master)](https://travis-ci.org/GoLangsam/container)
+[![GoDoc](https://godoc.org/github.com/GoLangsam/container?status.svg)](https://godoc.org/github.com/GoLangsam/container)
 
 Any `container` is either
 - safe for concurrent processing (short: `ccsafe`)
