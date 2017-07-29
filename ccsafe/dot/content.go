@@ -4,6 +4,7 @@
 
 package dot
 
+// PrivacyFriendly - interface exposed for go doc only
 type PrivacyFriendly interface {
 	add(vals ...string) *Dot            // add val as children to current content
 	addM(val ...map[string]string) *Dot // add content named val: to any child named as key add content named as val[key]

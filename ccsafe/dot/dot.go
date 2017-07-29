@@ -37,6 +37,7 @@ func New(key string) *Dot {
 	return dot
 }
 
+// GoFriendly - interface exposed for go doc only
 type GoFriendly interface {
 	// helper for templates:
 	A(vals ...string) string     // Add values, and return an empty string
@@ -145,7 +146,9 @@ func Try(v interface{}) (*Dot, bool) {
 	}
 }
 
-// Friendly shows the composition as interface
+// Friendly - interface exposed for go doc only
+//
+// Friendly shows the composition and interfaces
 type Friendly interface {
 	tag.Friendly      // via "container/.../tag/..."
 	lsm.Friendly      // via "container/.../lsm"
@@ -164,6 +167,7 @@ var _ Friendly = New("Interface satisfied?")
 doc.go
 */
 
+// StringFriendly - interface exposed for go doc only
 type StringFriendly interface {
 	/*
 		SetableFriendly // set.go: Set/replace Content: Set SetS SetM
