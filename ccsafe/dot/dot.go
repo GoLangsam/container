@@ -85,7 +85,7 @@ func (d *Dot) A(vals ...string) string {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
 	for _, v := range vals {
-		d = d.add(v) // fullfill the promise
+		d = d.add(v) // fulfill the promise
 	}
 	return ""
 }
@@ -130,7 +130,7 @@ func (d *Dot) UnlockedAdd(key string, val ...string) (interface{}, bool) {
 	c := d.getChild(key)
 	c.l.Lock()         // protect it, and ...
 	defer c.l.Unlock() // release it, let it go ...
-	c.add(val...)      // fullfill the promise
+	c.add(val...)      // fulfill the promise
 	return c, true     // bool avoids usage from templates!
 }
 

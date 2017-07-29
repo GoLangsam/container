@@ -9,7 +9,7 @@
 // And, yes, it's recursive.
 // And, yes it's concurrency-safe.
 // And, yes it carries stuff as You name it.
-// And, yes it can also carry arbitrary Stringers - things which can name themselfs.
+// And, yes it can also carry arbitrary Stringers - things which can name themselves.
 // And, yes it supports concurrency via generic piping functions - found elsewhere.
 //
 // Children can be obtained as map[string]string, and as sorted slice []string
@@ -27,7 +27,7 @@
 // the key's of which are strings, and the values are elements,
 // ...
 //
-// Such structure can be useful when information is aquired
+// Such structure can be useful when information is acquired
 // recursivlely such as by parsing some object (directory, template, URL, ...),
 // which contains and 'reveals' additional information when being parsed/inspected.
 //
