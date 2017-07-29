@@ -1,6 +1,7 @@
 # *Don't show me Your code - show me Your data!*
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/GoLangsam/container)](https://goreportcard.com/badge/github.com/GoLangsam/container)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Go Report Card](https://goreportcard.com/badge/github.com/GoLangsam/container)](https://goreportcard.com/report/github.com/GoLangsam/container)
 [![Build Status](https://travis-ci.org/GoLangsam/container.svg?branch=master)](https://travis-ci.org/GoLangsam/container)
 
 Any `container` is either
