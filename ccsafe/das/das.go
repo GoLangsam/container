@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package das provides a Dictionary by Anything for Strings
-package das // import "github.com/golangsam/container/ccsafe/das"
+package das
 
 import (
 	"sync"
