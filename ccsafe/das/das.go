@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package das // Dictionary by any for strings
+// Package das provides a Dictionary by Anything for Strings
+package das // import "github.com/golangsam/container/ccsafe/das"
 
 import (
 	"sync"

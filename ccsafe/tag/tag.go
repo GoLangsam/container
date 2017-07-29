@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// Package tag implements a StringValuePair - a named value
+// Package tag provides a StringValuePair - a named value
 package tag
 
 import (

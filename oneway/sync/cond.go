@@ -11,7 +11,7 @@ import (
 )
 */
 
-// A Cond implements a condition variable, a rendezvous point
+// Cond implements a condition variable, a rendezvous point
 // for goroutines waiting for or announcing the occurrence
 // of an event.
 //

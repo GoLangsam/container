@@ -2,13 +2,14 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+// Package lsm provides a Lazy String Map - a named-anything map with lazy access to sorted content
 package lsm
 
 import (
 	"github.com/golangsam/container/oneway/sync" // no op
 )
 
-// Friendly - interface exposed for godoc only
+// Friendly - interface exposed for go doc only
 //
 // I love to contain strings, named strings, named things, things which can name themselves.
 //	And I love to give them back to You, when You need 'em.

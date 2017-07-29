@@ -8,7 +8,7 @@ import (
 	"sort"
 )
 
-// PerformanceFriendly - interface exposed for godoc only
+// PerformanceFriendly - interface exposed for go doc only
 //
 // I love to be fast :-)
 //  Thus: I memoize answers about my content, and about when to forget my memos
