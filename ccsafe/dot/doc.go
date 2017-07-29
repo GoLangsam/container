@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// package dot implements a container of named stringmaps.
+// Package dot implements a container of named stringmaps.
 //
 // Yes, it's just a tree of strings and Stringers - free of duplicate names.
 //

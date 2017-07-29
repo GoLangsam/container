@@ -4,6 +4,7 @@
 
 package dot
 
+// SetableFriendly - interface exposed for go doc only
 type SetableFriendly interface {
 	Set(vals ...string) *Dot            // Set/replace Content with val - given as strings
 	SetM(val ...map[string]string) *Dot // Set/replace Content with val - given as maps of strings
@@ -14,6 +15,9 @@ var _ SetableFriendly = New("Interface satisfied? :-)")
 
 // Value modifiers - concurrency safe
 
+// Set adds (or replaces)
+// content below current dot d
+// using given variadic strings
 func (d *Dot) Set(vals ...string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	d.Init()           // reset my being valuable, and ...
@@ -24,16 +28,9 @@ func (d *Dot) Set(vals ...string) *Dot {
 	return d
 }
 
-func (d *Dot) SetM(val ...map[string]string) *Dot {
-	d.l.Lock()         // protect me, and ...
-	d.Init()           // reset my being valuable, and ...
-	defer d.l.Unlock() // release me, let me go ...
-	for _, v := range val {
-		d = d.addM(v) // fulfill the promise
-	}
-	return d
-}
-
+// SetS adds (or replaces)
+// content below current dot d
+// using given variadic string-slices
 func (d *Dot) SetS(val ...[]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	d.Init()           // reset my being valuable, and ...
@@ -42,6 +39,19 @@ func (d *Dot) SetS(val ...[]string) *Dot {
 		for _, v := range vals { // same as Add()
 			d = d.add(v) // fulfill the promise
 		}
+	}
+	return d
+}
+
+// SetM adds (or replaces)
+// content below current dot d
+// using given variadic string-maps
+func (d *Dot) SetM(val ...map[string]string) *Dot {
+	d.l.Lock()         // protect me, and ...
+	d.Init()           // reset my being valuable, and ...
+	defer d.l.Unlock() // release me, let me go ...
+	for _, v := range val {
+		d = d.addM(v) // fulfill the promise
 	}
 	return d
 }

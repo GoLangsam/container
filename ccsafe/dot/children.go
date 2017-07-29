@@ -4,6 +4,7 @@
 
 package dot
 
+// ChildFriendly - interface exposed for go doc only
 type ChildFriendly interface {
 	lookupDot(key string) (*Dot, bool)
 	getChild(key string) *Dot

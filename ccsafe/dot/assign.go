@@ -4,6 +4,7 @@
 
 package dot
 
+// AssignFriendly - interface exposed for go doc only
 type AssignFriendly interface {
 	Assignss(vals ...string) *Dot           // Assign/overwrite Content with val - given as strings
 	AssignSs(val ...[]string) *Dot          // Assign/overwrite Content with val - given as slices of strings
@@ -14,6 +15,9 @@ var _ AssignFriendly = New("Interface satisfied? :-)")
 
 // Value modifiers - concurrency safe
 
+// Assignss adds to (or replaces with)
+// content below current dot d
+// using given variadic strings
 func (d *Dot) Assignss(vals ...string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
@@ -23,6 +27,9 @@ func (d *Dot) Assignss(vals ...string) *Dot {
 	return d
 }
 
+// AssignSs adds to (or replaces with)
+// content below current dot d
+// using given variadic string-slices
 func (d *Dot) AssignSs(val ...[]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
@@ -34,6 +41,9 @@ func (d *Dot) AssignSs(val ...[]string) *Dot {
 	return d
 }
 
+// AssignMs adds to (or replaces with)
+// content below current dot d
+// using given variadic string-maps
 func (d *Dot) AssignMs(val ...map[string]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...

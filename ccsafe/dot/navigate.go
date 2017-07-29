@@ -4,6 +4,7 @@
 
 package dot
 
+// NavigatorFriendly - interface exposed for go doc only
 type NavigatorFriendly interface {
 	parent() *Dot  // returns the parent (or nil, if at root)
 	Back() *Dot    // returns the parent (or nil, if at root)
@@ -92,6 +93,8 @@ func (d *Dot) Level() int {
 // WalkFunc is the signature of a Walk function.
 type WalkFunc func(d *Dot)
 
+// WalkBreadth1st applies a given WalkFunc wf
+// in breadth-first order
 func (d *Dot) WalkBreadth1st(wf WalkFunc) *Dot {
 	d.l.RLock()         // protect me, and ...
 	defer d.l.RUnlock() // release me, let me go ...
@@ -102,6 +105,8 @@ func (d *Dot) WalkBreadth1st(wf WalkFunc) *Dot {
 	return d
 }
 
+// WalkDepth1st applies a given WalkFunc wf
+// in depth-first order
 func (d *Dot) WalkDepth1st(wf WalkFunc) *Dot {
 	d.l.RLock()                 // protect me, and ...
 	defer d.l.RUnlock()         // release me, let me go ...

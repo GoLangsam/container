@@ -8,37 +8,37 @@ import (
 	"path"
 )
 
-// PathBase: func Base(path string) string
+// PathBase - func path.Base(path string) string
 func (d *Dot) PathBase() string {
 	return path.Base(d.String())
 }
 
-// PathClean: func Clean(path string) string
+// PathClean - func path.Clean(path string) string
 func (d *Dot) PathClean() string {
 	return path.Clean(d.String())
 }
 
-// PathDir: func Dir(path string) string
+// PathDir - func path.Dir(path string) string
 func (d *Dot) PathDir() string {
 	return path.Dir(d.String())
 }
 
-// PathExt: func Ext(path string) string
+// PathExt - func path.Ext(path string) string
 func (d *Dot) PathExt() string {
 	return path.Ext(d.String())
 }
 
-// PathIsAbs: func IsAbs(path string) bool
+// PathIsAbs - func path.IsAbs(path string) bool
 func (d *Dot) PathIsAbs() bool {
 	return path.IsAbs(d.String())
 }
 
-// PathMatch: func Match(pattern, name string) (matched bool, err error)
+// PathMatch - func path.Match(pattern, name string) (matched bool, err error)
 func (d *Dot) PathMatch(pattern string) (matched bool, err error) {
 	return path.Match(pattern, d.String())
 }
 
-// PathJoin: func Join(elem ...string) string
+// PathJoin - func path.Join(elem ...string) string
 //  Note: joins elem... to Dot
 func (d *Dot) PathJoin(elem ...string) string {
 	var es = make([]string, len(elem)+1)
@@ -47,7 +47,7 @@ func (d *Dot) PathJoin(elem ...string) string {
 	return path.Join(es...)
 }
 
-// PathJoinThese: func Join(elem ...string) string
+// PathJoinThese - func path.Join(elem ...string) string
 //  Note: joins elem... - does not consider Dot
 func (d *Dot) PathJoinThese(elem ...string) string {
 	return path.Join(elem...)

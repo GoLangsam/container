@@ -10,6 +10,7 @@ import (
 	"os"
 )
 
+// OutputFriendly - interface exposed for go doc only
 type OutputFriendly interface {
 	out() io.Writer
 	SetOutput(output io.Writer) *Dot // sets the destination for usage and error messages. If output is nil, os.Stderr is used.
@@ -36,7 +37,7 @@ func (d *Dot) SetOutput(output io.Writer) *Dot {
 	return d
 }
 
-// OutOut prints msg's on a line to out()
+// PutOut prints msg's on a line to out()
 func (d *Dot) PutOut(msg ...interface{}) *Dot {
 	d.l.RLock()         // protect me, and ...
 	defer d.l.RUnlock() // release me, let me go ...

@@ -8,12 +8,16 @@ import (
 	"errors"
 )
 
+// ErrorFriendly - interface exposed for go doc only
 type ErrorFriendly interface {
 	SeeError(sender, place string, err error) bool
 	SeeNotOk(sender, place string, ok bool, complain string) bool
 }
 
+// ErrorName is the name of a node-type error
 const ErrorName = "Error"
+
+// ErrorID is the ID of of a node of type error
 const ErrorID = ":" + ErrorName + ":"
 
 var _ ErrorFriendly = New("Interface satisfied? :-)")
@@ -51,6 +55,7 @@ func (d *Dot) dotErrorNok(sender, place string, err error) *Dot {
 
 // Helpers to handle an Error resp. NotOk complaint consistently
 
+// SeeError -
 // If err!=nil, attach an error below "Error:" of d, and return true
 func (d *Dot) SeeError(sender, place string, err error) bool {
 	if err == nil {
@@ -63,6 +68,7 @@ func (d *Dot) SeeError(sender, place string, err error) bool {
 	return true
 }
 
+// SeeNotOk -
 // If ok!=true, attach a not-ok complain below "Error:" of d, and return true
 func (d *Dot) SeeNotOk(sender, place string, ok bool, complain string) bool {
 	if ok == true {

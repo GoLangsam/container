@@ -10,6 +10,7 @@ import (
 	"os"
 )
 
+// PrinterFriendly - interface exposed for go doc only
 type PrinterFriendly interface {
 	PrintTree(prefix ...string) *Dot // prints the tree, one line per node, each prefixed by prefix and indented with tab "\t"
 }
