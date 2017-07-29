@@ -7,8 +7,6 @@ package das // Dictionary by any for strings
 import (
 	"bytes"
 	"text/template"
-
-	"github.com/golangsam/container/ccsafe/das"
 )
 
 var keyBuff = bytes.NewBufferString("Test")
