@@ -7,7 +7,7 @@
 // Package dotpath is intended as a parser for user-provided strings
 // separated by some single character delimiter (which is not a Dot)
 // such as filepath information or other hierarchical identifiers
-// and gives a better meaning to multiple dots and trailing slashes:
+// and gives an extended meaning to multiple dots and trailing slashes:
 //
 //  ... => 'use Subtree also'
 //  ..  => 'use Parent also', if .. is part of trailing dots and slashes
