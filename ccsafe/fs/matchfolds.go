@@ -12,9 +12,9 @@ package fs
 func MatchFolds(pathName string, patterns ...*Pattern) (dirS FsFoldS) {
 	dS, fS, _ := MatchDisk(pathName)
 	_ = fS // Files are ignored here
-	for _, d := range dS {
-		if ok, _ := d.BaseMatches(patterns...); ok {
-			dirS = append(dirS, d)
+	for i := range dS {
+		if ok, _ := dS[i].BaseMatches(patterns...); ok {
+			dirS = append(dirS, dS[i])
 		}
 	}
 	return dirS

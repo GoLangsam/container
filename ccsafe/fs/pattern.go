@@ -22,13 +22,13 @@ func (f PatternS) String() string {
 	var s string
 	s = s + "{"
 	first := true
-	for _, e := range f {
+	for i := range f {
 		if first {
 			first = false
 		} else {
 			s = s + ", "
 		}
-		s = s + e.String()
+		s = s + f[i].String()
 	}
 	s = s + "}"
 	return s
@@ -69,9 +69,10 @@ func NewPatternS(names ...string) (patternS PatternS) {
 	if len(names) < 1 {
 		patternS = append(patternS, newPattern(""))
 	} else {
-		for _, nameList := range names {
-			for _, patternName := range filepath.SplitList(nameList) {
-				patternS = append(patternS, newPattern(patternName))
+		for i := range names {
+			parts := filepath.SplitList(names[i])
+			for i := range parts {
+				patternS = append(patternS, newPattern(parts[i]))
 			}
 		}
 	}

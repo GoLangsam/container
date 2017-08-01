@@ -19,8 +19,8 @@ type Errors struct {
 // if there are no errors, a single Tab is returned - an empty Tab-terminated string)
 func (er Errors) Error() string {
 	s := Tab
-	for _, err := range er.errs {
-		s = s + err.Error() + Tab
+	for i := range er.errs {
+		s = s + er.errs[i].Error() + Tab
 	}
 	return s
 }

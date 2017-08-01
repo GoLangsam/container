@@ -8,8 +8,8 @@ package fs
 func (f FsPathS) Validate() error {
 	er := new(Errors)
 	var err error
-	for _, fp := range f {
-		_, err = fp.Stat()
+	for i := range f {
+		_, err = f[i].Stat()
 		er.err(err)
 	}
 	return er.got()
@@ -18,8 +18,8 @@ func (f FsPathS) Validate() error {
 // Accessible returns any errors encountered when accessing it's elements
 func (f FsPathS) Accessible() error {
 	er := new(Errors)
-	for _, fp := range f {
-		er.err(fp.Accessible())
+	for i := range f {
+		er.err(f[i].Accessible())
 	}
 	return er.got()
 }

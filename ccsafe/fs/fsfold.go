@@ -20,13 +20,13 @@ func (f FsFoldS) String() string {
 	var s string
 	s = s + "{"
 	first := true
-	for _, e := range f {
+	for i := range f {
 		if first {
 			first = false
 		} else {
 			s = s + ", "
 		}
-		s = s + e.String()
+		s = s + f[i].String()
 	}
 	s = s + "}"
 	return s
@@ -76,9 +76,9 @@ func (f *FsFold) SubDirS() (DirS []*FsFold) {
 	dir := f.AsRecurse()
 	DirS = append(DirS, dir)
 	if dirInfoS, err := f.ReadDir(); err == nil {
-		for _, dirInfo := range dirInfoS {
-			if dirInfo.IsDir() {
-				dir := Recurse(f.JoinWith(dirInfo.Name()))
+		for i := range dirInfoS {
+			if dirInfoS[i].IsDir() {
+				dir := Recurse(f.JoinWith(dirInfoS[i].Name()))
 				DirS = append(DirS, dir.SubDirS()...)
 			}
 		}
@@ -90,8 +90,8 @@ func (f *FsFold) SubDirS() (DirS []*FsFold) {
 // of directory entries sorted by filename.
 func (f *FsFold) ReadDirS() (entrieS FsInfoS, err error) {
 	if finfoS, err := f.ReadDir(); err == nil {
-		for _, finfo := range finfoS {
-			entrieS = append(entrieS, newExists(f.JoinWith(finfo.Name()), f))
+		for i := range finfoS {
+			entrieS = append(entrieS, newExists(f.JoinWith(finfoS[i].Name()), f))
 		}
 	}
 	return entrieS, err

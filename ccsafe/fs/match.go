@@ -12,8 +12,8 @@ import (
 //  Note: any name matches an empty patternlist and any empty pattern!
 func Match(name string, patterns ...*Pattern) (matched bool, err error) {
 	var match bool
-	for _, pattern := range patterns {
-		p := pattern.String()
+	for i := range patterns {
+		p := patterns[i].String()
 		if len(p) > 0 {
 			if ok, err := filepath.Match(p, name); err != nil {
 				return false, err

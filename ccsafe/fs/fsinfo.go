@@ -26,13 +26,13 @@ func (f FsInfoS) String() string {
 	var s string
 	s = s + "{"
 	first := true
-	for _, e := range f {
+	for i := range f {
 		if first {
 			first = false
 		} else {
 			s = s + ", "
 		}
-		s = s + e.String()
+		s = s + f[i].String()
 	}
 	s = s + "}"
 	return s
@@ -117,8 +117,8 @@ func (p *fsInfo) InfoEquals(oi os.FileInfo) bool {
 
 // AllDirs returns true if and only if for all elements IsDir is true.
 func (f FsInfoS) AllDirs() bool {
-	for _, fi := range f {
-		if !fi.IsDir() {
+	for i := range f {
+		if !f[i].IsDir() {
 			return false
 		}
 	}

@@ -20,13 +20,13 @@ func (f FsDataS) String() string {
 	var s string
 	s = s + "{"
 	first := true
-	for _, e := range f {
+	for i := range f {
 		if first {
 			first = false
 		} else {
 			s = s + ", "
 		}
-		s = s + e.String()
+		s = s + f[i].String()
 	}
 	s = s + "}"
 	return s

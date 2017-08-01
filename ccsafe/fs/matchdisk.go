@@ -19,10 +19,10 @@ func MatchDisk(name string) (dirS FsFoldS, filS FsFileS, err error) {
 	if err != nil {
 		errS.err(err)
 	} else {
-		for _, match := range mS {
-			fi, err := os.Stat(match)
+		for i := range mS {
+			fi, err := os.Stat(mS[i])
 			if err == nil {
-				fs := newExists(match, fi)
+				fs := newExists(mS[i], fi)
 				if fs.IsFold() {
 					dirS = append(dirS, fs.AsFold())
 				} else {
@@ -44,11 +44,11 @@ func MatchDisk(name string) (dirS FsFoldS, filS FsFileS, err error) {
 func SubDirS(pathName string) (dirS FsFoldS) {
 	dS, fS, _ := MatchDisk(pathName)
 	_ = fS // Files are ignored here
-	for _, dir := range dS {
-		dirS = append(dirS, dir)
-		dirInfoS, _ := dir.ReadDir()
-		for _, dirInfo := range dirInfoS {
-			pathName := filepath.Join(dir.String(), dirInfo.Name())
+	for i := range dS {
+		dirS = append(dirS, dS[i])
+		dirInfoS, _ := dS[i].ReadDir()
+		for j := range dirInfoS {
+			pathName := filepath.Join(dS[i].String(), dirInfoS[j].Name())
 			dirS = append(dirS, SubDirS(pathName)...)
 		}
 	}
