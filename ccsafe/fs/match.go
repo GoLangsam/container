@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 )
 
-// Match reports whether name matches any of the shell file name patter lists.
+// Match reports whether name matches any of the shell file name pattern lists.
 //  Note: any name matches an empty patternlist and any empty pattern!
 func Match(name string, patterns ...*Pattern) (matched bool, err error) {
 	var match bool

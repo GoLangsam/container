@@ -19,7 +19,8 @@ type PathFriendly interface {
 	Accessible() error
 }
 
-// FilePathFriendly - interface exported for go doc only
+// FilePathFriendly summarises methods related to file path strings
+//  Note: this interface is exposed not only for godoc ;-)
 type FilePathFriendly interface {
 	String() string
 
@@ -31,7 +32,8 @@ type FilePathFriendly interface {
 	JoinWith(elem ...string) string
 }
 
-// MatchFriendly - interface exported for go doc only
+// MatchFriendly summarises methods related to matching
+//  Note: this interface is exposed not only for godoc ;-)
 type MatchFriendly interface {
 	DiskFriendly
 	Match(pattern *Pattern) (matched bool, err error)
@@ -39,19 +41,22 @@ type MatchFriendly interface {
 	BaseMatches(patterns ...*Pattern) (matched bool, err error)
 }
 
-// DiskFriendly - interface exported for go doc only
+// DiskFriendly summarises methods related to "what's on the disk" reality checks
+//  Note: this interface is exposed not only for godoc ;-)
 type DiskFriendly interface {
 	Glob() (matches []string, err error)
 	MatchDisk() (dirS FsFoldS, filS FsFileS, err error)
 }
 
-// OsFileInfoFriendly - interface exported for go doc only
+// OsFileInfoFriendly summarises methods related to os.FileInfo
+//  Note: this interface is exposed not only for godoc ;-)
 type OsFileInfoFriendly interface {
 	// obtain os.FileInfo
 	Stat() (os.FileInfo, error)
 }
 
-// PathTypeFriendly - interface exported for go doc only
+// PathTypeFriendly summarises methods related to pathes
+//  Note: this interface is exposed not only for godoc ;-)
 type PathTypeFriendly interface {
 	AsPath() *fsPath
 	TryPath() (*fsPath, bool)

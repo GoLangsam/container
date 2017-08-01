@@ -9,7 +9,7 @@ const (
 	Tab = "\t"
 )
 
-// Errors is a slice or error
+// Errors is a slice of error
 type Errors struct {
 	errs []error
 }
