@@ -6,6 +6,7 @@ package das // Dictionary by any for strings
 
 import (
 	"bytes"
+	"fmt"
 	"text/template"
 )
 
@@ -42,12 +43,28 @@ func ExampleDas_Append() {
 	das = das.Append(keyStrg, addData...)
 	das = das.Append(keyInt8, addData...)
 	das = das.Append(keyBool, addData...)
+}
 
+func ExampleDas_Das() {
+	var das *Das // test also lazyInit
 	das = das.Assign(keyBuff, newData...)
 	das = das.Assign(keyTmpl, newData...)
 	das = das.Assign(keyStrg, newData...)
 	das = das.Assign(keyInt8, newData...)
 	das = das.Assign(keyBool, newData...)
+
+	das = das.Append(keyBuff, addData...)
+	das = das.Append(keyTmpl, addData...)
+	das = das.Append(keyStrg, addData...)
+	das = das.Append(keyInt8, addData...)
+	das = das.Append(keyBool, addData...)
+
+	for key, val := range das.Das() {
+		fmt.Printf("%s:\t\t\n", key)
+		for v := range val {
+			fmt.Printf("\t%s\t\n", v)
+		}
+	}
 }
 
 func ExampleDas_Delete() {
@@ -71,7 +88,47 @@ func ExampleDas_Delete() {
 	das = das.Delete(keyInt8)
 	das = das.Delete(keyBool)
 
-	println("Len == 0 ?", das.Len())
+	fmt.Println("Len == 0 ?", das.Len())
+}
+
+func ExampleDas_Fetch() {
+	var das *Das // test also lazyInit
+
+	das = das.Assign(keyBuff, newData...)
+	das = das.Assign(keyTmpl, newData...)
+	das = das.Assign(keyStrg, newData...)
+	das = das.Assign(keyInt8, newData...)
+	das = das.Assign(keyBool, newData...)
+
+	das = das.Append(keyBuff, addData...)
+	das = das.Append(keyTmpl, addData...)
+	das = das.Append(keyStrg, addData...)
+	das = das.Append(keyInt8, addData...)
+	das = das.Append(keyBool, addData...)
+
+	key := keyBool
+	fmt.Printf("%s:\t\t\n", key)
+	for v := range das.Fetch(key) {
+		fmt.Printf("\t%s\t\n", v)
+	}
+}
+
+func ExampleDas_Len() {
+	var das *Das // test also lazyInit
+
+	das = das.Assign(keyBuff, newData...)
+	das = das.Assign(keyTmpl, newData...)
+	das = das.Assign(keyStrg, newData...)
+	das = das.Assign(keyInt8, newData...)
+	das = das.Assign(keyBool, newData...)
+
+	das = das.Append(keyBuff, addData...)
+	das = das.Append(keyTmpl, addData...)
+	das = das.Append(keyStrg, addData...)
+	das = das.Append(keyInt8, addData...)
+	das = das.Append(keyBool, addData...)
+
+	fmt.Println("Len == 10 ?", das.Len())
 }
 
 func ExampleDas_Lookup() {
@@ -96,7 +153,7 @@ func ExampleDas_Lookup() {
 	res = das.Lookup(keyInt8)
 	res = das.Lookup(keyBool)
 
-	println("Len == 5 ?", len(res))
+	fmt.Println("Len == 5 ?", len(res))
 }
 
 func ExampleDas_KeyS() {
@@ -115,8 +172,8 @@ func ExampleDas_KeyS() {
 
 	var res []interface{}
 	res = das.KeyS()
-	println("Len == 3 ???", len(res))
-	println("Is result sorted?", res)
+	fmt.Println("Len == 3 ???", len(res))
+	fmt.Println("Is result sorted?", res)
 
 }
 
@@ -135,9 +192,9 @@ func ExampleDas_Init() {
 	das = das.Append(keyInt8, addData...)
 	das = das.Append(keyBool, addData...)
 
-	println("Len == 5 ?", das.Len())
+	fmt.Println("Len == 5 ?", das.Len())
 	das = das.Init()
-	println("Len == 0 ?", das.Len())
+	fmt.Println("Len == 0 ?", das.Len())
 
 	das = das.Assign(keyBuff, newData...)
 	das = das.Assign(keyTmpl, newData...)
@@ -151,5 +208,5 @@ func ExampleDas_Init() {
 	das = das.Append(keyInt8, addData...)
 	das = das.Append(keyBool, addData...)
 
-	println("Len == 5 ?", das.Len())
+	fmt.Println("Len == 5 ?", das.Len())
 }
