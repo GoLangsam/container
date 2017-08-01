@@ -108,8 +108,10 @@ func ExampleDas_Fetch() {
 
 	key := keyBool
 	fmt.Printf("%s:\t\t\n", key)
-	for v := range das.Fetch(key) {
-		fmt.Printf("\t%s\t\n", v)
+	if vS, ok := das.Fetch(key); ok {
+		for i := range vS {
+			fmt.Printf("\t%s\t\n", vS[i])
+		}
 	}
 }
 
