@@ -24,11 +24,8 @@ type FsPathS []*fsPath
 func (f FsPathS) String() string {
 	var s string
 	s = s + "{"
-	first := true
 	for i := range f {
-		if first {
-			first = false
-		} else {
+		if i > 0 {
 			s = s + ", "
 		}
 		s = s + f[i].String()
