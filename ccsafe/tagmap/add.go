@@ -34,8 +34,8 @@ func (d *Dot) AddStringS(key string, val ...[]string) *Dot {
 	c := d.getChild(key) // get key
 	c.l.Lock()           // protect it, and ...
 	defer c.l.Unlock()   // release it, let it go ...
-	for _, vals := range val {
-		c.add(vals...) // fulfill the promise
+	for i := range val {
+		c.add(val[i]...) // fulfill the promise
 	}
 	return d
 }

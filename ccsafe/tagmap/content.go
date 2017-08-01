@@ -16,8 +16,8 @@ var _ PrivacyFriendly = New("Interface satisfied? :-)")
 
 // add content named val
 func (d *Dot) add(vals ...string) *Dot {
-	for _, key := range vals {
-		_ = d.getChild(key) // get key
+	for i := range vals {
+		_ = d.getChild(vals[i]) // get key
 	}
 	return d
 }
@@ -26,8 +26,8 @@ func (d *Dot) add(vals ...string) *Dot {
 //
 // Note: as many childs may be added, the common parent (which is me) is returned
 func (d *Dot) addM(val ...map[string]string) *Dot {
-	for _, maps := range val {
-		for key, v := range maps {
+	for i := range val {
+		for key, v := range val[i] {
 			c := d.getChild(key) // key
 			_ = c.getChild(v)    // value
 		}
