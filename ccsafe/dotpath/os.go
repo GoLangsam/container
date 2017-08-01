@@ -75,9 +75,8 @@ func PathS(pathNames ...string) (pathS []DotPath) {
 	if len(pathNames) < 1 {
 		pathS = append(pathS, *NewPath(""))
 	} else {
-		for _, pathName := range pathNames {
-			pathName = filepath.ToSlash(pathName)
-			pathS = append(pathS, *NewPath(pathName))
+		for i := range pathNames {
+			pathS = append(pathS, *NewPath(filepath.ToSlash(pathNames[i])))
 		}
 	}
 	return pathS
@@ -91,8 +90,8 @@ func FilePathS(pathLists ...string) (filePathS []*DotPath) {
 	if len(pathLists) < 1 {
 		filePathS = append(filePathS, NewFilePath(""))
 	} else {
-		for _, pathList := range pathLists {
-			for _, pathName := range filepath.SplitList(pathList) {
+		for i := range pathLists {
+			for _, pathName := range filepath.SplitList(pathLists[i]) {
 				pathName = os.ExpandEnv(pathName)
 				pathName = filepath.FromSlash(pathName)
 				filePathS = append(filePathS, NewFilePath(pathName))
