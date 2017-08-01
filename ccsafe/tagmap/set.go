@@ -15,7 +15,7 @@ var _ SetableFriendly = New("Interface satisfied? :-)")
 
 // Value modifiers - concurrency safe
 
-// Set string...
+// Set - set strings
 func (d *Dot) Set(vals ...string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	d.Init()           // reset my being valuable, and ...
@@ -26,18 +26,7 @@ func (d *Dot) Set(vals ...string) *Dot {
 	return d
 }
 
-// SetM map...
-func (d *Dot) SetM(val ...map[string]string) *Dot {
-	d.l.Lock()         // protect me, and ...
-	d.Init()           // reset my being valuable, and ...
-	defer d.l.Unlock() // release me, let me go ...
-	for i := range val {
-		d = d.addM(val[i]) // fulfill the promise
-	}
-	return d
-}
-
-// SetS string-slice...
+// SetS - set string-slices
 func (d *Dot) SetS(val ...[]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	d.Init()           // reset my being valuable, and ...
@@ -46,6 +35,17 @@ func (d *Dot) SetS(val ...[]string) *Dot {
 		for j := range val[i] { // same as Add()
 			d = d.add(val[i][j]) // fulfill the promise
 		}
+	}
+	return d
+}
+
+// SetM - set string-maps
+func (d *Dot) SetM(val ...map[string]string) *Dot {
+	d.l.Lock()         // protect me, and ...
+	d.Init()           // reset my being valuable, and ...
+	defer d.l.Unlock() // release me, let me go ...
+	for i := range val {
+		d = d.addM(val[i]) // fulfill the promise
 	}
 	return d
 }
