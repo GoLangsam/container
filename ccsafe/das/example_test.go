@@ -2,12 +2,14 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package das // Dictionary by any for strings
+package das_test // Dictionary by any for strings
 
 import (
 	"bytes"
 	"fmt"
 	"text/template"
+
+	"github.com/golangsam/container/ccsafe/das"
 )
 
 var keyBuff = bytes.NewBufferString("Test")
@@ -16,11 +18,29 @@ var keyStrg = "Test"
 var keyInt8 = 4711
 var keyBool = true
 
-var newData = []string{"Foo", "Bar", "Buh", "Foo", "Bar"}
-var addData = []string{"Foo", "Bar", "Buh", "Foo", "Bar"}
+var newData = []string{"Foo", "Bar", "Buh", "Faa", "Bir"}
+var addData = []string{"Fuu", "Bor", "Bah", "Fee", "Ber"}
+
+func ExampleDas() *das.Das {
+	var das *das.Das // test also lazyInit
+
+	das = das.Assign(keyBuff, newData...)
+	das = das.Assign(keyTmpl, newData...)
+	das = das.Assign(keyStrg, newData...)
+	das = das.Assign(keyInt8, newData...)
+	das = das.Assign(keyBool, newData...)
+
+	das = das.Append(keyBuff, addData...)
+	das = das.Append(keyTmpl, addData...)
+	das = das.Append(keyStrg, addData...)
+	das = das.Append(keyInt8, addData...)
+	das = das.Append(keyBool, addData...)
+
+	return das
+}
 
 func ExampleDas_Assign() {
-	var das *Das // test also lazyInit
+	das := ExampleDas() // a populated *Das
 
 	das = das.Assign(keyBuff, newData...)
 	das = das.Assign(keyTmpl, newData...)
@@ -30,13 +50,7 @@ func ExampleDas_Assign() {
 }
 
 func ExampleDas_Append() {
-	var das *Das // test also lazyInit
-
-	das = das.Assign(keyBuff, newData...)
-	das = das.Assign(keyTmpl, newData...)
-	das = das.Assign(keyStrg, newData...)
-	das = das.Assign(keyInt8, newData...)
-	das = das.Assign(keyBool, newData...)
+	das := ExampleDas() // a populated *Das
 
 	das = das.Append(keyBuff, addData...)
 	das = das.Append(keyTmpl, addData...)
@@ -46,18 +60,7 @@ func ExampleDas_Append() {
 }
 
 func ExampleDas_Das() {
-	var das *Das // test also lazyInit
-	das = das.Assign(keyBuff, newData...)
-	das = das.Assign(keyTmpl, newData...)
-	das = das.Assign(keyStrg, newData...)
-	das = das.Assign(keyInt8, newData...)
-	das = das.Assign(keyBool, newData...)
-
-	das = das.Append(keyBuff, addData...)
-	das = das.Append(keyTmpl, addData...)
-	das = das.Append(keyStrg, addData...)
-	das = das.Append(keyInt8, addData...)
-	das = das.Append(keyBool, addData...)
+	das := ExampleDas() // a populated *Das
 
 	for key, val := range das.Das() {
 		fmt.Printf("%s:\t\t\n", key)
@@ -68,19 +71,9 @@ func ExampleDas_Das() {
 }
 
 func ExampleDas_Delete() {
-	var das *Das // test also lazyInit
+	das := ExampleDas() // a populated *Das
 
-	das = das.Assign(keyBuff, newData...)
-	das = das.Assign(keyTmpl, newData...)
-	das = das.Assign(keyStrg, newData...)
-	das = das.Assign(keyInt8, newData...)
-	das = das.Assign(keyBool, newData...)
-
-	das = das.Append(keyBuff, addData...)
-	das = das.Append(keyTmpl, addData...)
-	das = das.Append(keyStrg, addData...)
-	das = das.Append(keyInt8, addData...)
-	das = das.Append(keyBool, addData...)
+	fmt.Println("Len == 5 ?", das.Len())
 
 	das = das.Delete(keyBuff)
 	das = das.Delete(keyTmpl)
@@ -92,19 +85,7 @@ func ExampleDas_Delete() {
 }
 
 func ExampleDas_Fetch() {
-	var das *Das // test also lazyInit
-
-	das = das.Assign(keyBuff, newData...)
-	das = das.Assign(keyTmpl, newData...)
-	das = das.Assign(keyStrg, newData...)
-	das = das.Assign(keyInt8, newData...)
-	das = das.Assign(keyBool, newData...)
-
-	das = das.Append(keyBuff, addData...)
-	das = das.Append(keyTmpl, addData...)
-	das = das.Append(keyStrg, addData...)
-	das = das.Append(keyInt8, addData...)
-	das = das.Append(keyBool, addData...)
+	das := ExampleDas() // a populated *Das
 
 	key := keyBool
 	fmt.Printf("%s:\t\t\n", key)
@@ -116,37 +97,13 @@ func ExampleDas_Fetch() {
 }
 
 func ExampleDas_Len() {
-	var das *Das // test also lazyInit
+	das := ExampleDas() // a populated *Das
 
-	das = das.Assign(keyBuff, newData...)
-	das = das.Assign(keyTmpl, newData...)
-	das = das.Assign(keyStrg, newData...)
-	das = das.Assign(keyInt8, newData...)
-	das = das.Assign(keyBool, newData...)
-
-	das = das.Append(keyBuff, addData...)
-	das = das.Append(keyTmpl, addData...)
-	das = das.Append(keyStrg, addData...)
-	das = das.Append(keyInt8, addData...)
-	das = das.Append(keyBool, addData...)
-
-	fmt.Println("Len == 10 ?", das.Len())
+	fmt.Println("Len == 5 ?", das.Len())
 }
 
 func ExampleDas_Lookup() {
-	var das *Das // test also lazyInit
-
-	das = das.Assign(keyBuff, newData...)
-	das = das.Assign(keyTmpl, newData...)
-	das = das.Assign(keyStrg, newData...)
-	das = das.Assign(keyInt8, newData...)
-	das = das.Assign(keyBool, newData...)
-
-	das = das.Append(keyBuff, addData...)
-	das = das.Append(keyTmpl, addData...)
-	das = das.Append(keyStrg, addData...)
-	das = das.Append(keyInt8, addData...)
-	das = das.Append(keyBool, addData...)
+	das := ExampleDas() // a populated *Das
 
 	var res []string
 	res = das.Lookup(keyBuff)
@@ -159,18 +116,7 @@ func ExampleDas_Lookup() {
 }
 
 func ExampleDas_KeyS() {
-	das := New()
-	das = das.Assign(keyBuff, newData...)
-	das = das.Assign(keyTmpl, newData...)
-	das = das.Assign(keyStrg, newData...)
-	das = das.Assign(keyInt8, newData...)
-	das = das.Assign(keyBool, newData...)
-
-	das = das.Append(keyBuff, addData...)
-	das = das.Append(keyTmpl, addData...)
-	das = das.Append(keyStrg, addData...)
-	das = das.Append(keyInt8, addData...)
-	das = das.Append(keyBool, addData...)
+	das := ExampleDas() // a populated *Das
 
 	var res []interface{}
 	res = das.KeyS()
@@ -180,35 +126,12 @@ func ExampleDas_KeyS() {
 }
 
 func ExampleDas_Init() {
-	var das *Das // test also lazyInit
-
-	das = das.Assign(keyBuff, newData...)
-	das = das.Assign(keyTmpl, newData...)
-	das = das.Assign(keyStrg, newData...)
-	das = das.Assign(keyInt8, newData...)
-	das = das.Assign(keyBool, newData...)
-
-	das = das.Append(keyBuff, addData...)
-	das = das.Append(keyTmpl, addData...)
-	das = das.Append(keyStrg, addData...)
-	das = das.Append(keyInt8, addData...)
-	das = das.Append(keyBool, addData...)
-
+	das := ExampleDas() // a populated *Das
 	fmt.Println("Len == 5 ?", das.Len())
+
 	das = das.Init()
 	fmt.Println("Len == 0 ?", das.Len())
 
-	das = das.Assign(keyBuff, newData...)
-	das = das.Assign(keyTmpl, newData...)
-	das = das.Assign(keyStrg, newData...)
-	das = das.Assign(keyInt8, newData...)
-	das = das.Assign(keyBool, newData...)
-
-	das = das.Append(keyBuff, addData...)
-	das = das.Append(keyTmpl, addData...)
-	das = das.Append(keyStrg, addData...)
-	das = das.Append(keyInt8, addData...)
-	das = das.Append(keyBool, addData...)
-
+	das = ExampleDas() // a populated *Das - again
 	fmt.Println("Len == 5 ?", das.Len())
 }
