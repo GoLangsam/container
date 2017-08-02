@@ -19,4 +19,10 @@ func TestDot(t *testing.T) {
 	sms.PrintTree("1 >>")
 	sms.Assignss("foo", "bar")
 	sms.PrintTree("2 >>")
+
+	// Output:
+	// <root>
+	// <root>
+	// 	foo
+	// 	bar
 }
