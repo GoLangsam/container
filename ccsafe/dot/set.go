@@ -7,8 +7,8 @@ package dot
 // SetableFriendly - interface exposed for go doc only
 type SetableFriendly interface {
 	Set(vals ...string) *Dot            // Set/replace Content with val - given as strings
-	SetM(val ...map[string]string) *Dot // Set/replace Content with val - given as maps of strings
 	SetS(val ...[]string) *Dot          // Set/replace Content with val - given as slices of strings
+	SetM(val ...map[string]string) *Dot // Set/replace Content with val - given as maps of strings
 }
 
 var _ SetableFriendly = New("Interface satisfied? :-)")
@@ -22,8 +22,8 @@ func (d *Dot) Set(vals ...string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	d.Init()           // reset my being valuable, and ...
 	defer d.l.Unlock() // release me, let me go ...
-	for _, v := range vals {
-		d = d.add(v) // fulfill the promise
+	for i := range vals {
+		d = d.add(vals[i]) // fulfill the promise
 	}
 	return d
 }
@@ -35,9 +35,9 @@ func (d *Dot) SetS(val ...[]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	d.Init()           // reset my being valuable, and ...
 	defer d.l.Unlock() // release me, let me go ...
-	for _, vals := range val {
-		for _, v := range vals { // same as Add()
-			d = d.add(v) // fulfill the promise
+	for i := range val {
+		for j := range val[i] { // same as Add()
+			d = d.add(val[i][j]) // fulfill the promise
 		}
 	}
 	return d
@@ -50,8 +50,8 @@ func (d *Dot) SetM(val ...map[string]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	d.Init()           // reset my being valuable, and ...
 	defer d.l.Unlock() // release me, let me go ...
-	for _, v := range val {
-		d = d.addM(v) // fulfill the promise
+	for i := range val {
+		d = d.addM(val[i]) // fulfill the promise
 	}
 	return d
 }

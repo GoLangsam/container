@@ -21,8 +21,8 @@ var _ AssignFriendly = New("Interface satisfied? :-)")
 func (d *Dot) Assignss(vals ...string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
-	for _, v := range vals {
-		d = d.add(v) // fulfill the promise
+	for i := range vals {
+		d = d.add(vals[i]) // fulfill the promise
 	}
 	return d
 }
@@ -33,9 +33,9 @@ func (d *Dot) Assignss(vals ...string) *Dot {
 func (d *Dot) AssignSs(val ...[]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
-	for _, vals := range val {
-		for _, v := range vals { // same as Assign()
-			d = d.add(v) // fulfill the promise
+	for i := range val {
+		for j := range val[i] { // same as Assign()
+			d = d.add(val[i][j]) // fulfill the promise
 		}
 	}
 	return d
@@ -47,8 +47,8 @@ func (d *Dot) AssignSs(val ...[]string) *Dot {
 func (d *Dot) AssignMs(val ...map[string]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
-	for _, v := range val {
-		d = d.addM(v) // fulfill the promise
+	for i := range val {
+		d = d.addM(val[i]) // fulfill the promise
 	}
 	return d
 }

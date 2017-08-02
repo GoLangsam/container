@@ -97,8 +97,8 @@ func (d *Dot) DotDotDots() []*Dot {
 func (d *Dot) A(vals ...string) string {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
-	for _, v := range vals {
-		d = d.add(v) // fulfill the promise
+	for i := range vals {
+		d = d.add(vals[i]) // fulfill the promise
 	}
 	return ""
 }
@@ -107,10 +107,10 @@ func (d *Dot) A(vals ...string) string {
 // Go down into (eventually new!) key(s) and return the final child dot (key).
 func (d *Dot) G(keys ...string) *Dot {
 	c := d
-	for _, key := range keys {
+	for i := range keys {
 		c.l.Lock()         // protect me, and ...
 		defer c.l.Unlock() // release me, let me go ...
-		c = c.getChild(key)
+		c = c.getChild(keys[i])
 	}
 	return c
 }

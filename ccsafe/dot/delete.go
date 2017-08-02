@@ -21,8 +21,8 @@ var _ DeleteFriendly = New("Interface satisfied? :-)")
 func (d *Dot) Deletess(vals ...string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
-	for _, val := range vals {
-		d.Delete(val)
+	for i := range vals {
+		d.Delete(vals[i])
 	}
 	return d
 }
@@ -33,9 +33,9 @@ func (d *Dot) Deletess(vals ...string) *Dot {
 func (d *Dot) DeleteSs(vals ...[]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
-	for _, val := range vals {
-		for _, v := range val {
-			d.Delete(v)
+	for i := range vals {
+		for j := range vals[i] {
+			d.Delete(vals[i][j])
 		}
 	}
 	return d
@@ -47,8 +47,8 @@ func (d *Dot) DeleteSs(vals ...[]string) *Dot {
 func (d *Dot) DeleteMs(vals ...map[string]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
-	for _, val := range vals {
-		for k, v := range val {
+	for i := range vals {
+		for k, v := range vals[i] {
 			if c, ok := d.lookupDot(k); ok { // for valid child k: delete v
 				c.Delete(v)
 			}
