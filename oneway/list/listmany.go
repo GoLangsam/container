@@ -70,7 +70,7 @@ func (l *List) ValuesPushFront(values ...interface{}) {
 
 // valuesDo executes the given function on a slice of Values
 func valuesDo(do func(v interface{}) *Element, values ...interface{}) {
-	for _, value := range values {
-		do(value)
+	for i := range values {
+		do(values[i])
 	}
 }

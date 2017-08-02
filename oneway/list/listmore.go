@@ -38,8 +38,8 @@ package list
 func NewList(v interface{}, vals ...interface{}) *List {
 	var list = New()
 	list.root.Value = v
-	for _, val := range vals {
-		list.PushBack(val)
+	for i := range vals {
+		list.PushBack(vals[i])
 	}
 	return list
 }
