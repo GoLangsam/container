@@ -10,7 +10,7 @@ import (
 	"fmt"
 )
 
-func ExampleElement_ForEachNext() {
+func ExampleList_ForEachNext() {
 
 	// Create a new list and put some numbers in it.
 	var l = list.NewList("ForEach", "A", "B", "C", "D", "E", "F", "G")
@@ -24,7 +24,7 @@ func ExampleElement_ForEachNext() {
 	// e.ForEachNext	EFGABC<
 }
 
-func ExampleElement_ForEachPrev() {
+func ExampleList_ForEachPrev() {
 
 	// Create a new list and put some numbers in it.
 	var l = list.NewList("ForEach", "A", "B", "C", "D", "E", "F", "G")
