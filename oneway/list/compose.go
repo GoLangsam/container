@@ -9,9 +9,6 @@ with stuff, which is considered useful and helpfull, such as:
 	- l.With( *List )		*ComposedValue
 	- e.With( *Element )		*ComposedValue
 
-	- l.vLen()			int
-	- e.vLen()			int
-
 	- l.CVs()			*ComposedValue
 	- e.CVs()			*ComposedValue
 
@@ -50,14 +47,15 @@ func (e *Element) vLen() int {
 	}
 }
 
-// CVs returns a slice of *Element to be used as new Composed Values
+// CVs - obtain slice of *Element to be used as new Composed Value
+//  Convenience for l.root.CVs()
 func (l *List) CVs() *ComposedValue {
 	return l.root.CVs()
 }
 
-// CVs returns a slice of *Element to be used as new Composed Values
-// if e.IsAtom() the slice has length one and contains e
-// else the existing slice of atoms is returned
+// CVs - obtain slice of *Element to be used as new Composed Value
+//  If e.IsAtom() the slice has one element which points to e
+//  else a pointer(!) to the existing slice of atoms is returned
 func (e *Element) CVs() *ComposedValue {
 	switch ev := e.Value.(type) {
 		case *ComposedValue:	return ev
@@ -65,12 +63,15 @@ func (e *Element) CVs() *ComposedValue {
 	}
 }
 
-// IsComposed: an element which is composed (and thus carries a Value.(type) []*Element)
+// IsComposed <=> l.root is composed
+// (and thus carries a Value.(type) []*Element)
+//  Convenience for l.root.IsComposed()
 func (l *List) IsComposed() bool {
 	return l.root.IsComposed()
 }
 
-// IsComposed: an element which is composed (and thus carries a Value.(type) []*Element)
+// IsComposed <=> element is composed
+// (and thus carries a Value.(type) []*Element)
 func (e *Element) IsComposed() bool {
 	switch e.Value.(type) {
 	case *ComposedValue:	return true
@@ -78,12 +79,13 @@ func (e *Element) IsComposed() bool {
 	}
 }
 
-// IsAtom: an element which is not composed
+// IsAtom <=> l.root is not composed
+//  Convenience for l.root.IsAtom()
 func (l *List) IsAtom() bool {
 	return l.root.IsAtom()
 }
 
-// IsAtom: an element which is not composed
+// IsAtom <=> element is not composed
 func (e *Element) IsAtom() bool {
 	switch e.Value.(type) {
 	case *ComposedValue:	return false
@@ -91,12 +93,13 @@ func (e *Element) IsAtom() bool {
 	}
 }
 
-// AtomValues:
+// AtomValues - obtain slice of original values
+//  Convenience for l.root.AtomValues()
 func (l *List) AtomValues() Values {
 	return l.root.AtomValues()
 }
 
-// AtomValues:
+// AtomValues - obtain slice of original values
 func (e *Element) AtomValues() Values {
 	switch ev := e.Value.(type) {
 	case *ComposedValue:
