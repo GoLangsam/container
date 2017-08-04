@@ -9,20 +9,6 @@ import (
 	"sync"
 )
 
-// Friendly interface - exposed for go doc only
-//
-// I love to contain strings, identified by 'anything'.
-//	And I love to give them back to You, when You need 'em.
-//	And also as slice or map - as You need 'em.
-//	And also sorted, or reversed, all for Your convenience.
-//
-type Friendly interface {
-	UserFriendly        // use.go
-	PerformanceFriendly // lazy.go
-}
-
-var _ Friendly = New() // Interface satisfied? :-)
-
 // Das - a Dictionary by Anything for Strings
 //
 // I love to be easy - thus: I give You a simple API!

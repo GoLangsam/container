@@ -23,8 +23,6 @@ type PerformanceFriendly interface {
 	lazyS(key interface{}) []string
 }
 
-var _ PerformanceFriendly = New() // Interface satisfied? :-)
-
 // helper to forget - "destroy my being valuable" :-)
 func (d *Das) forget() {
 	// currently: no-op
@@ -49,6 +47,6 @@ func (d *Das) lazyS(key interface{}) []string {
 
 	slice := make([]string, 0, len(d.val[key]))
 	slice = append(slice, d.val[key]...) // collect the values
-	sort.Strings(slice) // and sort 'em // TODO: may need to filter duplicates!
+	sort.Strings(slice)                  // and sort 'em // TODO: may need to filter duplicates!
 	return slice
 }
