@@ -48,11 +48,7 @@ func (d *Das) lazyS(key interface{}) []string {
 	defer d.releaseMe()
 
 	slice := make([]string, 0, len(d.val[key]))
-
-	for _, s := range d.val[key] {
-		slice = append(slice, s) // collect the values
-	}
-	sort.Strings(slice) // and sort 'em
-	// TODO: need to filter duplicates! And panic, if not well sorted!
+	slice = append(slice, d.val[key]...) // collect the values
+	sort.Strings(slice) // and sort 'em // TODO: may need to filter duplicates!
 	return slice
 }
