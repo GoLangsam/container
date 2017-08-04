@@ -26,8 +26,6 @@ type PerformanceFriendly interface {
 	lazyM() map[string]string
 }
 
-var _ PerformanceFriendly = New() // Interface satisfied? :-)
-
 // helper to forget - "destroy my being valuable" :-)
 func (d *LazyStringerMap) forget() {
 	if len(d.val) != len(d.s) {
