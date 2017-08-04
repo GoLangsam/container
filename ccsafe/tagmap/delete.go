@@ -11,8 +11,6 @@ type DeleteFriendly interface {
 	DeleteMs(vals ...map[string]string) *Dot // Delete/remove val from Content - given as maps of strings
 }
 
-var _ DeleteFriendly = New("Interface satisfied? :-)")
-
 // Value modifiers - concurrency safe
 
 // Deletess - delete strings

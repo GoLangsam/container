@@ -11,8 +11,6 @@ type SetableFriendly interface {
 	SetS(val ...[]string) *Dot          // Set/replace Content with val - given as slices of strings
 }
 
-var _ SetableFriendly = New("Interface satisfied? :-)")
-
 // Value modifiers - concurrency safe
 
 // Set - set strings

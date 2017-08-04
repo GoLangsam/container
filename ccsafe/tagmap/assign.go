@@ -11,8 +11,6 @@ type AssignFriendly interface {
 	AssignMs(val ...map[string]string) *Dot // Assign/overwrite Content with val - given as maps of strings
 }
 
-var _ AssignFriendly = New("Interface satisfied? :-)")
-
 // Value modifiers - concurrency safe
 
 // Assignss - add strings

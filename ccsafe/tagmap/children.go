@@ -10,8 +10,6 @@ type ChildFriendly interface {
 	getChild(key string) *Dot
 }
 
-var _ ChildFriendly = New("Interface satisfied? :-)")
-
 // lookupDot
 func (d *Dot) lookupDot(key string) (*Dot, bool) {
 	var c *Dot
