@@ -31,8 +31,6 @@ type UserFriendly interface {
 	Len() int // How many things do I contain right now?
 }
 
-var _ UserFriendly = New() // Interface satisfied? :-)
-
 // Init - Want my content reborn empty?
 func (d *LazyStringerMap) Init() *LazyStringerMap {
 	d.protectMe()       // protect me, and ...

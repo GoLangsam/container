@@ -20,8 +20,6 @@ type AccessFriendly interface {
 	LSM() map[string]interface{} // return Content as is
 }
 
-var _ AccessFriendly = New() // Interface satisfied? :-)
-
 // M returns the content as map[key]value-string
 // Thus: {{ .M.key }} accesses the map for key="key"
 // and returns its content as a slice

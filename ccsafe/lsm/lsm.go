@@ -9,21 +9,6 @@ import (
 	"sync"
 )
 
-// Friendly - interface exposed for go doc only
-//
-// I love to contain strings, named strings, named things, things which can name themselves.
-//	And I love to give them back to You, when You need 'em.
-//	And also their names -as slice or map- as You need 'em.
-//	And also sorted, or reversed, all for Your convenience.
-//
-type Friendly interface {
-	AccessFriendly      // get.go
-	UserFriendly        // use.go
-	PerformanceFriendly // lazy.go
-}
-
-var _ Friendly = New() // Interface satisfied? :-)
-
 // LazyStringerMap is the type provided by this package lsm.
 //
 // I love to be easy - thus: I give You a simple API!
