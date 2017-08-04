@@ -28,8 +28,6 @@ type PathFriendly interface {
 	NamePath() string        // return the names leading to the hidden treasure as a (cleaned!) "path"
 }
 
-var _ PathFriendly = New("Interface satisfied? :-)")
-
 // Into returns a new TagAny named "key" and containing d
 func (d *TagAny) Into(key string) *TagAny {
 	return Tag(key, d)

@@ -9,20 +9,6 @@ import (
 	myTag "github.com/golangsam/container/ccsafe/tag"
 )
 
-// Friendly - interface exposed for go doc only
-//
-// I love to be friendly - thus: I give You a simple API!
-//  Create me with New(name) or Tag(name, stuff),
-//
-type Friendly interface {
-	myTag.Friendly   // inherited
-	PathFriendly     // path.go
-	InfoFriendly     // valuetype.go
-	DeepInfoFriendly // leaftype.go
-}
-
-var _ Friendly = New("Interface satisfied? :-)")
-
 // TagAny is the type provided by package tag
 type TagAny struct {
 	myTag.TagAny // my Key Value Pair
