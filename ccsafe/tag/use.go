@@ -28,8 +28,6 @@ type UserFriendly interface {
 	GetV() interface{}   // returns my Value as is
 }
 
-var _ UserFriendly = New("Interface satisfied? :-)")
-
 // Tag attaches me to my AnyValue/Payload
 func (d *TagAny) Tag(val interface{}) {
 	d.l.Lock()         // proctect me, and ...

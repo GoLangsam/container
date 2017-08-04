@@ -9,17 +9,6 @@ import (
 	"sync"
 )
 
-// Friendly - interface exposed for go doc only
-//
-// I love to be friendly - thus: I give You a simple API!
-//  Create me with New(name) or Tag(name, stuff)
-//
-type Friendly interface {
-	UserFriendly // use.go
-}
-
-var _ Friendly = New("Interface satisfied? :-)")
-
 // TagAny is a concurrency safe string-named any-value (string-any pair)
 type TagAny struct {
 	k string      // my tag text
