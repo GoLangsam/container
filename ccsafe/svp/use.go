@@ -24,8 +24,6 @@ type UserFriendly interface {
 	GetV() interface{} // returns my Value as is
 }
 
-var _ UserFriendly = New("Interface satisfied? :-)", empty)
-
 // String implements `fmt.Stringer`
 func (p *StringValuePair) String() string {
 	return p.k

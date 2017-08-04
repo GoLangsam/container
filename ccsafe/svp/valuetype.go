@@ -27,8 +27,6 @@ type InfoFriendly interface {
 	ValueTypeIsVariadic() bool   // (false, if Kind != Func)
 }
 
-var _ InfoFriendly = New("Interface satisfied? :-)", empty)
-
 // ValueTypeName returns the Name of the Type of Value
 func (p *StringValuePair) ValueTypeName() string {
 	return ami.TypeName(p.V())

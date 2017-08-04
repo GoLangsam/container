@@ -29,8 +29,6 @@ type DeepInfoFriendly interface {
 	DeepValueTypeIsVariadic() bool   // (false, if Kind != Func)
 }
 
-var _ DeepInfoFriendly = New("Interface satisfied? :-)", empty)
-
 // DeepValueTypeName returns the Name of the Type my innermost content
 func (p *StringValuePair) DeepValueTypeName() string {
 	return ami.TypeName(nvp.Leaf(p))
