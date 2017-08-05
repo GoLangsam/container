@@ -13,12 +13,10 @@ import (
 	"github.com/golangsam/container/oneway/list"
 )
 
-type Element list.Element
-
 // DoFn is the signature of a
 // self referential function.
 // It returns it's undo DoFn.
-type DoFn func(f *Element) DoFn
+type DoFn func(f *list.Element) DoFn
 
 // undo is used to reverse a previous application of Form(...) via UnDo(undo)
 // undo is the type returned by Form(...)
@@ -27,19 +25,21 @@ type DoFn func(f *Element) DoFn
 type undo []DoFn
 
 // Form applies the specified doit forms.
-// It returns an undo, a slice of forms to restore f to it's previous
-func (f *Element) Form(doit ...DoFn) (undo undo) {
+// It returns an undo, a slice of forms to restore f to it's previous situation.
+func Form(e *list.Element, doit ...DoFn) (undo undo) {
 	undo = make([]DoFn, 0, len(doit))
 	for i := range doit {
-		undo = append(undo, doit[i](f))
+		undo = append(undo, doit[i](e))
 	}
 	return undo
 }
 
-func (f *Element) UnDo(undo undo) (redo []DoFn) {
+// UnDo applies the specified undo.
+// It returns a redo, a slice of forms to restore e to it's previous situation.
+func UnDo(e *list.Element, undo undo) (redo []DoFn) {
 	redo = make([]DoFn, 0, len(undo))
 	for i := len(undo) - 1; i >= 0; i-- {
-		redo = append(redo, undo[i](f))
+		redo = append(redo, undo[i](e))
 	}
 	return redo
 }
@@ -47,9 +47,9 @@ func (f *Element) UnDo(undo undo) (redo []DoFn) {
 // Value sets Element's Value to v.
 // and returns it's undo form
 func Value(v interface{}) DoFn {
-	return func(f *Element) DoFn {
-		previous := f.Value
-		f.Value = v
+	return func(e *list.Element) DoFn {
+		previous := e.Value
+		e.Value = v
 		return Value(previous)
 	}
 }
