@@ -21,11 +21,11 @@ const tab = "\t"
 
 func prefix(pfx ...string) string {
 	var indent string
-	for i, pre := range pfx {
+	for i := range pfx {
 		if i == 0 {
-			indent = indent + pre
+			indent = indent + pfx[i]
 		} else {
-			indent = indent + tab + pre
+			indent = indent + tab + pfx[i]
 		}
 	}
 	return indent
@@ -49,7 +49,8 @@ func fprintTree(w io.Writer, d *Dot, delim, indent string) {
 	d.l.RLock() // protect me, and ...
 	fmt.Fprintln(w, id, d.String())
 	d.l.RUnlock() // release me, let me go ...
-	for _, m := range d.DownS() {
-		fprintTree(w, m, delim, id)
+	dS := d.DownS()
+	for i := range dS {
+		fprintTree(w, dS[i], delim, id)
 	}
 }

@@ -61,12 +61,13 @@ func (d *Dot) PathJoinThese(elem ...string) string {
 // but path.Clean is applied to empty nodes in order to gain a "." being joined!
 func (d *Dot) PathDown() string {
 	var dwnpth string
-	for _, node := range d.Path() {
-		curpth := node.String()
+	dpS := d.Path()
+	for i := range dpS {
+		curpth := dpS[i].String()
 		if curpth == "" {
 			curpth = path.Clean(curpth)
 		}
-		dwnpth = path.Join(node.String(), curpth)
+		dwnpth = path.Join(dpS[i].String(), curpth)
 	}
 	return dwnpth
 }
