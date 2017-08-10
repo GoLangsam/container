@@ -6,8 +6,9 @@
 // To "Form" an element currently means to change it's Value.
 package form
 
-// https://www.calhoun.io/using-functional-options-instead-of-method-chaining-in-go/
+// http://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 // https://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis
+// https://www.calhoun.io/using-functional-options-instead-of-method-chaining-in-go/
 
 import (
 	"github.com/golangsam/container/oneway/list"
