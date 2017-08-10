@@ -13,7 +13,9 @@ type AssignFriendly interface {
 
 // Value modifiers - concurrency safe
 
-// Assignss - add strings
+// Assignss adds to (or replaces with)
+// content below current dot d
+// using given variadic strings
 func (d *Dot) Assignss(vals ...string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
@@ -23,7 +25,9 @@ func (d *Dot) Assignss(vals ...string) *Dot {
 	return d
 }
 
-// AssignSs - add string-slices
+// AssignSs adds to (or replaces with)
+// content below current dot d
+// using given variadic string-slices
 func (d *Dot) AssignSs(val ...[]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
@@ -35,7 +39,9 @@ func (d *Dot) AssignSs(val ...[]string) *Dot {
 	return d
 }
 
-// AssignMs - add string-maps
+// AssignMs adds to (or replaces with)
+// content below current dot d
+// using given variadic string-maps
 func (d *Dot) AssignMs(val ...map[string]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...

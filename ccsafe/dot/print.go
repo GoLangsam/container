@@ -15,8 +15,6 @@ type PrinterFriendly interface {
 	PrintTree(prefix ...string) *Dot // prints the tree, one line per node, each prefixed by prefix and indented with tab "\t"
 }
 
-var _ PrinterFriendly = New("Interface satisfied?")
-
 const tab = "\t"
 
 func prefix(pfx ...string) string {

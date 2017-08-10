@@ -11,8 +11,6 @@ type UserFriendly interface {
 	AddMap(key string, vals ...map[string]string) *Dot // adds key to d, and adds map(s) below key
 }
 
-var _ UserFriendly = New("Interface satisfied? :-)")
-
 // Creators - concurrency safe
 
 // AddStrings adds key to current dot d

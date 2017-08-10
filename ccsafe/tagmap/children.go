@@ -17,8 +17,7 @@ func (d *Dot) lookupDot(key string) (*Dot, bool) {
 	if x, ok := d.Fetch(key); !ok { // || c == nil ???
 		return nil, false
 	} else if c, ok = x.(*Dot); !ok {
-		panic("lookupDot: Did not get type Dot from lsm")
-		// return nil, false //
+		panic("lookupDot: Ups: Did not get type Dot from lsm") // TODO: better formatting
 		/*
 			} else if c.p != d { // sanity check
 				panic("lookupDot: Ups: I am *not* parent of child?!?") // TODO: better formatting

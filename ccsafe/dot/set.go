@@ -11,8 +11,6 @@ type SetableFriendly interface {
 	SetM(val ...map[string]string) *Dot // Set/replace Content with val - given as maps of strings
 }
 
-var _ SetableFriendly = New("Interface satisfied? :-)")
-
 // Value modifiers - concurrency safe
 
 // Set adds (or replaces)

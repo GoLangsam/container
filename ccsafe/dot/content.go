@@ -10,8 +10,6 @@ type PrivacyFriendly interface {
 	addM(val ...map[string]string) *Dot // add content named val: to any child named as key add content named as val[key]
 }
 
-var _ PrivacyFriendly = New("Interface satisfied? :-)")
-
 // Value modifiers - internal - to be used with locked d
 
 // add content named val

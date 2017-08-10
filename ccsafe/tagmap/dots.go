@@ -8,8 +8,10 @@ package dot
 type DotS []Friendly
 
 // Len implements sort.Interface
-func (k DotS) Len() int           { return len(k) }
+func (k DotS) Len() int { return len(k) }
+
 // Less implements sort.Interface
 func (k DotS) Less(i, j int) bool { return k[i].String() < k[j].String() }
+
 // Swap implements sort.Interface
-func (k DotS) Swap(i, j int)      { k[i], k[j] = k[j], k[i] }
+func (k DotS) Swap(i, j int) { k[i], k[j] = k[j], k[i] }

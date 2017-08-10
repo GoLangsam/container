@@ -16,8 +16,6 @@ type NavigatorFriendly interface {
 	Level() int    // returns the # of levels above - Root().Depth() == 0
 }
 
-var _ NavigatorFriendly = New("Interface satisfied? :-)")
-
 // Navigators - concurrency safe
 
 // parent returns the parent (or nil, if at root)

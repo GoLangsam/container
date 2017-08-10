@@ -7,13 +7,15 @@ package dot
 // SetableFriendly - interface exposed for go doc only
 type SetableFriendly interface {
 	Set(vals ...string) *Dot            // Set/replace Content with val - given as strings
-	SetM(val ...map[string]string) *Dot // Set/replace Content with val - given as maps of strings
 	SetS(val ...[]string) *Dot          // Set/replace Content with val - given as slices of strings
+	SetM(val ...map[string]string) *Dot // Set/replace Content with val - given as maps of strings
 }
 
 // Value modifiers - concurrency safe
 
-// Set - set strings
+// Set adds (or replaces)
+// content below current dot d
+// using given variadic strings
 func (d *Dot) Set(vals ...string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	d.Init()           // reset my being valuable, and ...
@@ -24,7 +26,9 @@ func (d *Dot) Set(vals ...string) *Dot {
 	return d
 }
 
-// SetS - set string-slices
+// SetS adds (or replaces)
+// content below current dot d
+// using given variadic string-slices
 func (d *Dot) SetS(val ...[]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	d.Init()           // reset my being valuable, and ...
@@ -37,7 +41,9 @@ func (d *Dot) SetS(val ...[]string) *Dot {
 	return d
 }
 
-// SetM - set string-maps
+// SetM adds (or replaces)
+// content below current dot d
+// using given variadic string-maps
 func (d *Dot) SetM(val ...map[string]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	d.Init()           // reset my being valuable, and ...

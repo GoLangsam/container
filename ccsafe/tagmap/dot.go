@@ -9,14 +9,14 @@ import (
 	"sync"
 
 	"github.com/golangsam/container/ccsafe/lsm"
-	"github.com/golangsam/container/ccsafe/tag/ami"
+	"github.com/golangsam/container/ccsafe/tag/ami" // or "container/ccsafe/tag"
 )
 
 // Dot is the type provided by package dot
 type Dot struct {
 	*tag.TagAny                        // key - a Key Value Pair
 	*lsm.LazyStringerMap               // value(s) - an 'Anything' StringMap
-	l                    *sync.RWMutex // private lock - concurency included!
+	l                    *sync.RWMutex // private lock - concurency included internally!
 }
 
 // New returns what You need in order to keep a hand on me :-)
@@ -24,7 +24,7 @@ func New(key string) *Dot {
 	dot := &Dot{
 		tag.New(key),      // init key
 		lsm.New(),         // init val
-		new(sync.RWMutex), // mutex
+		new(sync.RWMutex), // private mutex
 	}
 	return dot
 }
@@ -52,7 +52,7 @@ func (d *Dot) A(vals ...string) string {
 }
 
 // G is a helper method for templates:
-// Go into (eventually new!) key(s) - returns the final child (key)
+// Go down into (eventually new!) key(s) and return the final child dot (key).
 func (d *Dot) G(keys ...string) *Dot {
 	c := d
 	for i := range keys {
@@ -103,4 +103,15 @@ func (d *Dot) UnlockedAdd(key string, val ...string) (interface{}, bool) {
 	defer c.l.Unlock() // release it, let it go ...
 	c.add(val...)      // fulfill the promise
 	return c, true     // bool avoids usage from templates!
+}
+
+// Try returns anything as a *Dot,
+// or nil and false, iff no *Dot was given.
+func Try(v interface{}) (*Dot, bool) {
+	switch v := v.(type) {
+	case *Dot:
+		return v, true
+	default:
+		return nil, false
+	}
 }

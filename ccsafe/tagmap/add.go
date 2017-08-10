@@ -5,7 +5,6 @@
 package dot
 
 // UserFriendly - interface exposed for go doc only
-//
 type UserFriendly interface {
 	AddStrings(key string, val ...string) *Dot         // adds key to d, and adds variadic strings below key
 	AddStringS(key string, val ...[]string) *Dot       // adds key to d, and adds slices below key
@@ -14,7 +13,9 @@ type UserFriendly interface {
 
 // Creators - concurrency safe
 
-// AddStrings adds key to d, and adds variadic strings below key
+// AddStrings adds key to current dot d
+// and adds content below this key
+// using given variadic strings
 func (d *Dot) AddStrings(key string, val ...string) *Dot {
 	d.l.Lock()           // protect me, and ...
 	defer d.l.Unlock()   // release me, let me go ...
@@ -25,7 +26,9 @@ func (d *Dot) AddStrings(key string, val ...string) *Dot {
 	return d
 }
 
-// AddStringS adds key to d, and adds slices below key
+// AddStringS adds key to current dot d
+// and adds content below this key
+// using given variadic string-slices
 func (d *Dot) AddStringS(key string, val ...[]string) *Dot {
 	d.l.Lock()           // protect me, and ...
 	defer d.l.Unlock()   // release me, let me go ...
@@ -38,7 +41,9 @@ func (d *Dot) AddStringS(key string, val ...[]string) *Dot {
 	return d
 }
 
-// AddMap adds key to d, and adds map(s) below key
+// AddMap adds key to current dot d
+// and adds content below this key
+// using given variadic string-maps
 func (d *Dot) AddMap(key string, val ...map[string]string) *Dot {
 	d.l.Lock()           // protect me, and ...
 	defer d.l.Unlock()   // release me, let me go ...

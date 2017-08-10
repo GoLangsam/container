@@ -20,8 +20,6 @@ const ErrorName = "Error"
 // ErrorID is the ID of of a node of type error
 const ErrorID = ":" + ErrorName + ":"
 
-var _ ErrorFriendly = New("Interface satisfied? :-)")
-
 type notOkError error
 
 func notOk(text string) notOkError {

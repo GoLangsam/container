@@ -13,7 +13,9 @@ type DeleteFriendly interface {
 
 // Value modifiers - concurrency safe
 
-// Deletess - delete strings
+// Deletess deletes / removes
+// content below current dot d
+// using given variadic strings
 func (d *Dot) Deletess(vals ...string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
@@ -23,7 +25,9 @@ func (d *Dot) Deletess(vals ...string) *Dot {
 	return d
 }
 
-// DeleteSs - delete string-slices
+// DeleteSs deletes / removes
+// content below current dot d
+// using given variadic string-slices
 func (d *Dot) DeleteSs(vals ...[]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...
@@ -35,7 +39,9 @@ func (d *Dot) DeleteSs(vals ...[]string) *Dot {
 	return d
 }
 
-// DeleteMs - delete string-maps
+// DeleteMs deletes / removes
+// content below current dot d
+// using given variadic string-maps
 func (d *Dot) DeleteMs(vals ...map[string]string) *Dot {
 	d.l.Lock()         // protect me, and ...
 	defer d.l.Unlock() // release me, let me go ...

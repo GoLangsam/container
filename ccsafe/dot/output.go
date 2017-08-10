@@ -17,8 +17,6 @@ type OutputFriendly interface {
 	PutOut(msg ...interface{}) *Dot  // prints msg's on a line to out()
 }
 
-var _ OutputFriendly = New("Interface satisfied? :-)")
-
 // as found in "flag/flag.go"
 
 func (d *Dot) out() io.Writer {
