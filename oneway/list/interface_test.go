@@ -2,33 +2,29 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package list_test
-
-import (
-	"github.com/golangsam/container/oneway/list"
-)
+package list
 
 // node abstracts the distinction between List and Element
 // - the focus is on common behaviour.
 type node interface {
-	Init() *list.List
-	List() *list.List
-	Front() *list.Element
-	Back() *list.Element
-	Next() *list.Element
-	Prev() *list.Element
-	Root() *list.Element
+	Init() *List
+	List() *List
+	Front() *Element
+	Back() *Element
+	Next() *Element
+	Prev() *Element
+	Root() *Element
 	Len() int
 	// vLen() int
-	CVs() *list.ComposedValue
+	CVs() *ComposedValue
 	IsAtom() bool
 	IsComposed() bool
 
-	ForEachNext(f func(*list.Element))
-	ForEachPrev(f func(*list.Element))
+	ForEachNext(f func(*Element))
+	ForEachPrev(f func(*Element))
 
-	AtomValues() list.Values
-	Elements() []*list.Element
+	AtomValues() Values
+	Elements() []*Element
 
 	PrintValue(args ...interface{})
 	PrintAtomValues(args ...interface{})
@@ -55,8 +51,8 @@ MoveToPrevOf
 
 /* symmetric
 Equals(x node) bool
-With(x node) *list.ComposedValue
+With(x node) *ComposedValue
 */
 
-var l node = list.New()
+var l node = New()
 var _ node = l.Root()
