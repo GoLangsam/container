@@ -2,23 +2,22 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package form_test
+package form
 
 import (
 	"fmt"
 
 	"github.com/golangsam/container/oneway/list"
-	"github.com/golangsam/container/oneway/list/form"
 )
 
 func ExampleForm() {
 	e := list.NewList("TestList", "Element One").Front()
 	fmt.Println(e.Value)
-	undo := form.Form(e, form.Value(3))
+	undo := Form(e, Value(3))
 	fmt.Println(e.Value)
-	redo := form.UnDo(e, undo)
+	redo := UnDo(e, undo)
 	fmt.Println(e.Value)
-	_ = form.Form(e, redo...)
+	_ = Form(e, redo...)
 	fmt.Println(e.Value)
 
 	// Output:
@@ -31,11 +30,11 @@ func ExampleForm() {
 func ExampleUnDo() {
 	e := list.NewList("TestList", "Element One").Front()
 	fmt.Println(e.Value)
-	undo := form.Form(e, form.Value(3))
+	undo := Form(e, Value(3))
 	fmt.Println(e.Value)
-	redo := form.UnDo(e, undo)
+	redo := UnDo(e, undo)
 	fmt.Println(e.Value)
-	_ = form.Form(e, redo...)
+	_ = Form(e, redo...)
 	fmt.Println(e.Value)
 
 	// Output:
@@ -47,8 +46,8 @@ func ExampleUnDo() {
 
 func setValue(e *list.Element, value interface{}) {
 	fmt.Println(e.Value)
-	prev := form.Form(e, form.Value(value))
-	defer form.UnDo(e, prev)
+	prev := Form(e, Value(value))
+	defer UnDo(e, prev)
 	// ... do some stuff with Elements Value being temporarily set to value
 	fmt.Println(e.Value)
 }
