@@ -64,19 +64,26 @@ func (e *Element) Back() *Element {
 
 // Next returns the Front of this list l
 func (l *List) Next() *Element {
+	if &l == nil || &l.root == nil {
+		return nil
+	}
 	return l.root.next
 }
 
 // Prev returns the Back of this list l
 func (l *List) Prev() *Element {
+	if &l == nil || &l.root == nil {
+		return nil
+	}
 	return l.root.prev
 }
 
 // Len returns the number of elements in the list of e,
-// or 0 (zero), if e.IsRoot or -1 if e.list == nil
+// or 0 (zero), if e.IsRoot,
+// or -1 iff e == nil or e.list == nil.
 // The complexity is O(1).
 func (e *Element) Len() int {
-	if &e.list == nil {
+	if &e == nil || &e.list == nil {
 		return -1
 	}
 	if e == &e.list.root { // IsRoot()
@@ -92,19 +99,25 @@ func (l *List) List() *List {
 	return l
 }
 
-// List returns this list this element belongs to
+// List returns the list of e
 func (e *Element) List() *List {
+	if &e == nil || &e.list == nil {
+		return nil
+	}
 	return e.list
 }
 
 // Root returns the root element of list l
 func (l *List) Root() *Element {
+	if &l == nil || &l.root == nil {
+		return nil
+	}
 	return &l.root
 }
 
 // Root returns the Root of this elements list
 func (e *Element) Root() *Element {
-	if &e.list == nil {
+	if &e == nil || &e.list == nil {
 		return nil
 	}
 	return e.list.Root()
