@@ -51,6 +51,7 @@ func (e *Element) PrintValue(args ...interface{}) {
 
 // ===========================================================================
 
+// PrintAtomValues is a convenience to print a list with all elements atom values
 func (l *List) PrintAtomValues(args ...interface{}) {
 	if l.print(args...) {
 		fmt.Print("List=")
@@ -66,6 +67,7 @@ func (l *List) PrintAtomValues(args ...interface{}) {
 	}
 }
 
+// PrintAtomValues is a convenience to print the atom values of e
 func (e *Element) PrintAtomValues(args ...interface{}) {
 	if e.print(args...) {
 		fmt.Print("Element=")

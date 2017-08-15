@@ -21,7 +21,7 @@ package list
 
 // ===========================================================================
 
-// NewList( v, vals ) returns a list, the Root() of which carries v, (and is Away to nil)
+// NewList returns a list of vals, the Root() of which carries v
 func NewList(v interface{}, vals ...interface{}) *List {
 	var list = New()
 	list.root.Value = v
@@ -73,7 +73,7 @@ func (e *Element) IsRoot() bool {
 	return (e == &e.list.root)
 }
 
-// IsNode: an element which is not root can be seen as a node
+// IsNode - any element which !IsRoot can be seen as a node
 func (e *Element) IsNode() bool {
 	return (e != &e.list.root)
 }
