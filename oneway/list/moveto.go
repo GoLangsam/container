@@ -1,10 +1,9 @@
-﻿// Copyright 2016 Andreas Pannewitz. All rights reserved.
+// Copyright 2016 Andreas Pannewitz. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
 /*
-moveto.go extends the (stolen and extended) list.go
-with stuff, which is considered useful and helpfull, such as:
+moveto.go extends list.go with:
 
 	- e.MoveToPrevOf( *Element ) *Element
 	- e.MoveToNextOf( *Element ) *Element	// TODO:

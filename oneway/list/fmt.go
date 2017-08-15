@@ -3,8 +3,7 @@
 // license that can be found in the LICENSE file.
 
 /*
-fmt.go extends the (stolen and extended) list.go
-with stuff, which is considered useful and helpfull, such as:
+fmt.go extends list.go with:
 
 	- l.Print()
 

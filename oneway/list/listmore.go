@@ -3,10 +3,9 @@
 // license that can be found in the LICENSE file.
 
 /*
-listmore.go extends the (stolen and extended) list.go
-with stuff, which is considered useful and helpfull, such as:
+listmore.go extends list.go with:
 
-Create (also as method!)
+Create (TODO: also as method!)
 	- NewList( v, vals... )	returns a list, the Root() of which carries v as Value
 
 	- l.Equals( *List )	bool

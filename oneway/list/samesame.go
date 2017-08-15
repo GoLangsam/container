@@ -3,8 +3,7 @@
 // license that can be found in the LICENSE file.
 
 /*
-samesame.go extends the (stolen and extended) list.go
-with stuff, which is considered useful and helpfull, such as:
+samesame.go extends list.go with:
 
 Blurr the difference between list and element so element can represent both
 	- e.Init()		*Element

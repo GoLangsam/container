@@ -3,8 +3,7 @@
 // license that can be found in the LICENSE file.
 
 /*
-foreach.go extends the (stolen and extended) list.go
-with stuff, which is considered useful and helpfull, such as:
+foreach.go extends list.go with:
 
 	- l.ForEachNext( f func(*Element) )
 	- e.ForEachNext( f func(*Element) )
