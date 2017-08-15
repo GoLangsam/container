@@ -21,13 +21,42 @@ type node interface {
 	Len() int
 	// vLen() int
 	CVs() *list.ComposedValue
-	IsComposed() bool
 	IsAtom() bool
-	/*
-		ForEachNext(f func(node))
-		ForEachPrev(f func(node))
-	*/
+	IsComposed() bool
+
+	ForEachNext(f func(*list.Element))
+	ForEachPrev(f func(*list.Element))
+
+	AtomValues() list.Values
+	Elements() []*list.Element
+
+	PrintValue(args ...interface{})
+	PrintAtomValues(args ...interface{})
 }
+
+/* list only:
+InsertAfter
+InsertBefore
+MoveAfter
+MoveBefore
+MoveToBack
+MoveToFront
+Print
+PushBack
+PushBackList
+PushFront
+PushFrontList
+Remove
+*/
+
+/* element only
+MoveToPrevOf
+*/
+
+/* symmetric
+Equals(x node) bool
+With(x node) *list.ComposedValue
+*/
 
 var l node = list.New()
 var _ node = l.Root()
