@@ -13,8 +13,8 @@ with stuff, which is considered useful and helpfull, such as:
 
 	- l.PrintAtomValues()
 	- e.PrintAtomValues()
-
 */
+
 package list
 
 import (

@@ -29,6 +29,7 @@ Going home
 // e.Root() == e (or is it not?)
 // e.Len() == 0
 // and this would be a very very boring world ;-)
+
 package list
 
 // ===========================================================================

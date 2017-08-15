@@ -17,8 +17,8 @@ with stuff, which is considered useful and helpfull, such as:
 
 	- l.IsAtom()			bool
 	- e.IsAtom()			bool
-
 */
+
 package list
 
 // ComposedValue aliases the Element.Value of IsComposed() Elements
@@ -42,8 +42,10 @@ func (l *List) vLen() int {
 }
 func (e *Element) vLen() int {
 	switch ev := e.Value.(type) {
-		case *ComposedValue:	return len(*ev)
-		default:		return 1
+	case *ComposedValue:
+		return len(*ev)
+	default:
+		return 1
 	}
 }
 
@@ -58,8 +60,10 @@ func (l *List) CVs() *ComposedValue {
 //  else a pointer(!) to the existing slice of atoms is returned
 func (e *Element) CVs() *ComposedValue {
 	switch ev := e.Value.(type) {
-		case *ComposedValue:	return ev
-		default:		return &ComposedValue{e}
+	case *ComposedValue:
+		return ev
+	default:
+		return &ComposedValue{e}
 	}
 }
 
@@ -74,8 +78,10 @@ func (l *List) IsComposed() bool {
 // (and thus carries a Value.(type) []*Element)
 func (e *Element) IsComposed() bool {
 	switch e.Value.(type) {
-	case *ComposedValue:	return true
-	default:		return false
+	case *ComposedValue:
+		return true
+	default:
+		return false
 	}
 }
 
@@ -88,8 +94,10 @@ func (l *List) IsAtom() bool {
 // IsAtom <=> element is not composed
 func (e *Element) IsAtom() bool {
 	switch e.Value.(type) {
-	case *ComposedValue:	return false
-	default:		return true
+	case *ComposedValue:
+		return false
+	default:
+		return true
 	}
 }
 

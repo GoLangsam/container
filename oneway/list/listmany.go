@@ -14,8 +14,8 @@ with stuff, which is considered useful and helpfull, such as:
 
 	- l.ValuesPushBack( v... )
 	- l.ValuesPushFront( v... )
-
 */
+
 package list
 
 // ===========================================================================

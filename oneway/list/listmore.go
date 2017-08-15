@@ -16,8 +16,8 @@ Create (also as method!)
 	- e.IsNode()		bool
 
 	- l.IsEmpty()		bool
-
 */
+
 package list
 
 // ===========================================================================
