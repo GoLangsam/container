@@ -63,17 +63,13 @@ func (e *Element) Back() *Element {
 
 // Next returns the Front of this list l
 func (l *List) Next() *Element {
-	if &l == nil || &l.root == nil {
-		return nil
-	}
+	l.lazyInit()
 	return l.root.next
 }
 
 // Prev returns the Back of this list l
 func (l *List) Prev() *Element {
-	if &l == nil || &l.root == nil {
-		return nil
-	}
+	l.lazyInit()
 	return l.root.prev
 }
 
@@ -95,6 +91,7 @@ func (e *Element) Len() int {
 
 // List returns this list
 func (l *List) List() *List {
+	l.lazyInit()
 	return l
 }
 
@@ -108,9 +105,7 @@ func (e *Element) List() *List {
 
 // Root returns the root element of list l
 func (l *List) Root() *Element {
-	if &l == nil || &l.root == nil {
-		return nil
-	}
+	l.lazyInit()
 	return &l.root
 }
 

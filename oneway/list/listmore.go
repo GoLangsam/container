@@ -69,17 +69,26 @@ func (e *Element) Equals(i *Element) bool {
 // => bool
 
 // IsRoot reports whether the element e is Root() of it's list
+// unless it's nil, belongs to nil list or list's root is nil
 func (e *Element) IsRoot() bool {
+	if &e == nil || &e.list == nil || &e.list.root == nil {
+		return false
+	}
 	return (e == &e.list.root)
 }
 
 // IsNode - any element which !IsRoot can be seen as a node
+// unless it's nil, belongs to nil list or list's root is nil
 func (e *Element) IsNode() bool {
+	if &e == nil || &e.list == nil || &e.list.root == nil {
+		return false
+	}
 	return (e != &e.list.root)
 }
 
 // IsEmpty reports whether the list l is empty.
 // Note: Does not evaluate Len(), as this could be scrambled temporarily
 func (l *List) IsEmpty() bool {
+	l.lazyInit()
 	return l.root.next == &l.root
 }
