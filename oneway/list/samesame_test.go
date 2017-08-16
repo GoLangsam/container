@@ -6,23 +6,21 @@ package list
 
 func ExampleList_Init() {
 
-	// Create a new list with some elements.
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G")
+	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 
 	l.PrintAtomValues("l.before\t")
 	l.Init()
 	l.PrintAtomValues("l.after\t")
 
 	// Output:
-	// l.before	: List=ForEach	A | B | C | D | E | F | G | Total=7
-	// l.after	: List=ForEach	Total=0
+	// l.before	: List=Example	A | B | C | D | E | F | G | Total=7
+	// l.after	: List=Example	Total=0
 }
 
 func ExampleElement_Init() {
 
-	// Create a new list with some elements.
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G")
-	var e = l.Front().Next().Next().Next() // D
+	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e = l.Front().Next().Next().Next()                        // D
 
 	e.PrintValue("e.before\t")
 	e.Init()
@@ -34,7 +32,7 @@ func ExampleElement_Init() {
 
 func ExampleList_Front() {
 
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 	var e = l.Front().Next().Next().Next()                        // D
 
 	e.PrintValue("D = ")
@@ -45,7 +43,7 @@ func ExampleList_Front() {
 
 func ExampleElement_Front() {
 
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 	var e = l.Front().Next().Next().Next()                        // D
 
 	e.PrintValue("D = ")
@@ -58,7 +56,7 @@ func ExampleElement_Front() {
 
 func ExampleList_Back() {
 
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 	var e = l.Back().Prev().Prev().Prev()                         // D
 
 	e.PrintValue("D = ")
@@ -69,7 +67,7 @@ func ExampleList_Back() {
 
 func ExampleElement_Back() {
 
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 	var e = l.Front().Next().Next().Next()                        // D
 
 	e.PrintValue("D = ")
@@ -82,7 +80,7 @@ func ExampleElement_Back() {
 
 func ExampleList_Next() {
 
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 
 	if l.Next() != l.Front() {
 		l.Print("Next != Front")
@@ -93,7 +91,7 @@ func ExampleList_Next() {
 
 func ExampleElement_Next() {
 
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 	var e = l.Front().Next().Next().Next()                        // D
 
 	e.PrintValue("D = ")
@@ -106,7 +104,7 @@ func ExampleElement_Next() {
 
 func ExampleList_Prev() {
 
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 
 	if l.Prev() != l.Back() {
 		l.Print("Prev != Back")
@@ -117,7 +115,7 @@ func ExampleList_Prev() {
 
 func ExampleElement_Prev() {
 
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 	var e = l.Back().Prev().Prev().Prev()                         // D
 
 	e.PrintValue("D = ")
@@ -128,7 +126,7 @@ func ExampleElement_Prev() {
 
 func ExampleList_List() {
 
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 	var e = l.Front().Next().Next().Next()                        // D
 
 	if l.List() != e.List() {
@@ -140,7 +138,7 @@ func ExampleList_List() {
 
 func ExampleElement_List() {
 
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 	var e = l.Back().Prev().Prev().Prev()                         // D
 
 	if e.List() != l.List() {
@@ -152,7 +150,7 @@ func ExampleElement_List() {
 
 func ExampleList_Root() {
 
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 	var e = l.Front().Next().Next().Next()                        // D
 
 	if l.Root() != e.Root() {
@@ -162,12 +160,12 @@ func ExampleList_Root() {
 	l.Root().PrintValue("Root =")
 
 	// Output:
-	// Root =: ForEach
+	// Root =: Example
 }
 
 func ExampleElement_Root() {
 
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 	var e = l.Back().Prev().Prev().Prev()                         // D
 
 	if e.List() != l.List() {
@@ -177,5 +175,5 @@ func ExampleElement_Root() {
 	e.Root().PrintValue("Root =")
 
 	// Output:
-	// Root =: ForEach
+	// Root =: Example
 }
