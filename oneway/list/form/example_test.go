@@ -12,13 +12,16 @@ import (
 
 func ExampleForm() {
 	e := list.NewList("TestList", "Element One").Front()
-	fmt.Println(e.Value)
+	fmt.Println(e.Value) // Element One
+
 	undo := Form(e, Value(3))
-	fmt.Println(e.Value)
+	fmt.Println(e.Value) // 3 (temporarily)
+
 	redo := UnDo(e, undo)
-	fmt.Println(e.Value)
+	fmt.Println(e.Value) // Element One (temporary setting undone)
+
 	_ = Form(e, redo...)
-	fmt.Println(e.Value)
+	fmt.Println(e.Value) // 3 (undo undone)
 
 	// Output:
 	// Element One
@@ -29,13 +32,16 @@ func ExampleForm() {
 
 func ExampleUnDo() {
 	e := list.NewList("TestList", "Element One").Front()
-	fmt.Println(e.Value)
+	fmt.Println(e.Value) // Element One
+
 	undo := Form(e, Value(3))
-	fmt.Println(e.Value)
+	fmt.Println(e.Value) // 3 (temporarily)
+
 	redo := UnDo(e, undo)
-	fmt.Println(e.Value)
+	fmt.Println(e.Value) // Element One (temporary setting undone)
+
 	_ = Form(e, redo...)
-	fmt.Println(e.Value)
+	fmt.Println(e.Value) // 3 (undo undone)
 
 	// Output:
 	// Element One
@@ -44,16 +50,21 @@ func ExampleUnDo() {
 	// 3
 }
 
-func setValue(e *list.Element, value interface{}) {
-	fmt.Println(e.Value)
-	prev := Form(e, Value(value))
-	defer UnDo(e, prev)
-	// ... do some stuff with Elements Value being temporarily set to value
-	fmt.Println(e.Value)
-}
 
 func ExampleValue() {
 	e := list.NewList("TestList", "Element One").Front()
+
+	func setValue(e *list.Element, value interface{}) {
+		fmt.Println(e.Value) // Original Value
+
+		// upon exit restore Original while setting to new value now via
+		// undo := Form(e, Value(value))
+		defer UnDo(e, Form(e, Value(value)))
+
+		// ... do some stuff with Elements Value being temporarily set to value
+		fmt.Println(e.Value) // Changed Value
+	}
+
 	setValue(e, 5)
 	fmt.Println(e.Value)
 
