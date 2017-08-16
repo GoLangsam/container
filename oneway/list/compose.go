@@ -16,6 +16,9 @@ compose.go extends list.go with:
 
 	- l.IsAtom()			bool
 	- e.IsAtom()			bool
+
+	- l.AtomValues()		Values
+	- e.AtomValues()		Values
 */
 
 package list
