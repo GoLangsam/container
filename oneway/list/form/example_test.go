@@ -50,11 +50,10 @@ func ExampleUnDo() {
 	// 3
 }
 
-
 func ExampleValue() {
 	e := list.NewList("TestList", "Element One").Front()
 
-	func setValue(e *list.Element, value interface{}) {
+	setValue := func(e *list.Element, value interface{}) {
 		fmt.Println(e.Value) // Original Value
 
 		// upon exit restore Original while setting to new value now via
