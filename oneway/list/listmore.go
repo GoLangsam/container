@@ -5,30 +5,50 @@
 /*
 listmore.go extends list.go with:
 
-Create (TODO: also as method!)
-	- NewList( v, vals... )	returns a list, the Root() of which carries v as Value
+	- NewList( vals... )	*List
+	- l.New( vals... )		*List
+	- e.New( vals... )		*Element // == Root()
 
-	- l.Equals( *List )	bool
+	- l.Equals( *List )		bool
 	- e.Equals( *Element )	bool
 
-	- e.IsRoot()		bool
-	- e.IsNode()		bool
+	- e.IsRoot()			bool
+	- e.IsNode()			bool
 
-	- l.IsEmpty()		bool
+	- l.IsEmpty()			bool
 */
 
 package list
 
 // ===========================================================================
 
-// NewList returns a list of vals, the Root() of which carries v
-func NewList(v interface{}, vals ...interface{}) *List {
+// NewList returns a new list
+// the Root() of which carries vals[0] (if any)
+// and the list has elements vals[1:] (if any)
+func NewList(vals ...interface{}) *List {
 	var list = New()
-	list.root.Value = v
-	for i := range vals {
-		list.PushBack(vals[i])
+	if len(vals) > 0 {
+		list.root.Value = vals[0]
+		for i := range vals[1:] {
+			list.PushBack(vals[1+i])
+		}
 	}
+
 	return list
+}
+
+// New returns a new list
+// the Root() of which carries vals[0] (if any)
+// and the list has elements vals[1:] (if any)
+func (l *List) New(vals ...interface{}) *List {
+	return NewList(vals...)
+}
+
+// New returns the root element of a new list
+// the Root() of which carries vals[0] (if any)
+// and the list has elements vals[1:] (if any)
+func (e *Element) New(vals ...interface{}) *Element {
+	return NewList(vals...).Root()
 }
 
 // ===========================================================================

@@ -4,6 +4,38 @@
 
 package list
 
+func ExampleNewList() {
+	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+
+	l.PrintAtomValues() // show it
+
+	// Output:
+	// List=Example	A | B | C | D | E | F | G | Total=7
+}
+
+func ExampleList_New() {
+	nl := New() // a new list
+
+	l1 := nl.New("Example", "A", "B", "C", "D", "E", "F", "G")
+	l1.PrintAtomValues() // show it
+
+	// Output:
+	// List=Example	A | B | C | D | E | F | G | Total=7
+}
+
+func ExampleElement_New() {
+	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e = l.Front().Next().Next().Next()                        // D
+
+	root := e.New("New", 111, 222, 333, 444, 555, 666, 777) // get the root of a new (and populated) list
+	root.PrintAtomValues()                                  // show root
+	root.List().PrintAtomValues()                           // show root's list
+
+	// Output:
+	// Element=New.
+	// List=New	111 | 222 | 333 | 444 | 555 | 666 | 777 | Total=7
+}
+
 func ExampleList_Equals() {
 
 	var l1 = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.

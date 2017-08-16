@@ -50,6 +50,7 @@ MoveToPrevOf
 */
 
 /* symmetric
+New(vals...) node
 Equals(x node) bool
 With(x node) *ComposedValue
 */
