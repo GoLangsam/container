@@ -9,7 +9,7 @@
 // such as filepath information or other hierarchical identifiers
 // and gives an extended meaning to multiple dots and trailing slashes:
 //
-//  ... => 'use Subtree also'
+//  ... => 'use Subtree also' - recurse
 //  ..  => 'use Parent also', if .. is part of trailing dots and slashes
 //  ./  => 'this MUST be a directory', if a trailing slash is given
 //
@@ -62,7 +62,7 @@ func New(path, sep string) *DotPath {
 
 // NewPath returns a parsed *DotPath - separated by go's PathSeparator Slash `/`
 func NewPath(path string) *DotPath {
-	return New(path, OsPathSeparator)
+	return New(path, GoPathSeparator)
 }
 
 // NewFilePath returns a parsed *DotPath - separated by the current os.PathSeparator
