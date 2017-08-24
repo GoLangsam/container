@@ -23,3 +23,20 @@ func (dp *DotPath) Print() {
 		fmt.Println("WayDown:\t", dp.PathS(), "\t")
 	}
 }
+
+// IfPrintFlagArgs prints the arguments, iff flag is true
+func IfPrintFlagArgs(flag bool, args ...string) {
+	if flag {
+		ds := FilePathS(args...)
+		fmt.Println("===============================================================================")
+		for i := range ds {
+			ds[i].Print()
+			fmt.Println("-------------------------------------------------------------------------------")
+		}
+		as := ToFolds(args...)
+		for i := range as {
+			fmt.Println(as[i].String(), "\t", as[i].Recurse())
+		}
+		fmt.Println("===============================================================================")
+	}
+}
