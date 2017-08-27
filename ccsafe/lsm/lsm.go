@@ -70,3 +70,8 @@ func (d *LazyStringerMap) releaseMe() {
 	d.forget()   // destroy my being valuable, if need
 	d.l.Unlock() // release me, let me go ...
 }
+
+// Close - pretend to be an io.Closer)
+func (d *LazyStringerMap) Close() error {
+	return nil
+}
