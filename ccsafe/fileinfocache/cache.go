@@ -13,7 +13,7 @@ import (
 
 // FiCache provides cached file data for any os.FileInfo
 type FiCache struct {
-	dict map[string]FiData
+	dict map[string]Item
 	l    *sync.RWMutex
 }
 
@@ -22,7 +22,7 @@ type FiCache struct {
 // and subsequently queried via Lookup or LookupData.
 func New() *FiCache {
 	return &FiCache{
-		dict: make(map[string]FiData),
+		dict: make(map[string]Item),
 		l:    new(sync.RWMutex),
 	}
 }
@@ -71,7 +71,7 @@ func (fc *FiCache) register(key os.FileInfo) error {
 	if !ok || finfo.fileInfo != key {
 		byteS, err := ioutil.ReadFile(key.Name())
 		if err == nil {
-			fc.dict[key.Name()] = FiData{key, byteS}
+			fc.dict[key.Name()] = Item{key, byteS}
 		} else {
 			delete(fc.dict, key.Name())
 		}
@@ -81,13 +81,13 @@ func (fc *FiCache) register(key os.FileInfo) error {
 }
 
 // lookup returns the FsData object assigned to key (if any) or false
-func (fc *FiCache) lookup(key os.FileInfo) (FiData, bool) {
+func (fc *FiCache) lookup(key os.FileInfo) (Item, bool) {
 	fdata, ok := fc.dict[key.Name()]
 	return fdata, ok
 }
 
 // Lookup returns the FsData object assigned to key (if any) or false
-func (fc *FiCache) Lookup(key os.FileInfo) (FiData, bool) {
+func (fc *FiCache) Lookup(key os.FileInfo) (Item, bool) {
 	fc.l.RLock()
 	defer fc.l.RUnlock()
 	fdata, ok := fc.lookup(key)
