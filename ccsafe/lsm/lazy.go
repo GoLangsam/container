@@ -20,10 +20,10 @@ import (
 //	do I prepare the answer for such certain question about my content. ;-)
 //
 type PerformanceFriendly interface {
-	forget()
-	lazyInit()
-	lazyS() []string
-	lazyM() map[string]string
+	forget()                  // helper to forget - "destroy my being valuable" :-)
+	lazyInit()                // helper for init-on-demand
+	lazyS() []string          // helper to rebuild and keep hold of val-map[keys] as sorted slice
+	lazyM() map[string]string // helper to rebuild and keep hold of val-map[keys] as map of strings
 }
 
 // helper to forget - "destroy my being valuable" :-)

@@ -25,7 +25,7 @@ type UserFriendly interface {
 	Assign(key string, val interface{}) *LazyStringerMap // assign a string "val" to name "key"
 	Delete(key string) *LazyStringerMap                  // forget name "key" (and related content, if any)
 	// Following may also be used in templates
-	Fetch(key string) (interface{}, bool) // obtain content named "key"
+	Fetch(key string) (interface{}, bool) // obtain content named "key", iff any
 	Lookup(key string) string             // obtain content named "key" - as (eventually empty) string
 	//
 	Len() int // How many things do I contain right now?
@@ -59,7 +59,7 @@ func (d *LazyStringerMap) Lookup(key string) string {
 	return ""
 }
 
-// Fetch - You want my content named "key"
+// Fetch - You want my content named "key", iff any
 func (d *LazyStringerMap) Fetch(key string) (interface{}, bool) {
 	d.lazyInit()        // non-nil me ...
 	d.l.RLock()         // protect me, and ...
