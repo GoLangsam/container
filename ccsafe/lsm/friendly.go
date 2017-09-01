@@ -15,5 +15,4 @@ type Friendly interface {
 	AccessFriendly      // gets.go
 	UserFriendly        // use.go
 	PerformanceFriendly // lazy.go
-	Close() error       // lsm.go - implement io.Closer
 }
