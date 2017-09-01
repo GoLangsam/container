@@ -83,9 +83,16 @@ func (fc *FiCache) register(key string) (err error) {
 }
 
 // lookup returns the FsData object assigned to key (if any) or false
-func (fc *FiCache) lookup(key string) (Item, bool) {
-	fdata, ok := fc.fetch(key)
-	return fdata, ok
+func (fc *FiCache) lookup(key string) (item Item, ok bool) {
+	if item, ok = fc.fetch(key); !ok {
+		fc.l.RUnlock()
+		err := fc.Register(key)
+		fc.l.RLock()
+		if err != nil {
+			item, ok = fc.fetch(key)
+		}
+	}
+	return item, ok
 }
 
 // Lookup returns the FsData object assigned to key (if any) or false
