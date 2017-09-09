@@ -24,10 +24,12 @@ type UserFriendly interface {
 	Init() *LazyStringerMap                              // (re)start afresh: no names, no content
 	Assign(key string, val interface{}) *LazyStringerMap // assign a string "val" to name "key"
 	Delete(key string) *LazyStringerMap                  // forget name "key" (and related content, if any)
-	// Following may also be used in templates
+	Clone() *LazyStringerMap                             // obtain a fresh Lazy String Map with a copy of original content
+
+	// Following may also be used in templates:
 	Fetch(key string) (interface{}, bool) // obtain content named "key", iff any
 	Lookup(key string) string             // obtain content named "key" - as (eventually empty) string
-	//
+
 	Len() int // How many things do I contain right now?
 }
 
@@ -45,6 +47,22 @@ func (d *LazyStringerMap) Assign(key string, val interface{}) *LazyStringerMap {
 	defer d.releaseMe() // release me, let me go ...
 	d.val[key] = val
 	return d
+}
+
+// Delete - You want me to forget about name "key" (and it's related content)?
+func (d *LazyStringerMap) Delete(key string) *LazyStringerMap {
+	d.protectMe()       // protect me, and ...
+	defer d.releaseMe() // release me, let me go ...
+	delete(d.val, key)
+	return d
+}
+
+// Clone - a fresh Lazy String Map
+// with a copy of original content
+func (d *LazyStringerMap) Clone() *LazyStringerMap {
+	n := New()
+	n.val = d.val
+	return n
 }
 
 // Lookup - You want my content named "key" - as (eventually empty) string
@@ -69,14 +87,6 @@ func (d *LazyStringerMap) Fetch(key string) (interface{}, bool) {
 	}
 
 	return nil, false
-}
-
-// Delete - You want me to forget about name "key" (and it's related content)?
-func (d *LazyStringerMap) Delete(key string) *LazyStringerMap {
-	d.protectMe()       // protect me, and ...
-	defer d.releaseMe() // release me, let me go ...
-	delete(d.val, key)
-	return d
 }
 
 // Len - How many things do I contain right now?
