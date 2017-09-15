@@ -43,6 +43,7 @@ func (d *LazyStringerMap) Init() *LazyStringerMap {
 
 // Assign - You want to let my content named "key" to be the "val"-string?
 func (d *LazyStringerMap) Assign(key string, val interface{}) *LazyStringerMap {
+	d.lazyInit()        // non-nil me ...
 	d.protectMe()       // protect me, and ...
 	defer d.releaseMe() // release me, let me go ...
 	d.val[key] = val
@@ -51,6 +52,7 @@ func (d *LazyStringerMap) Assign(key string, val interface{}) *LazyStringerMap {
 
 // Delete - You want me to forget about name "key" (and it's related content)?
 func (d *LazyStringerMap) Delete(key string) *LazyStringerMap {
+	d.lazyInit()        // non-nil me ...
 	d.protectMe()       // protect me, and ...
 	defer d.releaseMe() // release me, let me go ...
 	delete(d.val, key)
@@ -60,6 +62,9 @@ func (d *LazyStringerMap) Delete(key string) *LazyStringerMap {
 // Clone - a fresh Lazy String Map
 // with a copy of original content
 func (d *LazyStringerMap) Clone() *LazyStringerMap {
+	d.lazyInit()        // non-nil me ...
+	d.l.RLock()         // protect me, and ...
+	defer d.l.RUnlock() // release me, let me go ...
 	n := New()
 	n.val = d.val
 	return n
@@ -73,7 +78,6 @@ func (d *LazyStringerMap) Lookup(key string) string {
 	if c, ok := d.val[key]; ok {
 		return ats.GetString(c)
 	}
-
 	return ""
 }
 
@@ -85,7 +89,6 @@ func (d *LazyStringerMap) Fetch(key string) (interface{}, bool) {
 	if c, ok := d.val[key]; ok {
 		return c, true
 	}
-
 	return nil, false
 }
 
