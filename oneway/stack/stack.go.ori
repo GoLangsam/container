@@ -6,13 +6,14 @@
 Package stack provides a normal (=non-concurrency-safe) stack
 for anything (interface{})
 
-Note: the very crisp implementation was found in cmd/go/pkg.go importStack
 */
 package stack
 
 // Stack implements a normal (=non-concurrency-safe) stack
 // for anything (interface{})
-type Stack []interface{}
+type Stack struct {
+	stack []interface{}
+}
 
 // New returns a new empty stack with given initial capacity
 func New(cap int) *Stack {
@@ -21,8 +22,8 @@ func New(cap int) *Stack {
 
 // Init returns an empty stack with given initial capacity
 func (s *Stack) Init(cap int) *Stack {
-	return &Stack{make([]interface{}, 0, cap)}
-
+	s.stack = make([]interface{}, 0, cap)
+	return s
 }
 
 // Push sth onto the current stack
@@ -30,7 +31,7 @@ func (s *Stack) Push(l interface{}) {
 	//	s.Lock()
 	//	defer s.Unlock()
 
-	*s = append(*s, l)
+	s.stack = append(s.stack, l)
 }
 
 // Pop sth off the current stack
@@ -38,8 +39,8 @@ func (s *Stack) Pop() interface{} {
 	//	s.Lock()
 	//	defer s.Unlock()
 
-	p := (*s)[len(*s)-1]
-	*s = (*s)[0 : len(*s)-1]
+	var p = s.stack[len(s.stack)-1]
+	s.stack = s.stack[:len(s.stack)-1]
 	return p
 }
 
@@ -48,7 +49,9 @@ func (s *Stack) Drop() {
 	//	s.Lock()
 	//	defer s.Unlock()
 
-	*s = (*s)[0 : len(*s)-1]
+	//	var p = s.stack[len(s.stack)-1]
+	s.stack = s.stack[:len(s.stack)-1]
+	return // p
 }
 
 // Top returns the top of the current stack
@@ -56,7 +59,7 @@ func (s *Stack) Top() interface{} {
 	//	s.Lock()
 	//	defer s.Unlock()
 
-	return (*s)[len(*s)-1]
+	return s.stack[len(s.stack)-1]
 }
 
 // Get returns a copy of the current stack
@@ -64,7 +67,9 @@ func (s *Stack) Get() []interface{} {
 	//	s.Lock()
 	//	defer s.Unlock()
 
-	return append([]interface{}{}, *s...)
+	var stack = make([]interface{}, len(s.stack))
+	copy(stack, s.stack)
+	return stack
 }
 
 // Len returns the length of the current stack
@@ -72,5 +77,5 @@ func (s *Stack) Len() int {
 	//	s.Lock()
 	//	defer s.Unlock()
 
-	return len(*s)
+	return len(s.stack)
 }
