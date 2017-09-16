@@ -61,12 +61,20 @@ func (d *LazyStringerMap) Delete(key string) *LazyStringerMap {
 
 // Clone - a fresh Lazy String Map
 // with a copy of original content
+//
+// Note: the copy is shallow: values are not copied/duplicated, but just reused!
+// See https://gist.github.com/soroushjp/0ec92102641ddfc3ad5515ca76405f4d regarding deep copy
+// https://stackoverflow.com/questions/23033143/is-there-a-built-in-function-in-go-for-making-copies-of-arbitrary-maps/28579297#28579297
+// https://stackoverflow.com/questions/21934730/gob-type-not-registered-for-interface-mapstringinterface
 func (d *LazyStringerMap) Clone() *LazyStringerMap {
 	d.lazyInit()        // non-nil me ...
 	d.l.RLock()         // protect me, and ...
 	defer d.l.RUnlock() // release me, let me go ...
 	n := New()
-	n.val = d.val
+	n.val = make(map[string]interface{}, len(d.val)) // reallocate with proper size
+	for k, v := range d.val {
+		n.val[k] = v
+	}
 	return n
 }
 
