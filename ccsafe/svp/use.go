@@ -5,7 +5,7 @@
 package svp
 
 import (
-	"github.com/golangsam/do/ats"
+	"github.com/GoLangsam/do/ats"
 )
 
 // UserFriendly - interface exposed for go doc only

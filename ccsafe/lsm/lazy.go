@@ -7,7 +7,7 @@ package lsm
 import (
 	"sort"
 
-	"github.com/golangsam/do/ats"
+	"github.com/GoLangsam/do/ats"
 )
 
 // PerformanceFriendly - interface exposed for go doc only

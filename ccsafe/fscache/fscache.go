@@ -8,7 +8,7 @@ package fscache
 import (
 	"sync"
 
-	"github.com/golangsam/container/ccsafe/fs"
+	"github.com/GoLangsam/container/ccsafe/fs"
 )
 
 // FsCache provides cached file data for any *fs.FsFile

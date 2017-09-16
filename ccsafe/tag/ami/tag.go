@@ -6,7 +6,7 @@
 package tag
 
 import (
-	myTag "github.com/golangsam/container/ccsafe/tag"
+	myTag "github.com/GoLangsam/container/ccsafe/tag"
 )
 
 // TagAny is the type provided by package tag

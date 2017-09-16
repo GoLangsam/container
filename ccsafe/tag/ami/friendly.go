@@ -5,7 +5,7 @@
 package tag
 
 import (
-	myTag "github.com/golangsam/container/ccsafe/tag"
+	myTag "github.com/GoLangsam/container/ccsafe/tag"
 )
 
 // Friendly - interface exposed for go doc only

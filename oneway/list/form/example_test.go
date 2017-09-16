@@ -7,7 +7,7 @@ package form
 import (
 	"fmt"
 
-	"github.com/golangsam/container/oneway/list"
+	"github.com/GoLangsam/container/oneway/list"
 )
 
 func ExampleForm() {

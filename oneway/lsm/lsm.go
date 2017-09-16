@@ -6,7 +6,7 @@
 package lsm
 
 import (
-	"github.com/golangsam/container/oneway/sync" // no op
+	"github.com/GoLangsam/container/oneway/sync" // no op
 )
 
 // LazyStringerMap is the type provided by this package lsm.

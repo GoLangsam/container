@@ -5,8 +5,8 @@
 package dot
 
 import (
-	"github.com/golangsam/container/ccsafe/lsm"
-	"github.com/golangsam/container/ccsafe/tag"
+	"github.com/GoLangsam/container/ccsafe/lsm"
+	"github.com/GoLangsam/container/ccsafe/tag"
 )
 
 // Friendly - interface exposed for go doc only

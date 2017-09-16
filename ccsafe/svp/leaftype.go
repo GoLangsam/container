@@ -5,8 +5,8 @@
 package svp
 
 import (
-	"github.com/golangsam/do/ami"
-	"github.com/golangsam/do/nvp"
+	"github.com/GoLangsam/do/ami"
+	"github.com/GoLangsam/do/nvp"
 )
 
 // DeepInfoFriendly interface - exported for go doc

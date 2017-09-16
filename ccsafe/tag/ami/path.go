@@ -5,7 +5,7 @@
 package tag
 
 import (
-	"github.com/golangsam/do/nvp" // NameValuePair - provides recursing functions
+	"github.com/GoLangsam/do/nvp" // NameValuePair - provides recursing functions
 )
 
 // PathFriendly - interface exposed for go doc only

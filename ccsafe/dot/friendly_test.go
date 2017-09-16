@@ -8,7 +8,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/golangsam/container/ccsafe/dot"
+	"github.com/GoLangsam/container/ccsafe/dot"
 )
 
 func TestDotBehavesFriendly(t *testing.T) {

@@ -5,7 +5,7 @@
 package math
 
 import (
-	"github.com/golangsam/container/oneway/list"
+	"github.com/GoLangsam/container/oneway/list"
 )
 
 // ===========================================================================

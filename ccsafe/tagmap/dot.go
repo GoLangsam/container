@@ -8,8 +8,8 @@ import (
 	//	"io"
 	"sync"
 
-	"github.com/golangsam/container/ccsafe/lsm"
-	"github.com/golangsam/container/ccsafe/tag/ami" // or "container/ccsafe/tag"
+	"github.com/GoLangsam/container/ccsafe/lsm"
+	"github.com/GoLangsam/container/ccsafe/tag/ami" // or "container/ccsafe/tag"
 )
 
 // Dot is the type provided by package dot

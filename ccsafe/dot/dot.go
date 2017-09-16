@@ -8,8 +8,8 @@ import (
 	"io"
 	"sync"
 
-	"github.com/golangsam/container/ccsafe/lsm"
-	"github.com/golangsam/container/ccsafe/tag" // or "container/ccsafe/tag/ami"
+	"github.com/GoLangsam/container/ccsafe/lsm"
+	"github.com/GoLangsam/container/ccsafe/tag" // or "container/ccsafe/tag/ami"
 )
 
 // Dot - a tree of named anythings - useful for agnostic template-driven text generation

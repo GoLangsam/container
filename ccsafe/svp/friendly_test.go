@@ -7,7 +7,7 @@ package svp_test
 import (
 	"testing"
 
-	"github.com/golangsam/container/ccsafe/svp"
+	"github.com/GoLangsam/container/ccsafe/svp"
 )
 
 func TestSvpBehavesFriendly(t *testing.T) {

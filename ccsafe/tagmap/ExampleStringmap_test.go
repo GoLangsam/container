@@ -7,7 +7,7 @@ package dot_test
 import (
 	"testing"
 
-	dot "github.com/golangsam/container/ccsafe/tagmap"
+	dot "github.com/GoLangsam/container/ccsafe/tagmap"
 )
 
 func TestSimple(t *testing.T) {

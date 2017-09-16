@@ -10,7 +10,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/golangsam/container/ccsafe/lsm"
+	"github.com/GoLangsam/container/ccsafe/lsm"
 )
 
 // FiCache provides cached file data for any os.FileInfo

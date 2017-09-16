@@ -7,7 +7,7 @@ package dotpath
 import (
 	"strings" // Note: We use only strings here! - path/filepath provides higher abstractions
 
-	ds "github.com/golangsam/do/strings" // do strings
+	ds "github.com/GoLangsam/do/strings" // do strings
 )
 
 // fullPath = original less strip VolumeName (if any)

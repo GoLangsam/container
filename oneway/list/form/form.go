@@ -11,7 +11,7 @@ package form
 // https://www.calhoun.io/using-functional-options-instead-of-method-chaining-in-go/
 
 import (
-	"github.com/golangsam/container/oneway/list"
+	"github.com/GoLangsam/container/oneway/list"
 )
 
 // DoFn is the signature of a

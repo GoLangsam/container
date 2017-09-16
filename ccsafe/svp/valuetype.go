@@ -5,7 +5,7 @@
 package svp
 
 import (
-	"github.com/golangsam/do/ami"
+	"github.com/GoLangsam/do/ami"
 )
 
 // InfoFriendly interface - exported for go doc

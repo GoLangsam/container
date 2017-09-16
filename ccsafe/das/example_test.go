@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"text/template"
 
-	"github.com/golangsam/container/ccsafe/das"
+	"github.com/GoLangsam/container/ccsafe/das"
 )
 
 var keyBuff = bytes.NewBufferString("Test")

@@ -5,7 +5,7 @@
 package lsm
 
 import (
-	"github.com/golangsam/do/ats" // anything to string
+	"github.com/GoLangsam/do/ats" // anything to string
 )
 
 // UserFriendly - interface exposed for go doc only

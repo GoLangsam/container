@@ -7,7 +7,7 @@ package das_test // Dictionary by any for strings
 import (
 	"testing"
 
-	"github.com/golangsam/container/ccsafe/das"
+	"github.com/GoLangsam/container/ccsafe/das"
 )
 
 func TestDasBehavesFriendly(t *testing.T) {

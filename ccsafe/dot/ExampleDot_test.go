@@ -7,7 +7,7 @@ package dot_test
 import (
 	"testing"
 
-	"github.com/golangsam/container/ccsafe/dot"
+	"github.com/GoLangsam/container/ccsafe/dot"
 )
 
 func TestSimple(t *testing.T) {

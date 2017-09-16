@@ -7,7 +7,7 @@ package tag_test
 import (
 	"testing"
 
-	"github.com/golangsam/container/ccsafe/tag/ami"
+	"github.com/GoLangsam/container/ccsafe/tag/ami"
 )
 
 func TestTagBehavesFriendly(t *testing.T) {
