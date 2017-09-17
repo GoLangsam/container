@@ -11,12 +11,16 @@ import (
 	"github.com/GoLangsam/container/ccsafe/dot"
 )
 
+var _ dot.Friendly = dot.New(".")
+
 func TestDotBehavesFriendly(t *testing.T) {
 	var i interface{} = new(dot.Dot)
 	if _, ok := i.(dot.Friendly); !ok {
 		t.Fatalf("expected %t to behave Friendly", i)
 	}
 }
+
+var _ sort.Interface = new(dot.DotS)
 
 func TestDotS(t *testing.T) {
 	var i interface{} = new(dot.DotS)

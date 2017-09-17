@@ -10,6 +10,8 @@ import (
 	"github.com/GoLangsam/container/ccsafe/lsm"
 )
 
+var _ lsm.Friendly = new(lsm.LazyStringerMap)
+
 func TestLsmBehavesFriendly(t *testing.T) {
 	var i interface{} = new(lsm.LazyStringerMap)
 	if _, ok := i.(lsm.Friendly); !ok {

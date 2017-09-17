@@ -24,7 +24,9 @@ type UserFriendly interface {
 	Init() *LazyStringerMap                              // (re)start afresh: no names, no content
 	Assign(key string, val interface{}) *LazyStringerMap // assign a string "val" to name "key"
 	Delete(key string) *LazyStringerMap                  // forget name "key" (and related content, if any)
-	Clone() *LazyStringerMap                             // obtain a fresh Lazy String Map with a copy of original content
+
+	// Clone is intentionally not mentioned here, as this would clash in higher levels, e.g. dot.Dot
+	// Clone() *LazyStringerMap                             // obtain a fresh Lazy String Map with a copy of original content
 
 	// Following may also be used in templates:
 	Fetch(key string) (interface{}, bool) // obtain content named "key", iff any
