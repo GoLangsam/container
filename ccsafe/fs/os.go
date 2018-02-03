@@ -53,3 +53,16 @@ func (p *FsFile) Open() (*os.File, error) {
 	file, err := os.Open(p.name)
 	return file, err
 }
+
+// Exists returns whether the given file or directory exists or not
+// from http://stackoverflow.com/a/10510783
+func (p *fsPath) Exists() (bool, error) {
+	_, err := p.Stat()
+	if err == nil {
+		return true, nil
+	}
+	if os.IsNotExist(err) {
+		return false, nil
+	}
+	return true, err
+}
