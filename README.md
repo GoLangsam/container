@@ -136,3 +136,8 @@ Thus: we came up with `oneway` - as there is only **one way** to use it safely: 
 Note: Some kinds may deserve to be implemented both ways, as the `ccsafe` version is usually less performant.
 
 Note: Some kinds are *safe for concurrent processing* by construction. Notably *immutable* things.
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/GoLangsam/container/badge.svg?style=beer-square)](https://beerpay.io/GoLangsam/container)  [![Beerpay](https://beerpay.io/GoLangsam/container/make-wish.svg?style=flat-square)](https://beerpay.io/GoLangsam/container?focus=wish)
