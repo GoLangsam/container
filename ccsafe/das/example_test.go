@@ -63,9 +63,9 @@ func ExampleDas_Das() {
 	das := ExampleDas() // a populated *Das
 
 	for key, val := range das.Das() {
-		fmt.Printf("%s:\t\t\n", key)
+		fmt.Printf("%v:\t\t\n", key)
 		for v := range val {
-			fmt.Printf("\t%s\t\n", v)
+			fmt.Printf("\t%v\t\n", v)
 		}
 	}
 }
@@ -88,10 +88,10 @@ func ExampleDas_Fetch() {
 	das := ExampleDas() // a populated *Das
 
 	key := keyBool
-	fmt.Printf("%s:\t\t\n", key)
+	fmt.Printf("%v:\t\t\n", key)
 	if vS, ok := das.Fetch(key); ok {
 		for i := range vS {
-			fmt.Printf("\t%s\t\n", vS[i])
+			fmt.Printf("\t%v\t\n", vS[i])
 		}
 	}
 }
