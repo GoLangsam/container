@@ -2,11 +2,15 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package list
+package list_test
+
+import (
+	"github.com/GoLangsam/container/oneway/list"
+)
 
 func ExampleList_Print() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 
 	l.Print("Show", "Me")
 
@@ -16,7 +20,7 @@ func ExampleList_Print() {
 
 func ExampleList_PrintValue() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 
 	l.PrintValue("Show", "Me")
 
@@ -26,8 +30,8 @@ func ExampleList_PrintValue() {
 
 func ExampleElement_PrintValue() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e = l.Front().Next().Next().Next()                        // D
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e = l.Front().Next().Next().Next()                             // D
 
 	e.PrintValue("Show", "Me")
 
@@ -37,7 +41,7 @@ func ExampleElement_PrintValue() {
 
 func ExampleList_PrintAtomValues() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 
 	l.PrintAtomValues("Show", "Me")
 
@@ -47,8 +51,8 @@ func ExampleList_PrintAtomValues() {
 
 func ExampleElement_PrintAtomValues() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e = l.Front().Next().Next().Next()                        // D
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e = l.Front().Next().Next().Next()                             // D
 
 	e.PrintAtomValues("Show", "Me")
 

@@ -2,17 +2,19 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package list
+package list_test
 
 import (
 	"fmt"
+
+	"github.com/GoLangsam/container/oneway/list"
 )
 
 func ExampleElement_Value() {
 	fmt.Println("Starting")
 
 	// Create a new list and put some numbers in it.
-	l := New()
+	l := list.New()
 
 	e4 := l.PushBack(4)
 	e1 := l.PushFront(1)

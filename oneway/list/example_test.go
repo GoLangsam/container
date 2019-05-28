@@ -5,9 +5,9 @@
 package list_test
 
 import (
-	"github.com/GoLangsam/container/oneway/list"
-
 	"fmt"
+
+	"github.com/GoLangsam/container/oneway/list"
 )
 
 func Example() {

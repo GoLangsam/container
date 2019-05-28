@@ -2,25 +2,27 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package list
+package list_test
 
 import (
 	"fmt"
+
+	"github.com/GoLangsam/container/oneway/list"
 )
 
 func ExampleList_ForEachNext() {
 
 	// Create a new list with some elements.
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G")
+	var l = list.NewList("ForEach", "A", "B", "C", "D", "E", "F", "G")
 	var e = l.Front().Next().Next().Next() // D
 
-	fmt.Print("l.ForEachNext\t")                       // Prefix
-	l.ForEachNext(func(e *Element) { e.PrintValue() }) // each Value
-	fmt.Println("<")                                   // Suffix line
+	fmt.Print("l.ForEachNext\t")                            // Prefix
+	l.ForEachNext(func(e *list.Element) { e.PrintValue() }) // each Value
+	fmt.Println("<")                                        // Suffix line
 
-	fmt.Print("e.ForEachNext\t")                       // Prefix
-	e.ForEachNext(func(e *Element) { e.PrintValue() }) // each Value
-	fmt.Println("<")                                   // Suffix line
+	fmt.Print("e.ForEachNext\t")                            // Prefix
+	e.ForEachNext(func(e *list.Element) { e.PrintValue() }) // every other Value
+	fmt.Println("<")                                        // Suffix line
 
 	// Notice the subtle difference:
 	//  - for a list l all elements are iterated along the list l
@@ -34,16 +36,16 @@ func ExampleList_ForEachNext() {
 func ExampleElement_ForEachNext() {
 
 	// Create a new list with some elements.
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G")
+	var l = list.NewList("ForEach", "A", "B", "C", "D", "E", "F", "G")
 	var e = l.Front().Next().Next().Next() // D
 
-	fmt.Print("l.ForEachNext\t")                       // Prefix
-	l.ForEachNext(func(e *Element) { e.PrintValue() }) // each Value
-	fmt.Println("<")                                   // Suffix line
+	fmt.Print("l.ForEachNext\t")                            // Prefix
+	l.ForEachNext(func(e *list.Element) { e.PrintValue() }) // each Value
+	fmt.Println("<")                                        // Suffix line
 
-	fmt.Print("e.ForEachNext\t")                       // Prefix
-	e.ForEachNext(func(e *Element) { e.PrintValue() }) // each Value
-	fmt.Println("<")                                   // Suffix line
+	fmt.Print("e.ForEachNext\t")                            // Prefix
+	e.ForEachNext(func(e *list.Element) { e.PrintValue() }) // every other Value
+	fmt.Println("<")                                        // Suffix line
 
 	// Notice the subtle difference:
 	//  - for a list l all elements are iterated along the list l
@@ -57,16 +59,16 @@ func ExampleElement_ForEachNext() {
 func ExampleList_ForEachPrev() {
 
 	// Create a new list with some elements.
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G")
+	var l = list.NewList("ForEach", "A", "B", "C", "D", "E", "F", "G")
 	var e = l.Front().Next().Next().Next() // D
 
-	fmt.Print("l.ForEachPrev\t")                       // Prefix
-	l.ForEachPrev(func(e *Element) { e.PrintValue() }) // each Value
-	fmt.Println("<")                                   // Suffix line
+	fmt.Print("l.ForEachPrev\t")                            // Prefix
+	l.ForEachPrev(func(e *list.Element) { e.PrintValue() }) // each Value
+	fmt.Println("<")                                        // Suffix line
 
-	fmt.Print("e.ForEachPrev\t")                       // Prefix
-	e.ForEachPrev(func(e *Element) { e.PrintValue() }) // each Value
-	fmt.Println("<")                                   // Suffix line
+	fmt.Print("e.ForEachPrev\t")                            // Prefix
+	e.ForEachPrev(func(e *list.Element) { e.PrintValue() }) // every other Value
+	fmt.Println("<")                                        // Suffix line
 
 	// Notice the subtle difference:
 	//  - for a list l all elements are iterated along the list l
@@ -80,16 +82,16 @@ func ExampleList_ForEachPrev() {
 func ExampleElement_ForEachPrev() {
 
 	// Create a new list with some elements.
-	var l = NewList("ForEach", "A", "B", "C", "D", "E", "F", "G")
+	var l = list.NewList("ForEach", "A", "B", "C", "D", "E", "F", "G")
 	var e = l.Front().Next().Next().Next() // D
 
-	fmt.Print("l.ForEachPrev\t")                       // Prefix
-	l.ForEachPrev(func(e *Element) { e.PrintValue() }) // each Value
-	fmt.Println("<")                                   // Suffix line
+	fmt.Print("l.ForEachPrev\t")                            // Prefix
+	l.ForEachPrev(func(e *list.Element) { e.PrintValue() }) // each Value
+	fmt.Println("<")                                        // Suffix line
 
-	fmt.Print("e.ForEachPrev\t")                       // Prefix
-	e.ForEachPrev(func(e *Element) { e.PrintValue() }) // each Value
-	fmt.Println("<")                                   // Suffix line
+	fmt.Print("e.ForEachPrev\t")                            // Prefix
+	e.ForEachPrev(func(e *list.Element) { e.PrintValue() }) // every other Value
+	fmt.Println("<")                                        // Suffix line
 
 	// Notice the subtle difference:
 	//  - for a list l all elements are iterated along the list l
