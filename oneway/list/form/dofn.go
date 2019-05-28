@@ -9,11 +9,11 @@ import (
 )
 
 // Value sets Element's Value to v.
-// and returns it's undo form
+// and returns it's undo function.
 func Value(v interface{}) DoFn {
-	return func(e *list.Element) DoFn {
-		previous := e.Value
-		e.Value = v
-		return Value(previous)
+	return func(e *list.Element) (undo DoFn) {
+		undo = Value(e.Value) // refer to self
+		e.Value = v           // do it
+		return                // done
 	}
 }
