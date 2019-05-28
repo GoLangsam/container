@@ -44,13 +44,3 @@ func UnDo(e *list.Element, undo undo) (redo []DoFn) {
 	}
 	return redo
 }
-
-// Value sets Element's Value to v.
-// and returns it's undo form
-func Value(v interface{}) DoFn {
-	return func(e *list.Element) DoFn {
-		previous := e.Value
-		e.Value = v
-		return Value(previous)
-	}
-}
