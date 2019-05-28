@@ -155,7 +155,7 @@ func ExampleList_IsEmpty() {
 	if l1.IsEmpty() {
 		// fine
 	} else {
-		l1.Print("is empty?")
+		l1.Print("l1 is empty?")
 	}
 
 	if l2.IsEmpty() {
@@ -167,7 +167,7 @@ func ExampleList_IsEmpty() {
 	if l3.IsEmpty() {
 		// fine
 	} else {
-		l3.Print("is empty?")
+		l3.Print("l3 is empty?")
 	}
 
 	// Output:

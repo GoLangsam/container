@@ -41,11 +41,13 @@ func (e *Element) Init() (list *List) {
 		list = New()
 	} else {
 		list = e.list.Init()
+		e.list = nil // TODO: this sucks!
 	}
-	return list
+	return
 }
 
 // Front returns the Front of this elements list
+// (its first one, if any) or nil.
 func (e *Element) Front() *Element {
 	if &e == nil || &e.list == nil {
 		return nil
@@ -54,6 +56,7 @@ func (e *Element) Front() *Element {
 }
 
 // Back returns the Back of this elements list
+// (its last one, if any) or nil.
 func (e *Element) Back() *Element {
 	if &e == nil || &e.list == nil {
 		return nil
@@ -61,15 +64,21 @@ func (e *Element) Back() *Element {
 	return e.list.Back()
 }
 
-// Next returns the Front of this list l
+// Next returns the Front element of list l
+// (its first one, if any) or nil.
 func (l *List) Next() *Element {
-	l.lazyInit()
+	if &l == nil {
+		return nil
+	}
 	return l.root.next
 }
 
-// Prev returns the Back of this list l
+// Prev returns the Back element of list l
+// (its last one, if any) or nil.
 func (l *List) Prev() *Element {
-	l.lazyInit()
+	if &l == nil {
+		return nil
+	}
 	return l.root.prev
 }
 
@@ -89,13 +98,15 @@ func (e *Element) Len() int {
 
 // ===========================================================================
 
-// List returns this list
+// List returns this list (which may be nil or null value).
+//
+// l becomes initialised iff a null value was used.
 func (l *List) List() *List {
-	l.lazyInit()
 	return l
 }
 
 // List returns the list of e
+// or nil iff e == nil or its list is nil.
 func (e *Element) List() *List {
 	if &e == nil || &e.list == nil {
 		return nil
@@ -104,12 +115,16 @@ func (e *Element) List() *List {
 }
 
 // Root returns the root element of list l
+// or nil iff l == nil or its root is nil.
 func (l *List) Root() *Element {
-	l.lazyInit()
+	if &l == nil {
+		return nil
+	}
 	return &l.root
 }
 
 // Root returns the Root of this elements list
+// or nil iff e == nil or its list is nil.
 func (e *Element) Root() *Element {
 	if &e == nil || &e.list == nil {
 		return nil

@@ -109,6 +109,8 @@ func (e *Element) IsNode() bool {
 // IsEmpty reports whether the list l is empty.
 // Note: Does not evaluate Len(), as this could be scrambled temporarily
 func (l *List) IsEmpty() bool {
-	l.lazyInit()
+	if &l == nil || l.root.next == nil {
+		return true // nil or zero value
+	}
 	return l.root.next == &l.root
 }
