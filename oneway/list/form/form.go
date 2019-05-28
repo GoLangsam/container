@@ -2,13 +2,18 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// Package form allows to Form an element, and UnDo it.
-// To "Form" an element currently means to change it's Value.
+// Package form allows to Form something, and UnDo such forming later on.
+//
+// Inspired by:
+//   - http://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
+//   - https://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis
+//   - https://www.calhoun.io/using-functional-options-instead-of-method-chaining-in-go/
+//
+// These expamples support undo only for the last of several DoFn's passed to Form.
+//
+// This implementation aims to provide a full redo.
+// Just: this needs a little more work - TODO: Have UnDo return it's effect as a DoFn closure over the slice.
 package form
-
-// http://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
-// https://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis
-// https://www.calhoun.io/using-functional-options-instead-of-method-chaining-in-go/
 
 import (
 	"github.com/GoLangsam/container/oneway/list"
