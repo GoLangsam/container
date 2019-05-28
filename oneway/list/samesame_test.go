@@ -2,11 +2,15 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package list
+package list_test
+
+import (
+	"github.com/GoLangsam/container/oneway/list"
+)
 
 func ExampleList_Init() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 
 	l.PrintAtomValues("l.before\t")
 	l.Init()
@@ -19,8 +23,8 @@ func ExampleList_Init() {
 
 func ExampleElement_Init() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e = l.Front().Next().Next().Next()                        // D
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e = l.Front().Next().Next().Next()                             // D
 
 	e.PrintValue("e.before\t")
 	e.Init()
@@ -32,8 +36,8 @@ func ExampleElement_Init() {
 
 func ExampleList_Front() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e = l.Front().Next().Next().Next()                        // D
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e = l.Front().Next().Next().Next()                             // D
 
 	e.PrintValue("D = ")
 
@@ -43,8 +47,8 @@ func ExampleList_Front() {
 
 func ExampleElement_Front() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e = l.Front().Next().Next().Next()                        // D
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e = l.Front().Next().Next().Next()                             // D
 
 	e.PrintValue("D = ")
 
@@ -56,8 +60,8 @@ func ExampleElement_Front() {
 
 func ExampleList_Back() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e = l.Back().Prev().Prev().Prev()                         // D
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e = l.Back().Prev().Prev().Prev()                              // D
 
 	e.PrintValue("D = ")
 
@@ -67,8 +71,8 @@ func ExampleList_Back() {
 
 func ExampleElement_Back() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e = l.Front().Next().Next().Next()                        // D
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e = l.Front().Next().Next().Next()                             // D
 
 	e.PrintValue("D = ")
 
@@ -80,7 +84,7 @@ func ExampleElement_Back() {
 
 func ExampleList_Next() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 
 	if l.Next() != l.Front() {
 		l.Print("Next != Front")
@@ -91,8 +95,8 @@ func ExampleList_Next() {
 
 func ExampleElement_Next() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e = l.Front().Next().Next().Next()                        // D
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e = l.Front().Next().Next().Next()                             // D
 
 	e.PrintValue("D = ")
 
@@ -104,7 +108,7 @@ func ExampleElement_Next() {
 
 func ExampleList_Prev() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 
 	if l.Prev() != l.Back() {
 		l.Print("Prev != Back")
@@ -115,8 +119,8 @@ func ExampleList_Prev() {
 
 func ExampleElement_Prev() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e = l.Back().Prev().Prev().Prev()                         // D
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e = l.Back().Prev().Prev().Prev()                              // D
 
 	e.PrintValue("D = ")
 
@@ -126,8 +130,8 @@ func ExampleElement_Prev() {
 
 func ExampleList_List() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e = l.Front().Next().Next().Next()                        // D
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e = l.Front().Next().Next().Next()                             // D
 
 	if l.List() != e.List() {
 		l.Print("List != List")
@@ -138,8 +142,8 @@ func ExampleList_List() {
 
 func ExampleElement_List() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e = l.Back().Prev().Prev().Prev()                         // D
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e = l.Back().Prev().Prev().Prev()                              // D
 
 	if e.List() != l.List() {
 		l.Print("List != List")
@@ -150,8 +154,8 @@ func ExampleElement_List() {
 
 func ExampleList_Root() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e = l.Front().Next().Next().Next()                        // D
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e = l.Front().Next().Next().Next()                             // D
 
 	if l.Root() != e.Root() {
 		l.Print("List != List")
@@ -165,8 +169,8 @@ func ExampleList_Root() {
 
 func ExampleElement_Root() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e = l.Back().Prev().Prev().Prev()                         // D
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e = l.Back().Prev().Prev().Prev()                              // D
 
 	if e.List() != l.List() {
 		l.Print("List != List")

@@ -61,9 +61,9 @@ type elementonly interface {
 }
 
 /* symmetric
-	New(vals...) node
-	Equals(x node) bool
-	With(x node) *ComposedValue
+New(vals...) node
+Equals(x node) bool
+With(x node) *ComposedValue
 */
 
 var l node = list.New()

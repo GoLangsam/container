@@ -2,14 +2,18 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package list
+package list_test
+
+import (
+	"github.com/GoLangsam/container/oneway/list"
+)
 
 func ExampleList_With() {
 
-	var l1 = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var l2 = NewList("List #2", 111, 222, 333, 444, 555, 666, 777) // And another list with some elements.
+	var l1 = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l2 = list.NewList("List #2", 111, 222, 333, 444, 555, 666, 777) // And another list with some elements.
 
-	var l3 = NewList(l1.With(l2))
+	var l3 = list.NewList(l1.With(l2))
 
 	l3.PrintAtomValues() // Show
 
@@ -19,10 +23,10 @@ func ExampleList_With() {
 
 func ExampleElement_With() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e = l.Front().Next().Next().Next()                        // D
-	var f = e.Next().Next()                                       // F
-	l.PrintAtomValues("l.before\t")                               // Show
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e = l.Front().Next().Next().Next()                             // D
+	var f = e.Next().Next()                                            // F
+	l.PrintAtomValues("l.before\t")                                    // Show
 
 	l.PushBack(e.With(f)) // move D before F (after E, that is)
 

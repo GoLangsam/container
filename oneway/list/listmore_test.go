@@ -2,10 +2,14 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package list
+package list_test
+
+import (
+	"github.com/GoLangsam/container/oneway/list"
+)
 
 func ExampleNewList() {
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
 
 	l.PrintAtomValues() // show it
 
@@ -14,7 +18,7 @@ func ExampleNewList() {
 }
 
 func ExampleList_New() {
-	nl := New() // a new list
+	nl := list.New() // a new list
 
 	l1 := nl.New("Example", "A", "B", "C", "D", "E", "F", "G")
 	l1.PrintAtomValues() // show it
@@ -24,8 +28,8 @@ func ExampleList_New() {
 }
 
 func ExampleElement_New() {
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e = l.Front().Next().Next().Next()                        // D
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e = l.Front().Next().Next().Next()                             // D
 
 	root := e.New("New", 111, 222, 333, 444, 555, 666, 777) // get the root of a new (and populated) list
 	root.PrintAtomValues()                                  // show root
@@ -38,9 +42,9 @@ func ExampleElement_New() {
 
 func ExampleList_Equals() {
 
-	var l1 = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var l2 = NewList("List #2", "A", "B", "C", 444, "E", "F", "G") // a different one
-	var l3 = NewList("List #3", "A", "B", "C", "D", "E", "F", "G") // a similar one
+	var l1 = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l2 = list.NewList("List #2", "A", "B", "C", 444, "E", "F", "G") // a different one
+	var l3 = list.NewList("List #3", "A", "B", "C", "D", "E", "F", "G") // a similar one
 
 	if !l1.Equals(l2) { // "D" != 444
 		// fine
@@ -61,9 +65,9 @@ func ExampleList_Equals() {
 
 func ExampleElement_Equals() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e1 = l.Front().Next().Next().Next()                       // D
-	var e2 = l.Back().Prev().Prev().Prev()                        // D
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e1 = l.Front().Next().Next().Next()                            // D
+	var e2 = l.Back().Prev().Prev().Prev()                             // D
 
 	if e1.Equals(e2) { // "D" == "D"
 		// fine
@@ -72,8 +76,8 @@ func ExampleElement_Equals() {
 		e2.PrintValue("Element != Element")
 	}
 
-	var l3 = NewList("List #3", "A", "B", "C", "D", "E", "F", "G") // another list with same values
-	var e3 = l3.Front().Next().Next().Next()                       // D
+	var l3 = list.NewList("List #3", "A", "B", "C", "D", "E", "F", "G") // another list with same values
+	var e3 = l3.Front().Next().Next().Next()                            // D
 
 	if e1.Equals(e3) { // different list, same values: "D" == "D"
 		// fine
@@ -102,9 +106,9 @@ func ExampleElement_Equals() {
 
 func ExampleElement_IsRoot() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e1 = l.Front().Next().Next().Next()                       // D
-	var e2 = l.Root()                                             // Root
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e1 = l.Front().Next().Next().Next()                            // D
+	var e2 = l.Root()                                                  // Root
 
 	if e1.IsRoot() {
 		e1.PrintValue("no root?")
@@ -123,9 +127,9 @@ func ExampleElement_IsRoot() {
 
 func ExampleElement_IsNode() {
 
-	var l = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var e1 = l.Front().Next().Next().Next()                       // D
-	var e2 = l.Root()                                             // Root
+	var l = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var e1 = l.Front().Next().Next().Next()                            // D
+	var e2 = l.Root()                                                  // Root
 
 	if e1.IsNode() {
 		// fine
@@ -144,9 +148,9 @@ func ExampleElement_IsNode() {
 
 func ExampleList_IsEmpty() {
 
-	var l1 = New()                                                 // A new list
-	var l2 = NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
-	var l3 = new(List)                                             // Root
+	var l1 = list.New()                                                 // A new list
+	var l2 = list.NewList("Example", "A", "B", "C", "D", "E", "F", "G") // Create a new list with some elements.
+	var l3 = new(list.List)                                             // Root
 
 	if l1.IsEmpty() {
 		// fine
