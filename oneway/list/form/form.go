@@ -25,10 +25,13 @@ type DoFn func() DoFn
 // restores the Formable a
 // to it's previous state.
 func Form(a Formable, doit ...func(Formable) DoFn) DoFn {
+
 	prev := make([]DoFn, 0, len(doit))
+
 	for i := range doit {
 		prev = append(prev, doit[i](a))
 	}
+
 	return func() DoFn {
 		return undo(prev...)
 	}
@@ -36,12 +39,24 @@ func Form(a Formable, doit ...func(Formable) DoFn) DoFn {
 
 // undo applies the given doit functions in reverse order
 // and returns it's own undo..
-func undo(doit ...DoFn) DoFn { // TODO: may optimise for len(doit) == 0 and == 1
-	prev := make([]DoFn, 0, len(doit))
-	for i := len(doit) - 1; i >= 0; i-- {
-		prev = append(prev, doit[i]())
-	}
-	return func() DoFn {
-		return undo(prev...)
+func undo(doit ...DoFn) DoFn {
+
+	switch len(doit) {
+	case 0:
+		return func() DoFn {
+			return undo() 
+		}
+	case 1:
+		return func() DoFn {
+			return doit[0]()
+		}
+	default:
+		prev := make([]DoFn, 0, len(doit))
+		for i := len(doit) - 1; i >= 0; i-- {
+			prev = append(prev, doit[i]())
+		}
+		return func() DoFn {
+			return undo(prev...)
+		}
 	}
 }
