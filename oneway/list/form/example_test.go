@@ -11,60 +11,75 @@ import (
 	"github.com/GoLangsam/container/oneway/list/form"
 )
 
+// Value returns a function which
+// sets Formable's Value to v
+// and returns it's undo DoFn.
+func Value(v interface{}) func(form.Formable) form.DoFn {
+	return func(a form.Formable) form.DoFn {
+		prev := a.Value
+		a.Value = v
+		return func() form.DoFn {
+			return Value(prev)(a)
+		}
+	}
+}
+
+func Example() {
+	e := list.NewList("TestList", "Element One").Front()
+	fmt.Println(e.Value) // Element One
+
+	undo := Value(3)(e)
+	fmt.Println(e.Value) // 3 (temporarily)
+
+	redo := undo()
+	fmt.Println(e.Value) // Element One (temporary setting undone)
+
+	rere := redo()
+	fmt.Println(e.Value) // 3 (undo undone)
+
+	_ = rere()
+	fmt.Println(e.Value) // Element One (temporary setting undone)
+
+	// Output:
+	// Element One
+	// 3
+	// Element One
+	// 3
+	// Element One
+}
+
 func ExampleForm() {
 	e := list.NewList("TestList", "Element One").Front()
 	fmt.Println(e.Value) // Element One
 
-	undo := form.Form(e, form.Value(3))
-	fmt.Println(e.Value) // 3 (temporarily)
+	undo := form.Form(e, Value(3), Value("5"), Value(7))
+	fmt.Println(e.Value) // 7 (temporarily)
 
-	redo := form.UnDo(e, undo)
+	redo := undo()
 	fmt.Println(e.Value) // Element One (temporary setting undone)
 
-	_ = form.Form(e, redo...)
-	fmt.Println(e.Value) // 3 (undo undone)
+	_ = redo()
+	fmt.Println(e.Value) // 7 (undo undone)
 
 	// Output:
 	// Element One
-	// 3
+	// 7
 	// Element One
-	// 3
-}
-
-func ExampleUnDo() {
-	e := list.NewList("TestList", "Element One").Front()
-	fmt.Println(e.Value) // Element One
-
-	undo := form.Form(e, form.Value(3))
-	fmt.Println(e.Value) // 3 (temporarily)
-
-	redo := form.UnDo(e, undo)
-	fmt.Println(e.Value) // Element One (temporary setting undone)
-
-	_ = form.Form(e, redo...)
-	fmt.Println(e.Value) // 3 (undo undone)
-
-	// Output:
-	// Element One
-	// 3
-	// Element One
-	// 3
+	// 7
 }
 
 func ExampleValue() {
 	e := list.NewList("TestList", "Element One").Front()
 
-	setValue := func(e *list.Element, value interface{}) {
-		fmt.Println(e.Value) // Original Value
+	setValue := func(e *list.Element, v interface{}) {
+		// upon exit apply undo to restore original value while setting to new value v now via
+		defer Value(v)(e)() // Note the triple evaluation.
 
-		// upon exit restore Original while setting to new value now via
-		// undo := Form(e, Value(value))
-		defer form.UnDo(e, form.Form(e, form.Value(value)))
-
-		// ... do some stuff with Elements Value being temporarily set to value
+		// ... do some stuff with Value being temporarily set to v.
 		fmt.Println(e.Value) // Changed Value
 	}
 
+	fmt.Println(e.Value) // Original Value
 	setValue(e, 5)
 	fmt.Println(e.Value)
 

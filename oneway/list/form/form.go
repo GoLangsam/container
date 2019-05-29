@@ -2,50 +2,46 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// Package form allows to Form something, and UnDo such forming later on.
+// Package form allows to form something, and to undo such forming later on.
 //
 // Inspired by:
 //   - http://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 //   - https://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis
 //   - https://www.calhoun.io/using-functional-options-instead-of-method-chaining-in-go/
 //
-// These expamples support undo only for the last of several DoFn's passed to Form.
+// These samples support undo only for the last of several formers passed to Form.
 //
-// This implementation aims to provide a full redo.
-// Just: this needs a little more work - TODO: Have UnDo return it's effect as a DoFn closure over the slice.
+// This implementation provides full undo.
 package form
-
-import (
-	"github.com/GoLangsam/container/oneway/list"
-)
 
 // DoFn is the signature of a
 // self referential function.
 // It returns it's undo DoFn.
-type DoFn func(f *list.Element) DoFn
+type DoFn func() DoFn
 
-// undo is used to reverse a previous application of Form(...) via UnDo(undo)
-// undo is the type returned by Form(...)
-// undo is a slice of forms to be applied in reverse order
-// in order to undo a previously applied Form(...)
-type undo []DoFn
-
-// Form applies the specified doit forms.
-// It returns an undo, a slice of forms to restore f to it's previous situation.
-func Form(e *list.Element, doit ...DoFn) (undo undo) {
-	undo = make([]DoFn, 0, len(doit))
+// Form applies the formers
+// and returns its undo function
+// which, when evaluated,
+// restores the Formable a
+// to it's previous state.
+func Form(a Formable, doit ...func(Formable) DoFn) DoFn {
+	prev := make([]DoFn, 0, len(doit))
 	for i := range doit {
-		undo = append(undo, doit[i](e))
+		prev = append(prev, doit[i](a))
 	}
-	return undo
+	return func() DoFn {
+		return undo(prev...)
+	}
 }
 
-// UnDo applies the specified undo.
-// It returns a redo, a slice of forms to restore e to it's previous situation.
-func UnDo(e *list.Element, undo undo) (redo []DoFn) {
-	redo = make([]DoFn, 0, len(undo))
-	for i := len(undo) - 1; i >= 0; i-- {
-		redo = append(redo, undo[i](e))
+// undo applies the given doit functions in reverse order
+// and returns it's own undo..
+func undo(doit ...DoFn) DoFn { // TODO: may optimise for len(doit) == 0 and == 1
+	prev := make([]DoFn, 0, len(doit))
+	for i := len(doit) - 1; i >= 0; i-- {
+		prev = append(prev, doit[i]())
 	}
-	return redo
+	return func() DoFn {
+		return undo(prev...)
+	}
 }
