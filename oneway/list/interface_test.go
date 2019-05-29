@@ -11,53 +11,87 @@ import (
 // node abstracts the distinction between List and Element
 // - the focus is on common behaviour.
 type node interface {
+	Beam
+	Dust
+
 	Init() *list.List
 	List() *list.List
-	Front() *list.Element
-	Back() *list.Element
-	Next() *list.Element
-	Prev() *list.Element
-	Root() *list.Element
-	Len() int
-	// vLen() int
-	CVs() *list.ComposedValue
-	IsAtom() bool
-	IsComposed() bool
-
-	ForEachNext(f func(*list.Element))
-	ForEachPrev(f func(*list.Element))
 
 	AtomValues() list.Values
 	Elements() []*list.Element
+}
 
-	PrintValue(args ...interface{})
+// Beam abstracts the 'lengthy' behaviour common to *list.Element & *list.List
+type Beam interface {
+	CanIter // Front Next
+	CanReti // Back  Prev
+	Len() int
+	Root() *list.Element
+}
+
+// CanIter allows to iterate forward by starting with Front() and, if non-nil, repeating Next() until Next() returns nil
+type CanIter interface {
+	Front() *list.Element
+	Next() *list.Element
+	ForEachNext(f func(*list.Element))
+}
+
+// CanReti allows to iterate backward by starting with Back() and, if non-nil, repeating Prev() until Prev() returns nil
+//  Note: Reti is Iter spelled backwards.
+type CanReti interface {
+	Back() *list.Element
+	Prev() *list.Element
+	ForEachPrev(f func(*list.Element))
+}
+
+// Dust abstracts the 'pointy' behaviour common to *list.Element & *list.List
+type Dust interface {
+	CVs() *list.ComposedValue
+
+	IsAtom() bool
+	IsComposed() bool
+
 	PrintAtomValues(args ...interface{})
+	PrintValue(args ...interface{})
+	//	Values() list.Values
 }
 
-// list only:
-type listonly interface {
-	node
+// Coll combines all methods unique to any list, and not shared with Element
+type Coll interface {
+//	Clear() *list.List
 
-	InsertAfter(*list.Element) *list.Element
-	InsertBefore(*list.Element) *list.Element
-	MoveAfter(*list.Element) *list.Element
-	MoveBefore(*list.Element) *list.Element
-	MoveToBack() *list.Element
-	MoveToFront() *list.Element
+	IsEmpty() bool
+
+	InsertAfter(v interface{}, mark *list.Element) *list.Element
+	InsertBefore(v interface{}, mark *list.Element) *list.Element
+
+	MoveAfter(e, mark *list.Element)
+	MoveBefore(e, mark *list.Element)
+	MoveToBack(e *list.Element)
+	MoveToFront(e *list.Element)
+
 	Print(args ...interface{})
-	PushBack(*list.Element) *list.Element
-	PushBackList(*list.List) *list.Element
-	PushFront(*list.Element) *list.Element
-	PushFrontList(*list.List) *list.Element
-	Remove(*list.Element) *list.Element
+
+	PushBack(v interface{}) *list.Element
+	PushFront(v interface{}) *list.Element
+	PushBackList(other *list.List)
+	PushFrontList(other *list.List)
+
+	Remove(*list.Element) interface{}
+
+	Values() list.Values
+
+	ValuesPushFront(values ...interface{})
+	ValuesPushBack(values ...interface{})
 }
 
-// element only
-type elementonly interface {
-	node
+// Atom combines all methods unique to any element, and not shared with List
+type Atom interface {
+	IsNode() bool
+	IsRoot() bool
 
 	MoveToPrevOf(*list.Element) *list.Element
-	MoveToNextOf(*list.Element) *list.Element
+//	MoveToNextOf(*list.Element) *list.Element
 }
 
 /* symmetric
@@ -66,8 +100,11 @@ Equals(x node) bool
 With(x node) *ComposedValue
 */
 
-var l node = list.New()
-var e node = l.Root()
+func Example_interface() {
 
-var _listonly = l
-var _listelement = e
+	var _ node = list.New()
+	var _ node = list.New().Root()
+
+	var _ Coll = list.New()
+	var _ Atom = list.New().Root()
+}
