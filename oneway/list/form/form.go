@@ -38,17 +38,15 @@ func Form(a Formable, doit ...func(Formable) DoFn) DoFn {
 }
 
 // undo applies the given doit functions in reverse order
-// and returns it's own undo..
+// and returns it's own undo.
 func undo(doit ...DoFn) DoFn {
 
 	switch len(doit) {
+	case 1:
+		return doit[0]()
 	case 0:
 		return func() DoFn {
-			return undo() 
-		}
-	case 1:
-		return func() DoFn {
-			return doit[0]()
+			return undo()
 		}
 	default:
 		prev := make([]DoFn, 0, len(doit))

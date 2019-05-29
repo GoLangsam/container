@@ -88,3 +88,21 @@ func ExampleValue() {
 	// 5
 	// Element One
 }
+
+func Example_nochange() {
+	e := list.NewList("TestList", "Element One").Front()
+
+	undo := form.Form(e)
+	fmt.Println(e.Value) // Element One (unchanged)
+
+	redo := undo()
+	fmt.Println(e.Value) // Element One (temporary no-change undone)
+
+	_ = redo()
+	fmt.Println(e.Value) // Element One (temporary no-change undo redone)
+
+	// Output:
+	// Element One
+	// Element One
+	// Element One
+}
