@@ -12,6 +12,7 @@ package stack
 
 // Stack implements a normal (=non-concurrency-safe) stack
 // for anything (interface{})
+// based on a slice, and never shrinking
 type Stack []interface{}
 
 // New returns a new empty stack with given initial capacity
@@ -64,7 +65,10 @@ func (s *Stack) Get() []interface{} {
 	//	s.Lock()
 	//	defer s.Unlock()
 
-	return append([]interface{}{}, *s...)
+	//	return append([]interface{}{}, *s...)
+	var stack = make([]interface{}, len(*s))
+	copy(stack, *s)
+	return stack
 }
 
 // Len returns the length of the current stack
