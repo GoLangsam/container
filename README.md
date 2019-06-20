@@ -137,6 +137,13 @@ Note: Some kinds may deserve to be implemented both ways, as the `ccsafe` versio
 
 Note: Some kinds are *safe for concurrent processing* by construction. Notably *immutable* things.
 
+---
+Your suggestions, remarks, questions and/or contributions are welcome ;-)
+
+---
+## Think deep - code happy - be simple - see clear :-)
+
+---
 ## Support on Beerpay
 Hey dude! Help me out for a couple of :beers:!
 
