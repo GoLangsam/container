@@ -16,10 +16,11 @@ import (
 // and the elements carry the CVs of the original elements
 // Note: The Away's in the new list point to nil - thus, the new list is isolated.
 func Append(l *list.List, lists ...*list.List) *list.List {
+	n := len(lists)
 	switch {
-	case len(lists) == 0:
+	case n == 0:
 		return plus(l, nil)
-	case len(lists) == 1:
+	case n == 1:
 		return plus(l, lists[0])
 	default:
 		return plus(l, Append(lists[0], lists[1:]...))
@@ -29,7 +30,7 @@ func Append(l *list.List, lists ...*list.List) *list.List {
 // ===========================================================================
 
 // plus returns a new list with len(X) + len(Y) Elements
-// representing the union of the list X plus X
+// representing the union of the list X plus Y
 //
 // Note: plus(X, nil ) returns a new copy of X with composedValues
 // Note: The Away's in the new list point to nil - thus, the new list is isolated.

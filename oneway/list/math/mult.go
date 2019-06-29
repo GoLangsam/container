@@ -16,10 +16,11 @@ import (
 // and the elements carry the CVs of the original elements
 // Note: The Away's in the new list point to nil - thus, the new list is isolated.
 func Times(l *list.List, lists ...*list.List) *list.List {
+	n := len(lists)
 	switch {
-	case len(lists) == 0:
+	case n == 0:
 		return times(l, nil)
-	case len(lists) == 1:
+	case n == 1:
 		return times(l, lists[0])
 	default:
 		return times(l, Times(lists[0], lists[1:]...))
