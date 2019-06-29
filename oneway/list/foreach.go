@@ -38,7 +38,7 @@ func (l *List) ForEachPrev(f func(*Element)) {
 // ForEachNext applies function f to each other element of e's list in natural order.
 func (e *Element) ForEachNext(f func(*Element)) {
 	for i := e.next; i != e; i = i.next {
-		if i != &e.list.root {
+		if i.list == nil || i != &e.list.root {
 			f(i)
 		}
 	}
@@ -47,7 +47,7 @@ func (e *Element) ForEachNext(f func(*Element)) {
 // ForEachPrev applies function f to each other element of e's list in reverse order.
 func (e *Element) ForEachPrev(f func(*Element)) {
 	for i := e.prev; i != e; i = i.prev {
-		if i != &e.list.root {
+		if i.list == nil || i != &e.list.root {
 			f(i)
 		}
 	}

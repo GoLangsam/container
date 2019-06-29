@@ -27,6 +27,12 @@ type Beam interface {
 	CanReti // Back  Prev
 	Len() int
 	Root() *list.Element
+
+	PushBack(v interface{}) *list.Element
+	PushFront(v interface{}) *list.Element
+
+	MoveToBack(e *list.Element)
+	MoveToFront(e *list.Element)
 }
 
 // CanIter allows to iterate forward by starting with Front() and, if non-nil, repeating Next() until Next() returns nil
@@ -67,13 +73,9 @@ type Coll interface {
 
 	MoveAfter(e, mark *list.Element)
 	MoveBefore(e, mark *list.Element)
-	MoveToBack(e *list.Element)
-	MoveToFront(e *list.Element)
 
 	Print(args ...interface{})
 
-	PushBack(v interface{}) *list.Element
-	PushFront(v interface{}) *list.Element
 	PushBackList(other *list.List)
 	PushFrontList(other *list.List)
 
@@ -87,8 +89,13 @@ type Coll interface {
 
 // Atom combines all methods unique to any element, and not shared with List
 type Atom interface {
+	Remove() interface{}
+
 	IsNode() bool
 	IsRoot() bool
+
+	MoveBefore(*list.Element)
+	MoveAfter(*list.Element)
 
 	MoveToPrevOf(*list.Element) *list.Element
 //	MoveToNextOf(*list.Element) *list.Element

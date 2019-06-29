@@ -26,7 +26,6 @@ Going home
 // e.Front() == e
 // e.Back() == e
 // e.Root() == e (or is it not?)
-// e.Len() == 0
 // and this would be a very very boring world ;-)
 
 package list
@@ -49,19 +48,27 @@ func (e *Element) Init() (list *List) {
 // Front returns the Front of this elements list
 // (its first one, if any) or nil.
 func (e *Element) Front() *Element {
-	if &e == nil || &e.list == nil {
+	switch {
+	case &e == nil:
 		return nil
+	case &e.list == nil:
+		return e
+	default:
+		return e.list.Front()
 	}
-	return e.list.Front()
 }
 
 // Back returns the Back of this elements list
 // (its last one, if any) or nil.
 func (e *Element) Back() *Element {
-	if &e == nil || &e.list == nil {
+	switch {
+	case &e == nil:
 		return nil
+	case &e.list == nil:
+		return e.prev
+	default:
+		return e.list.Back()
 	}
-	return e.list.Back()
 }
 
 // Next returns the Front element of list l
@@ -82,25 +89,9 @@ func (l *List) Prev() *Element {
 	return l.root.prev
 }
 
-// Len returns the number of elements in the list of e,
-// or 0 (zero), if e.IsRoot,
-// or -1 iff e == nil or e.list == nil.
-// The complexity is O(1).
-func (e *Element) Len() int {
-	if &e == nil || &e.list == nil {
-		return -1
-	}
-	if e == &e.list.root { // IsRoot()
-		return 0
-	}
-	return e.list.Len()
-}
-
 // ===========================================================================
 
-// List returns this list (which may be nil or null value).
-//
-// l becomes initialised iff a null value was used.
+// List returns this list (which may be nil).
 func (l *List) List() *List {
 	return l
 }
@@ -124,10 +115,14 @@ func (l *List) Root() *Element {
 }
 
 // Root returns the Root of this elements list
-// or nil iff e == nil or its list is nil.
+// or nil iff e == nil or e iff its list is nil.
 func (e *Element) Root() *Element {
-	if &e == nil || &e.list == nil {
+	switch {
+	case &e == nil:
 		return nil
+	case &e.list == nil:
+		return e
+	default:
+		return e.list.Root()
 	}
-	return e.list.Root()
 }
