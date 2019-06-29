@@ -24,8 +24,8 @@ func New(cap int) *Stack {
 
 // Init returns an empty stack with given initial capacity
 func (s *Stack) Init(cap int) *Stack {
-	return &Stack{make([]interface{}, 0, cap)}
-
+	*s = make([]interface{}, 0, cap)
+	return s 
 }
 
 // Push sth onto the current stack
@@ -42,7 +42,7 @@ func (s *Stack) Pop() interface{} {
 	//	defer s.Unlock()
 
 	p := (*s)[len(*s)-1]
-	*s = (*s)[0 : len(*s)-1]
+	*s = (*s)[:len(*s)-1]
 	return p
 }
 
@@ -51,7 +51,7 @@ func (s *Stack) Drop() {
 	//	s.Lock()
 	//	defer s.Unlock()
 
-	*s = (*s)[0 : len(*s)-1]
+	*s = (*s)[:len(*s)-1]
 }
 
 // Top returns the top of the current stack
