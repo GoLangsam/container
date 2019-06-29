@@ -13,7 +13,7 @@ import (
 // foldr _ z [] = z
 // foldr f z (x:xs) = f x (foldr f z xs)
 
-// FoldAny uses f(*Element, interface{}) to fold list l (from front to back) given initial i
+// FoldAny uses f(*Element, interface{}) to fold list l (from front to back) given initial i.
 func FoldAny(
 	f func(*list.Element, interface{}) interface{},
 	l *list.List,
@@ -22,14 +22,16 @@ func FoldAny(
 
 	result = i
 
-	for e := l.Front(); e != nil; e = e.Next() {
-		result = f(e, result)
+	if l != nil {
+		for e := l.Front(); e != nil; e = e.Next() {
+			result = f(e, result)
+		}
 	}
 
-	return result
+	return
 }
 
-// FoldInt uses f(*Element, int) to fold list l (from front to back) given initial i
+// FoldInt uses f(*Element, int) to fold list l (from front to back) given initial i.
 func FoldInt(
 	f func(*list.Element, int) int,
 	l *list.List,
@@ -38,14 +40,16 @@ func FoldInt(
 
 	result = i
 
-	for e := l.Front(); e != nil; e = e.Next() {
-		result = f(e, result)
+	if l != nil {
+		for e := l.Front(); e != nil; e = e.Next() {
+			result = f(e, result)
+		}
 	}
 
-	return result
+	return
 }
 
-// FoldString uses f(*Element, string) to fold list l (from front to back) given initial i
+// FoldString uses f(*Element, string) to fold list l (from front to back) given initial i.
 func FoldString(
 	f func(*list.Element, string) string,
 	l *list.List,
@@ -54,9 +58,11 @@ func FoldString(
 
 	result = i
 
-	for e := l.Front(); e != nil; e = e.Next() {
-		result = f(e, result)
+	if l != nil {
+		for e := l.Front(); e != nil; e = e.Next() {
+			result = f(e, result)
+		}
 	}
 
-	return result
+	return
 }
