@@ -22,13 +22,13 @@ func Sigma(
 	l *list.List,
 ) (result int) {
 
-	result = 0
-
-	for e := l.Front(); e != nil; e = e.Next() {
-		result += f(e)
+	if l != nil {
+		for e := l.Front(); e != nil; e = e.Next() {
+			result += f(e)
+		}
 	}
 
-	return result
+	return
 }
 
 // Note: Sigma may also be expressed using
