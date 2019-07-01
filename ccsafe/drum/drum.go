@@ -17,10 +17,10 @@ type counter map[int]int64
 
 // Drum is named counter
 type Drum struct {
-	Nam     string
-	Cnt     int64
-	Map     counter
-	Verbose bool
+	Nam    string
+	Cnt    int64
+	Map    counter
+	UseMap bool
 	sync.Mutex
 }
 
@@ -45,7 +45,7 @@ func (b *Drum) Beat(cur int) {
 	b.Lock()
 	defer b.Unlock()
 	b.Cnt++
-	if b.Verbose {
+	if b.UseMap {
 		b.Map[cur]++
 	}
 }
@@ -71,7 +71,7 @@ func (b *Drum) Print() {
 		return
 	}
 	fmt.Printf("%s\t% 9d\t"+"\n", b.Nam, b.Cnt)
-	if b.Verbose {
+	if b.UseMap {
 		for _, key := range b.Sort() {
 			fmt.Printf("%6d\t% 9d\t"+"\n", key, b.Map[key])
 		}
