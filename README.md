@@ -77,6 +77,12 @@ Thus: we came up with `oneway` - as there is only **one way** to use it safely: 
   [lint](http://go-lint.appspot.com/github.com/GoLangsam/container/ccsafe/tagmap)
   
 ## only *oneway/* implementation
+- [`list`](https://github.com/GoLangsam/container/blob/master/oneway/list) - 
+  an extension of the standard `container/list` package
+  |
+  [![GoDoc](https://godoc.org/github.com/GoLangsam/container/oneway/list?status.svg)](https://godoc.org/github.com/GoLangsam/container/oneway/list)
+  |
+  [lint](http://go-lint.appspot.com/github.com/GoLangsam/container/oneway/list)
 - [`lsb`](https://github.com/GoLangsam/container/blob/master/oneway/lsb) - 
   a *Lazy String Buffer* -
   a gem hidden in [`path/path.go`](https://golang.org/src/path/path.go) -
@@ -94,7 +100,7 @@ Thus: we came up with `oneway` - as there is only **one way** to use it safely: 
 
 ## both *ccsafe/* & *oneway/* implementations
 - `drum` - 
-  a simple beat-counter (with a histogram)
+  a simple beat-counter
 	- [`ccsafe/drum`](https://github.com/GoLangsam/container/blob/master/ccsafe/drum)
 	  |
   [![GoDoc](https://godoc.org/github.com/GoLangsam/container/ccsafe/drum?status.svg)](https://godoc.org/github.com/GoLangsam/container/ccsafe/drum)
