@@ -33,41 +33,37 @@ package list
 // ===========================================================================
 // Blurr the difference between list and element so either can represent both
 
-// Init initializes or clears list of e.
-// A fresh and empty list is returned iff e or e.list is nil.
+// Init returns fresh and empty list.
+// e is left untouched.
 func (e *Element) Init() (list *List) {
-	if &e == nil || &e.list == nil {
-		list = New()
-	} else {
-		list = e.list.Init()
-		e.list = nil // TODO: this sucks!
-	}
-	return
+	return New()
 }
 
 // Front returns the Front of this elements list
-// (its first one, if any) or nil.
+// (its first one, if any)
+// or e.Next(), iff e belongs to a Ring (and has no list).
 func (e *Element) Front() *Element {
 	switch {
-	case &e == nil:
+	case e == nil:
 		return nil
-	case &e.list == nil:
-		return e
-	default:
+	case e.list != nil:
 		return e.list.Front()
+	default:
+		return e.next
 	}
 }
 
 // Back returns the Back of this elements list
-// (its last one, if any) or nil.
+// (its last one, if any)
+// or e.Prev(), iff e belongs to a Ring (and has no list).
 func (e *Element) Back() *Element {
 	switch {
-	case &e == nil:
+	case e == nil:
 		return nil
-	case &e.list == nil:
-		return e.prev
-	default:
+	case e.list != nil:
 		return e.list.Back()
+	default:
+		return e.prev
 	}
 }
 
@@ -99,7 +95,7 @@ func (l *List) List() *List {
 // List returns the list of e
 // or nil iff e == nil or its list is nil.
 func (e *Element) List() *List {
-	if &e == nil || &e.list == nil {
+	if e == nil || e.list == nil {
 		return nil
 	}
 	return e.list
@@ -108,7 +104,7 @@ func (e *Element) List() *List {
 // Root returns the root element of list l
 // or nil iff l == nil or its root is nil.
 func (l *List) Root() *Element {
-	if &l == nil {
+	if l == nil {
 		return nil
 	}
 	return &l.root
@@ -118,9 +114,9 @@ func (l *List) Root() *Element {
 // or nil iff e == nil or e iff its list is nil.
 func (e *Element) Root() *Element {
 	switch {
-	case &e == nil:
+	case e == nil:
 		return nil
-	case &e.list == nil:
+	case e.list == nil:
 		return e
 	default:
 		return e.list.Root()

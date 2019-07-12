@@ -4,9 +4,9 @@
 
 package list
 
-// Ring returns a new ring.
+// NewRing returns a new ring.
 // Iff no values are given, a nil element is returned.
-func Ring(vals ...interface{}) (ring *Element) {
+func NewRing(vals ...interface{}) (ring *Element) {
 	if len(vals) > 0 {
 		ring = &Element{Value: vals[0]}
 		ring.prev, ring.next = ring, ring
@@ -25,39 +25,39 @@ func (e *Element) assertRing() {
 }
 
 // Len returns the number of elements in the list of e
-// or 0 (zero), if e is root of it's (non-nil) list,
-// or -1 iff e == nil.
+// or 0 (zero), if e is root or e is nil.
 //
 // The complexity is O(1) iff e is element of a list
 // and O(n) otherwise (e is element of some ring).
-func (e *Element) Len() int { 
-	switch{
+func (e *Element) Len() int {
+	switch {
 	case e == nil:
-		return -1
+		return 0
 	case e.list != nil:
 		if e == &e.list.root { // IsRoot()
 			return 0
 		}
-		return e.list.len		
+		return e.list.len
 
-	default:
-		var length int
-		for at := e.next; at != e; at = at.next{
+	case e.list == nil:
+		length := 1
+		for at := e.next; at != e; at = at.next {
 			length++
 		}
 		return length
-	
+	default:
+		panic("*Element.Len(): unreachable!")
 	}
 }
 
-// insert inserts e after at, increments l.len iff l is not nil, and returns e.
-func (e *Element) insert(at *Element) *Element {
-	n := at.next
-	at.next = e
-	e.prev = at
+// insert inserts e after mark, increments l.len iff l is not nil, and returns e.
+func (mark *Element) insert(e *Element) *Element {
+	n := mark.next
+	mark.next = e
+	e.prev = mark
 	e.next = n
 	n.prev = e
-	e.list = at.list
+	e.list = mark.list
 	if e.list != nil {
 		e.list.len++
 	}
@@ -84,7 +84,7 @@ func (e *Element) remove() *Element {
 }
 
 // move moves e to next to at and returns e.
-func (e *Element) move(at *Element) *Element {
+func (at *Element) move(e *Element) *Element {
 	if e == at {
 		return e
 	}
@@ -104,9 +104,11 @@ func (e *Element) move(at *Element) *Element {
 // It returns the element value e.Value.
 // The element must not be nil.
 func (e *Element) Remove() interface{} {
-	switch{
-	case e == nil:
+	switch {
+	case &e == nil || e.next == nil || e.prev == nil:
 		return nil
+	case e.next == nil || e.prev == nil:
+		return e.Value
 	case e.list != nil:
 		e.list.remove(e)
 	default:
@@ -131,7 +133,7 @@ func (e *Element) PushBack(v interface{}) *Element {
 // InsertBefore inserts a new element e with value v immediately before mark and returns e.
 // If mark is not an element of l, the list is not modified.
 // The mark must not be nil.
-func (mark *Element) InsertBefore(v interface{}) *Element {
+func (root *Element) InsertBefore(v interface{}, mark *Element) *Element {
 	if mark.list != nil {
 		return mark.list.InsertBefore(v, mark)
 	}
@@ -141,37 +143,37 @@ func (mark *Element) InsertBefore(v interface{}) *Element {
 // InsertAfter inserts a new element e with value v immediately after mark and returns e.
 // If mark is not an element of l, the list is not modified.
 // The mark must not be nil.
-func (mark *Element) InsertAfter(v interface{}) *Element {
+func (root *Element) InsertAfter(v interface{}, mark *Element) *Element {
 	if mark.list != nil {
 		return mark.list.InsertAfter(v, mark)
 	}
 	return mark.insertValue(v)
 }
 
-// MoveToFront moves element e to the front of list l.
+// MoveToFront moves element e to the front of root.
 // If e is not an element of l, the list is not modified.
-// The element must not be nil.
-func (mark *Element) MoveToFront(e *Element) {
-	if mark.list != nil {
-		mark.list.MoveToFront(e)
+// The element and root must not be nil.
+func (root *Element) MoveToFront(e *Element) {
+	if root.list != nil {
+		root.list.MoveToFront(e)
 	}
-	mark.move(e)
+	root.move(e)
 }
 
-// MoveToBack moves element e to the back of list l.
+// MoveToBack moves element e to the back of root.
 // If e is not an element of l, the list is not modified.
-// The element must not be nil.
-func (mark *Element) MoveToBack(e *Element) {
-	if mark.list != nil {
-		mark.list.MoveToBack(e)
+// The element and root must not be nil.
+func (root *Element) MoveToBack(e *Element) {
+	if root.list != nil {
+		root.list.MoveToBack(e)
 	}
-	mark.prev.move(e)
+	root.prev.move(e)
 }
 
 // MoveBefore moves element e to its new position before mark.
 // If e or mark is not an element of l, or e == mark, the list is not modified.
 // The element and mark must not be nil.
-func (mark *Element) MoveBefore(e *Element) {
+func (root *Element) MoveBefore(e, mark *Element) {
 	if mark.list != nil {
 		mark.list.MoveBefore(e, mark)
 	}
@@ -181,7 +183,7 @@ func (mark *Element) MoveBefore(e *Element) {
 // MoveAfter moves element e to its new position after mark.
 // If e or mark is not an element of l, or e == mark, the list is not modified.
 // The element and mark must not be nil.
-func (mark *Element) MoveAfter(e *Element) {
+func (root *Element) MoveAfter(e, mark *Element) {
 	if mark.list != nil {
 		mark.list.MoveAfter(e, mark)
 	}

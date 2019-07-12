@@ -21,7 +21,7 @@ package list
 func (e *Element) MoveToPrevOf (at *Element) *Element {
 	if at == e { return e }
 
-	if at == nil {
+	if at == nil && e.list != nil {
 		e.prev.next		= e.next		// Unlink e from e.prev
 		e.next.prev		= e.prev		// Unlink e from e.next
 		e.prev			= e.list.root.prev	// Relink e.prev to e.list.root.prev

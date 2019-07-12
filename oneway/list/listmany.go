@@ -67,6 +67,16 @@ func (l *List) ValuesPushFront(values ...interface{}) {
 	valuesDo(l.PushFront, values...)
 }
 
+// ValuesPushBack appends a slice of Values
+func (e *Element) ValuesPushBack(values ...interface{}) {
+	valuesDo(e.PushBack, values...)
+}
+
+// ValuesPushFront prepends a slice of Values
+func (e *Element) ValuesPushFront(values ...interface{}) {
+	valuesDo(e.PushFront, values...)
+}
+
 // valuesDo executes the given function on a slice of Values
 func valuesDo(do func(v interface{}) *Element, values ...interface{}) {
 	for i := range values {

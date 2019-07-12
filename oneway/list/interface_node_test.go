@@ -23,16 +23,33 @@ type node interface {
 
 // Beam abstracts the 'lengthy' behaviour common to *list.Element & *list.List
 type Beam interface {
+	CanGrow // Push Insert
+	CanMove // Move MoveTo
 	CanIter // Front Next
 	CanReti // Back  Prev
 	Len() int
 	Root() *list.Element
+}
+
+// CanGrow abstracts the growing behaviour common to *list.Element & *list.List
+type CanGrow interface {
+	ValuesPushFront(values ...interface{})
+	ValuesPushBack(values ...interface{})
 
 	PushBack(v interface{}) *list.Element
 	PushFront(v interface{}) *list.Element
 
+	InsertAfter(v interface{}, mark *list.Element) *list.Element
+	InsertBefore(v interface{}, mark *list.Element) *list.Element
+}
+
+// CanMove abstracts the moveing behaviour common to *list.Element & *list.List
+type CanMove interface {
 	MoveToBack(e *list.Element)
 	MoveToFront(e *list.Element)
+
+	MoveAfter(e, mark *list.Element)
+	MoveBefore(e, mark *list.Element)
 }
 
 // CanIter allows to iterate forward by starting with Front() and, if non-nil, repeating Next() until Next() returns nil
@@ -62,43 +79,31 @@ type Dust interface {
 	//	Values() list.Values
 }
 
-// Coll combines all methods unique to any list, and not shared with Element
+// Coll combines all methods unique to any List, and not shared with Element
 type Coll interface {
-//	Clear() *list.List
+	//	Clear() *list.List
 
-	IsEmpty() bool
+	IsEmpty() bool // TODO: e.IsEmpty() iff Value == nil?
 
-	InsertAfter(v interface{}, mark *list.Element) *list.Element
-	InsertBefore(v interface{}, mark *list.Element) *list.Element
+	Print(args ...interface{}) // TODO: samesame for e, especially for Ring
 
-	MoveAfter(e, mark *list.Element)
-	MoveBefore(e, mark *list.Element)
-
-	Print(args ...interface{})
-
-	PushBackList(other *list.List)
+	PushBackList(other *list.List) // TODO: samesame for e, especially for Ring
 	PushFrontList(other *list.List)
 
 	Remove(*list.Element) interface{}
 
-	Values() list.Values
-
-	ValuesPushFront(values ...interface{})
-	ValuesPushBack(values ...interface{})
+	Values() list.Values // TODO: samesame for e, especially for Ring
 }
 
-// Atom combines all methods unique to any element, and not shared with List
+// Atom combines all methods unique to any Element, and not shared with List
 type Atom interface {
 	Remove() interface{}
 
 	IsNode() bool
 	IsRoot() bool
 
-	MoveBefore(*list.Element)
-	MoveAfter(*list.Element)
-
 	MoveToPrevOf(*list.Element) *list.Element
-//	MoveToNextOf(*list.Element) *list.Element
+	//	MoveToNextOf(*list.Element) *list.Element
 }
 
 /* symmetric
