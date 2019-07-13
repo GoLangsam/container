@@ -39,7 +39,7 @@ type LazyStringerMap struct {
 //
 // Note: no need to call me - I use lazyInit to care for myself :-)
 //
-// Hint: just plug me into Your "type favourite structure{}" :-)
+// Hint: just plug me into Your "type myFavourite structure{ ... }" :-)
 //
 func New() *LazyStringerMap {
 	d := new(LazyStringerMap)
@@ -58,11 +58,13 @@ func (d *LazyStringerMap) init() *LazyStringerMap {
 	return d
 }
 
+// protectMe - lazyInit & Lock
 func (d *LazyStringerMap) protectMe() {
 	d.lazyInit() // non-nil me ...
 	d.l.Lock()   // protect me, and ...
 }
 
+// releaseMe - forget & Unlock
 func (d *LazyStringerMap) releaseMe() {
 	d.forget()   // destroy my being valuable, if need
 	d.l.Unlock() // release me, let me go ...

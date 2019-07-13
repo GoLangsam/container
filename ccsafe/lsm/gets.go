@@ -20,10 +20,10 @@ type AccessFriendly interface {
 	LSM() map[string]interface{} // get my complete content as is
 }
 
-// M - get my content as map[key]value-string
+// M returns my content as map[key]value-string:
 //  {{ .M.key }}
 // fetches key="key" from the map
-// and returns its content as string, iff any
+// and returns its content as string.
 func (d *LazyStringerMap) M() map[string]string {
 	d.lazyInit()        // non-nil me ...
 	d.l.RLock()         // protect me, and ...
@@ -31,9 +31,9 @@ func (d *LazyStringerMap) M() map[string]string {
 	return d.lazyM()    // fulfill the promise
 }
 
-// S - get my keys as sorted slice
+// S returns my keys as sorted slice:
 //  {{ range .S }}...{{end}}
-// walks my keys
+// walks my keys.
 func (d *LazyStringerMap) S() []string {
 	d.lazyInit()        // non-nil me ...
 	d.l.RLock()         // protect me, and ...
@@ -41,9 +41,9 @@ func (d *LazyStringerMap) S() []string {
 	return d.lazyS()    // fulfill the promise
 }
 
-// Range - get my values as slice, sorted by name
+// Range returns my values as slice, sorted by name:
 //  {{ range .Range }}...{{end}}
-// walks my (sorted) values
+// walks my (sorted) values.
 func (d *LazyStringerMap) Range() []interface{} {
 	d.lazyInit()        // non-nil me ...
 	d.l.RLock()         // protect me, and ...
@@ -55,7 +55,7 @@ func (d *LazyStringerMap) Range() []interface{} {
 	return r // fulfill the promise
 }
 
-// LSM - get my complete content as is
+// LSM returns my complete content as is.
 func (d *LazyStringerMap) LSM() map[string]interface{} {
 	d.lazyInit()        // non-nil me ...
 	d.l.RLock()         // protect me, and ...

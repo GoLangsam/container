@@ -24,9 +24,7 @@ type UserFriendly interface {
 	Init() *LazyStringerMap                              // (re)start afresh: no names, no content
 	Assign(key string, val interface{}) *LazyStringerMap // assign a string "val" to name "key"
 	Delete(key string) *LazyStringerMap                  // forget name "key" (and related content, if any)
-
-	// Clone is intentionally not mentioned here, as this would clash in higher levels, e.g. dot.Dot
-	// Clone() *LazyStringerMap                             // obtain a fresh Lazy String Map with a copy of original content
+	Clone() *LazyStringerMap                             // obtain a fresh Lazy String Map with a copy of original content
 
 	// Following may also be used in templates:
 	Fetch(key string) (interface{}, bool) // obtain content named "key", iff any
@@ -52,7 +50,29 @@ func (d *LazyStringerMap) Assign(key string, val interface{}) *LazyStringerMap {
 	return d
 }
 
-// Delete - You want me to forget about name "key" (and it's related content)?
+// Lookup my content named "key" as (eventually empty) string.
+func (d *LazyStringerMap) Lookup(key string) string {
+	d.lazyInit()        // non-nil me ...
+	d.l.RLock()         // protect me, and ...
+	defer d.l.RUnlock() // release me, let me go ...
+	if c, ok := d.val[key]; ok {
+		return ats.GetString(c)
+	}
+	return ""
+}
+
+// Fetch gives You my content named "key", iff any.
+func (d *LazyStringerMap) Fetch(key string) (interface{}, bool) {
+	d.lazyInit()        // non-nil me ...
+	d.l.RLock()         // protect me, and ...
+	defer d.l.RUnlock() // release me, let me go ...
+	if c, ok := d.val[key]; ok {
+		return c, true
+	}
+	return nil, false
+}
+
+// Delete if You want me to forget about name "key" and it's related content.
 func (d *LazyStringerMap) Delete(key string) *LazyStringerMap {
 	d.lazyInit()        // non-nil me ...
 	d.protectMe()       // protect me, and ...
@@ -61,8 +81,16 @@ func (d *LazyStringerMap) Delete(key string) *LazyStringerMap {
 	return d
 }
 
-// Clone - a fresh Lazy String Map
-// with a copy of original content
+// Len reports how many things I contain right now.
+func (d *LazyStringerMap) Len() int {
+	d.lazyInit()        // non-nil me ...
+	d.l.RLock()         // protect me, and ...
+	defer d.l.RUnlock() // release me, let me go ...
+	return len(d.val)
+}
+
+// Clone a fresh Lazy String Map
+// with a copy of original content.
 //
 // Note: the copy is shallow: values are not copied/duplicated, but just reused!
 // See https://gist.github.com/soroushjp/0ec92102641ddfc3ad5515ca76405f4d regarding deep copy
@@ -78,34 +106,4 @@ func (d *LazyStringerMap) Clone() *LazyStringerMap {
 		n.val[k] = v
 	}
 	return n
-}
-
-// Lookup - You want my content named "key" - as (eventually empty) string
-func (d *LazyStringerMap) Lookup(key string) string {
-	d.lazyInit()        // non-nil me ...
-	d.l.RLock()         // protect me, and ...
-	defer d.l.RUnlock() // release me, let me go ...
-	if c, ok := d.val[key]; ok {
-		return ats.GetString(c)
-	}
-	return ""
-}
-
-// Fetch - You want my content named "key", iff any
-func (d *LazyStringerMap) Fetch(key string) (interface{}, bool) {
-	d.lazyInit()        // non-nil me ...
-	d.l.RLock()         // protect me, and ...
-	defer d.l.RUnlock() // release me, let me go ...
-	if c, ok := d.val[key]; ok {
-		return c, true
-	}
-	return nil, false
-}
-
-// Len - How many things do I contain right now?
-func (d *LazyStringerMap) Len() int {
-	d.lazyInit()        // non-nil me ...
-	d.l.RLock()         // protect me, and ...
-	defer d.l.RUnlock() // release me, let me go ...
-	return len(d.val)
 }
