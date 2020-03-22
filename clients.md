@@ -21,6 +21,7 @@ Note: not checked for external clients (outside of "github.com/GoLangsam/...").
 
 - ccsafe/das	./.
 - ccsafe/fileinfocache	./.
+- ccsafe/lru	./.
 - ccsafe/svp	./.
 - ccsafe/tagmap	./.
 

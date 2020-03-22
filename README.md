@@ -50,6 +50,12 @@ Thus: we came up with `oneway` - as there is only **one way** to use it safely: 
   [![GoDoc](https://godoc.org/github.com/GoLangsam/container/ccsafe/fscache?status.svg)](https://godoc.org/github.com/GoLangsam/container/ccsafe/fscache)
   |
   [lint](http://go-lint.appspot.com/github.com/GoLangsam/container/ccsafe/fscache)
+- [`lru`](https://github.com/GoLangsam/container/blob/master/ccsafe/lru) -
+  a concurrency-safe LRU cache - as found in "golang.org\x\build\internal\lru"
+  |
+  [![GoDoc](https://godoc.org/github.com/GoLangsam/container/ccsafe/lru?status.svg)](https://godoc.org/github.com/GoLangsam/container/ccsafe/lru)
+  |
+  [lint](http://go-lint.appspot.com/github.com/GoLangsam/container/ccsafe/lru)
 - [`svp`](https://github.com/GoLangsam/container/blob/master/ccsafe/svp) -
   a *String Value Pair* (aka Named Constant)
   |
